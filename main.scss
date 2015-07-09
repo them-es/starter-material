@@ -7,12 +7,20 @@
 $gray-light: #9E9E9E;
 $gray-lighter: #EFEFEF;
 
+$font-family-sans-serif:  "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-serif:       Georgia, "Times New Roman", Times, serif;
+$font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
+
 $screen-sm-min: 768px;
 
 
 /**
  * General
  */
+
+html, body {
+	font-family: $font-family-sans-serif;
+}
 
 .text-left {
 	text-align: left;
