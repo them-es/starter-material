@@ -5,12 +5,12 @@
 
 	if ( get_the_author_meta( 'description' ) ) :
 ?>
-	<div id="author-info"<?php if ( !is_single() ) : ?> class="well"<?php endif; ?>>
+	<div id="author-info">
 		<div class="mdl-grid">
-			<div id="author-avatar" class="col-lg-3 col-md-3 col-sm-12 text-center">
+			<div id="author-avatar" class="mdl-cell mdl-cell--3-col mdl-cell--12-col-phone text-center">
 				<?php echo get_avatar( get_the_author_meta( 'user_email' ), apply_filters( 'themes_starter_author_bio_avatar_size', 128 ) ); ?>
 			</div><!-- #author-avatar -->
-			<div id="author-description" class="col-lg-9 col-md-9 col-sm-12">
+			<div id="author-description" class="mdl-cell mdl-cell--9-col mdl-cell--12-col-phone">
 				<h2><?php printf( __( 'About %s', 'my-theme' ), get_the_author() ); ?></h2>
 				<p><?php the_author_meta( 'description' ); ?></p>
 				<p id="author-links">

@@ -8,7 +8,7 @@
 
 	<div class="mdl-grid">
 		
-		<div class="col-lg-8 col-lg-push-4 col-md-8 col-md-push-4 col-sm-12">
+		<div class="mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet mdl-cell--12-col-phone mdl-grid">
 		
 			<?php if ( have_posts() ) : ?>
 			

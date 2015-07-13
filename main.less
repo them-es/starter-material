@@ -22,6 +22,10 @@ html, body {
 	font-family: @font-family-sans-serif;
 }
 
+a {
+	text-decoration: none;
+}
+
 .text-left {
 	text-align: left;
 }
@@ -148,6 +152,17 @@ form {
 		min-height: 450px;
 	}
 	
+	.section-spacer {
+		flex-grow: 1;
+	}
+	
+	.blog-nav {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+	}
+	
 }
 
 
@@ -271,7 +286,6 @@ body.admin-bar #header nav.navbar-fixed-top {
 	width: 68.9%;
 		
 	> li.comment {
-		border: 1px solid @gray-lighter;
 		margin: 0 0 1.625em;
 		padding: 1.625em;
 		position: relative;
@@ -282,7 +296,6 @@ body.admin-bar #header nav.navbar-fixed-top {
 		margin-top: 20px;
 
 		> li.comment {
-			border-top: 1px solid @gray-lighter;
 			padding-top: 10px;
 			position: relative;
 		}
@@ -291,7 +304,7 @@ body.admin-bar #header nav.navbar-fixed-top {
 	.avatar {
 		width: 64px;
 		height: 64px;
-		border-radius: 3px;
+		border-radius: 50%;
 		box-shadow: 0 1px 2px @gray-light;
 		padding: 0;
 		position: absolute;

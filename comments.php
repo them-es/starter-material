@@ -32,9 +32,9 @@ if ( post_password_required() ) {
 		
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
 		<nav id="comment-nav-above">
-			<h1 class="assistive-text"><?php _e( 'Comment navigation', 'my-theme' ); ?></h1>
-			<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'my-theme' ) ); ?></div>
-			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'my-theme' ) ); ?></div>
+			<!--h1 class="assistive-text"><?php _e( 'Comment navigation', 'my-theme' ); ?></h1-->
+			<div class="nav-previous"><?php previous_comments_link( '<button class="mdl-button mdl-js-button mdl-button--icon mdl-color--pink-500 mdl-color-text--white"><i class="material-icons">arrow_back</i></button> ' . __( 'Older Comments', 'my-theme' ) ); ?></div>
+			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments', 'my-theme' ) . ' <button class="mdl-button mdl-js-button mdl-button--icon mdl-color--pink-500 mdl-color-text--white"><i class="material-icons">arrow_forward</i></button>' ); ?></div>
 		</nav>
 		<?php endif; // check for comment navigation ?>
 		
@@ -52,9 +52,9 @@ if ( post_password_required() ) {
 		
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
 		<nav id="comment-nav-below">
-			<h1 class="assistive-text"><?php _e( 'Comment navigation', 'my-theme' ); ?></h1>
-			<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'my-theme' ) ); ?></div>
-			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'my-theme' ) ); ?></div>
+			<!--h1 class="assistive-text"><?php _e( 'Comment navigation', 'my-theme' ); ?></h1-->
+			<div class="nav-previous"><?php previous_comments_link( '<button class="mdl-button mdl-js-button mdl-button--icon mdl-color--pink-500 mdl-color-text--white"><i class="material-icons">arrow_back</i></button> ' . __( 'Older Comments', 'my-theme' ) ); ?></div>
+			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments', 'my-theme' ) . ' <button class="mdl-button mdl-js-button mdl-button--icon mdl-color--pink-500 mdl-color-text--white"><i class="material-icons">arrow_forward</i></button>' ); ?></div>
 		</nav>
 		<?php endif; // check for comment navigation ?>
 

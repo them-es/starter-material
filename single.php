@@ -28,10 +28,11 @@
 
 				if ( $count_posts->publish > '1' ) :
 			?>
-				<div class="mdl-grid">
-					<div class="mdl-cell mdl-cell--6-col"><?php previous_post_link( '%link', '<span aria-hidden="true">&larr;</span> ' . __( 'Previous Post', 'my-theme' ) ); ?></div>
-					<div class="mdl-cell mdl-cell--6-col text-right"><?php next_post_link( '%link', __( 'Next Post', 'my-theme' ) . ' <span aria-hidden="true">&rarr;</span>' ); ?></div>
-				</div><!-- /.pager -->
+				<nav class="blog-nav mdl-cell mdl-cell--12-col">
+					<?php previous_post_link( '%link', '<button class="mdl-button mdl-js-button mdl-button--icon mdl-color--pink-500 mdl-color-text--white"><i class="material-icons">arrow_back</i></button> ' . __( 'Previous Post', 'my-theme' ) ); ?>
+					<div class="section-spacer"></div>
+					<?php next_post_link( '%link', __( 'Next Post', 'my-theme' ) . ' <button class="mdl-button mdl-js-button mdl-button--icon mdl-color--pink-500 mdl-color-text--white"><i class="material-icons">arrow_forward</i></button>' ); ?>
+				</nav><!-- /.blog-nav -->
 			<?php endif; ?>
 			
 		</div><!-- /.col -->

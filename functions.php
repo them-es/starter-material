@@ -206,26 +206,27 @@ $theme_version = "1.0";
 			global $wp_query;
 
 			if ( $wp_query->max_num_pages > 1 ) : ?>
-				<div id="<?php echo $nav_id; ?>" class="mdl-cell mdl-cell--12-col">
-					<div class="mdl-grid">
-						<div class="mdl-cell mdl-cell--6-col"><?php next_posts_link( '<span aria-hidden="true">&larr;</span> ' . __( 'Older posts', 'my-theme' ) ); ?></div>
-						<div class="mdl-cell mdl-cell--6-col text-right"><?php previous_posts_link( __( 'Newer posts', 'my-theme' ) . ' <span aria-hidden="true">&rarr;</span>' ); ?></div>
-					</div>
-				</div><!-- /.mdl-grid -->
+				<nav id="<?php echo $nav_id; ?>" class="blog-nav mdl-cell mdl-cell--12-col">
+					<?php next_posts_link( '<button class="mdl-button mdl-js-button mdl-button--icon mdl-color--pink-500 mdl-color-text--white"><i class="material-icons">arrow_back</i></button> ' . __( 'Older posts', 'my-theme' ) ); ?>
+					<div class="section-spacer"></div>
+					<?php previous_posts_link( __( 'Newer posts', 'my-theme' ) . ' <button class="mdl-button mdl-js-button mdl-button--icon mdl-color--pink-500 mdl-color-text--white"><i class="material-icons">arrow_forward</i></button>' ); ?>
+				</nav><!-- /.blog-nav -->
 			<?php
 			endif;
 		}
 
 		// Add Class
+		/*
 		function posts_link_attributes() {
-			return 'class="mdl-button mdl-js-button"';
+			return 'class=""';
 		}
 		add_filter('next_posts_link_attributes', 'posts_link_attributes');
 		add_filter('previous_posts_link_attributes', 'posts_link_attributes');
+		*/
 
 	endif; // content navigation
-
-
+	
+	
 	/**
 	 * Init Widget areas in Sidebar
 	 *
@@ -392,7 +393,7 @@ $theme_version = "1.0";
 					<div class="comment-content"><?php comment_text(); ?></div>
 
 					<div class="reply">
-						<?php comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Reply', 'my-theme' ) . ' <span>&darr;</span>', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+						<?php comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Reply', 'my-theme' ) . ' <i class="material-icons">reply</i>', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
 					</div><!-- .reply -->
 				</article><!-- #comment-## -->
 

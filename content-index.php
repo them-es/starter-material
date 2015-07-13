@@ -2,9 +2,15 @@
 /**
  * The template for displaying content in the index.php template
  */
+
+	if ( is_home() ) {
+		$post_class = 'mdl-card mdl-cell mdl-cell--6-col mdl-cell--12-col-phone mdl-shadow--2dp';
+	} else {
+		$post_class = 'mdl-card mdl-cell mdl-cell--9-col mdl-shadow--2dp';
+	}$post_class = 'mdl-card mdl-cell mdl-cell--6-col mdl-cell--12-col-phone mdl-shadow--2dp';
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class('mdl-card mdl-cell mdl-cell--6-col mdl-cell--12-col-phone mdl-shadow--2dp'); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class($post_class); ?>>
 	
 	<header class="mdl-card__title mdl-grid">
 		<h2 class="mdl-cell mdl-cell--12-col mdl-card__title-text"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'my-theme' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
