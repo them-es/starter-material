@@ -208,7 +208,7 @@ $theme_version = "1.0";
 			if ( $wp_query->max_num_pages > 1 ) : ?>
 				<nav id="<?php echo $nav_id; ?>" class="blog-nav mdl-cell mdl-cell--12-col">
 					<?php next_posts_link( '<button class="mdl-button mdl-js-button mdl-button--icon mdl-color--pink-500 mdl-color-text--white"><i class="material-icons">arrow_back</i></button> ' . __( 'Older posts', 'my-theme' ) ); ?>
-					<div class="section-spacer"></div>
+					<div class="mdl-layout-spacer"></div>
 					<?php previous_posts_link( __( 'Newer posts', 'my-theme' ) . ' <button class="mdl-button mdl-js-button mdl-button--icon mdl-color--pink-500 mdl-color-text--white"><i class="material-icons">arrow_forward</i></button>' ); ?>
 				</nav><!-- /.blog-nav -->
 			<?php
@@ -247,9 +247,9 @@ $theme_version = "1.0";
 		register_sidebar( array (
             'name' => 'Secondary Widget Area (Footer)',
             'id' => 'secondary_widget_area',
-            'before_widget' => '',
-            'after_widget' => '',
-            'before_title' => '<h3 class="widget-title">',
+            'before_widget' => '<div class="mdl-mega-footer--drop-down-section mdl-mega-footer--link-list">',
+            'after_widget' => '</div>',
+            'before_title' => '<h3 class="widget-title mdl-mega-footer--heading">',
             'after_title' => '</h3>',
 		) );
 	}

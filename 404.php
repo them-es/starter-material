@@ -7,7 +7,7 @@
 
     get_header();
 ?>
-
+	
 	<div id="post-0" class="content error404 not-found">
 		<h1 class="entry-title"><?php _e( 'Not Found', 'my-theme' ); ?></h1>
 		<div class="entry-content">

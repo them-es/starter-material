@@ -1,20 +1,18 @@
 		</div><!-- /.mdl-grid -->
 
 		<footer id="footer" class="mdl-mega-footer">
-			<div class="mdl-mega-footer--middle-section">
-				<?php if ( is_active_sidebar('secondary_widget_area') ) : ?>
+			<?php if ( is_active_sidebar('secondary_widget_area') ) : ?>
 
-					<div id="widget-area" class="widget-area mdl-mega-footer--drop-down-section" role="complementary">
-						<?php dynamic_sidebar( 'secondary_widget_area' ); ?>
+				<div id="widget-area" class="widget-area mdl-mega-footer--middle-section" role="complementary">
+					<?php dynamic_sidebar( 'secondary_widget_area' ); ?>
 
-						<?php if ( current_user_can('manage_options') ) : ?>
-							<a href="<?php echo admin_url( 'widgets.php' ); ?>" class="mdl-badge">Edit</a><!-- Show Edit Widget link -->
-						<?php endif; ?>
-					</div><!-- .widget-area -->
+					<?php if ( current_user_can('manage_options') ) : ?>
+						<a href="<?php echo admin_url( 'widgets.php' ); ?>" class="mdl-badge">Edit</a><!-- Show Edit Widget link -->
+					<?php endif; ?>
+				</div><!-- .widget-area -->
 
-				<?php endif; ?>
-			</div>
-
+			<?php endif; ?>
+			
 			<div class="mdl-mega-footer--bottom-section">
         		<?php
   					/*

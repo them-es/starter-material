@@ -99,14 +99,12 @@ form .mdl-textfield {
   max-width: 860px;
   min-height: 450px;
 }
-#main .section-spacer {
-  flex-grow: 1;
-}
 #main .blog-nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  padding: 8px 0;
 }
 /**
  * Wordpress customization

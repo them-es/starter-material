@@ -6,9 +6,7 @@
     get_header();
 ?>
  
-	<div class="mdl-grid">
-		
-		<div class="mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet mdl-cell--12-col-phone mdl-grid">
+	<div class="mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet mdl-cell--12-col-phone mdl-cell--top">
 				
 		<?php if ( have_posts() ) : ?>
 			
@@ -70,10 +68,8 @@
 			
 			<?php endif; wp_reset_query(); // end of the loop. ?>
 			
-		</div><!-- /.col -->
+	</div><!-- /.mdl-cell -->
 		
-		<?php get_sidebar(); ?>
-		
-	</div><!-- /.row -->
+	<?php get_sidebar(); ?>
 
 <?php get_footer(); ?>
