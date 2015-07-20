@@ -61,7 +61,7 @@ form .mdl-textfield {
   height: 75px !important;
 }
 .mdl-layout.is-small-screen .mdl-layout__header-row {
-  padding: 0 48px;
+  padding: 0 48px !important;
 }
 .mdl-layout.is-small-screen .scrollindicator {
   display: block;
@@ -91,6 +91,9 @@ form .mdl-textfield {
 #header .mdl-layout__header-row {
   position: relative;
 }
+#header .mdl-layout__header-row.mdl-layout__header-row--bottom {
+  padding: 0;
+}
 #header .mdl-layout-title img {
   height: 40px;
 }
@@ -110,7 +113,7 @@ form .mdl-textfield {
  * Wordpress customization
  */
 /* If WP-Adminbar is visible */
-body.admin-bar #header nav.navbar-fixed-top {
+body.admin-bar .mdl-layout--fixed-header #header {
   top: 32px;
 }
 /* WordPress Embeds */

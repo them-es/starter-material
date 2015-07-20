@@ -68,7 +68,7 @@ function themes_starter_customize( $wp_customize ) {
 		'label'         => __( 'Navbar', 'my-theme' ),
 		'section'       => 'theme_header_section',
 		'choices' => array(
-			'static'       => __( 'Static', 'my-theme' ),
+			'scroll'       => __( 'Scroll', 'my-theme' ),
 			'fixed'    => __( 'Fixed', 'my-theme' ),
 			'waterfall'    => __( 'Waterfall', 'my-theme' )
 		),

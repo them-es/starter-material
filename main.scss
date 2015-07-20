@@ -94,7 +94,7 @@ form {
 		}
 		
 		.mdl-layout__header-row {
-			padding: 0 48px;
+			padding: 0 48px !important;
 		}
 		
 		.scrollindicator {
@@ -135,6 +135,10 @@ form {
 	
 	.mdl-layout__header-row {
 		position: relative;
+		
+		&.mdl-layout__header-row--bottom {
+			padding: 0;
+		}
 	}
 	
 	.mdl-layout-title img {
@@ -169,7 +173,7 @@ form {
 
 
 /* If WP-Adminbar is visible */
-body.admin-bar #header nav.navbar-fixed-top {
+body.admin-bar .mdl-layout--fixed-header #header {
 	top: 32px;
 }
 

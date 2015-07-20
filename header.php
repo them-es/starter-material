@@ -10,7 +10,7 @@
 </head>
 
 <?php
-	$navbar_position = get_theme_mod('navbar_position', 'static'); // get custom meta-value
+	$navbar_position = get_theme_mod('navbar_position', 'scroll'); // get custom meta-value
 	
     $search_enabled = get_theme_mod('search_enabled', '1'); // get custom meta-value
 ?>
@@ -19,7 +19,7 @@
 
 <div id="wrapper" class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-color--grey-100">
 	
-	<header id="header" class="mdl-layout__header mdl-layout__header--<?php if ( isset($navbar_position) && $navbar_position != "static" ) : echo $navbar_position; else: echo 'scroll'; endif; ?><?php if ( is_home() || is_front_page() ) : ?> home<?php endif; ?>">
+	<header id="header" class="mdl-layout__header mdl-layout__header--<?php echo $navbar_position; ?><?php if ( is_home() || is_front_page() ) : echo ' home'; endif; ?>">
 	
     <!-- Top row, always visible -->
     <div class="mdl-layout__header-row">
@@ -57,9 +57,7 @@
       </div><!-- /.mdl-layout__header-row (top) -->
 
       <!-- Bottom row, not visible on scroll -->
-      <div class="mdl-layout__header-row">
-        <div class="mdl-layout-spacer"></div>
-
+      <div class="mdl-layout__header-row mdl-layout__header-row--bottom">
         <!-- Navigation -->
 		<div class="mdl-navigation__container">
 			<nav class="mdl-navigation">
