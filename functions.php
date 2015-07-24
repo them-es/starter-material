@@ -247,9 +247,9 @@ $theme_version = "1.0";
 		register_sidebar( array (
             'name' => 'Secondary Widget Area (Footer)',
             'id' => 'secondary_widget_area',
-            'before_widget' => '<div class="mdl-mega-footer--drop-down-section mdl-mega-footer--link-list">',
+            'before_widget' => '<div class="mdl-mega-footer__drop-down-section mdl-mega-footer__link-list">',
             'after_widget' => '</div>',
-            'before_title' => '<h3 class="widget-title mdl-mega-footer--heading">',
+            'before_title' => '<h3 class="widget-title mdl-mega-footer__heading">',
             'after_title' => '</h3>',
 		) );
 	}

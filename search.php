@@ -6,7 +6,7 @@
     get_header();
 ?>
 
-	<div class="mdl-cell">
+	<div class="mdl-cell mdl-cell--12-col">
 
 		<?php if ( have_posts() ) : ?>
 

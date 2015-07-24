@@ -3,7 +3,7 @@
 		<footer id="footer" class="mdl-mega-footer">
 			<?php if ( is_active_sidebar('secondary_widget_area') ) : ?>
 
-				<div id="widget-area" class="widget-area mdl-mega-footer--middle-section" role="complementary">
+				<div id="widget-area" class="widget-area mdl-mega-footer__middle-section" role="complementary">
 					<?php dynamic_sidebar( 'secondary_widget_area' ); ?>
 
 					<?php if ( current_user_can('manage_options') ) : ?>
@@ -13,7 +13,7 @@
 
 			<?php endif; ?>
 			
-			<div class="mdl-mega-footer--bottom-section">
+			<div class="mdl-mega-footer__bottom-section">
         		<?php
   					/*
   						Loading WordPress Custom Menu (theme_location) ... remove <div> <ul> containers and show only <li> items!!!
@@ -24,7 +24,7 @@
   						'theme_location'  => 'footer-menu',
   						'container'       => '',
   						'fallback_cb'     => '',
-  						'items_wrap'      => '<ul id="%1$s" class="mdl-mega-footer--link-list">%3$s</ul>',
+  						'items_wrap'      => '<ul id="%1$s" class="mdl-mega-footer__link-list">%3$s</ul>',
   						'walker'          => ''
   					) );
   				?>
