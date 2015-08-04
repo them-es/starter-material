@@ -16,10 +16,6 @@ module.exports = function (grunt) {
                 files: ['*.{scss,sass}'],
                 tasks: ['sass', 'autoprefixer', 'cssmin']
             },
-			less: {
-                files: '*.less',
-                tasks: ['less', 'autoprefixer', 'cssmin']
-            },
             images: {
                 files: ['img/*.{png,jpg,gif}'],
                 tasks: ['imagemin']
@@ -39,19 +35,6 @@ module.exports = function (grunt) {
                 files: {
                     'css/main.css': 'main.scss',
                     //'css/editor-style.css': 'editor-style.scss'
-                }
-            }
-        },
-		
-		// 2. less
-        less: {
-            dist: {
-				options: {
-                    style: 'expanded',
-                },
-                files: {
-                    'css/main.css': 'main.less',
-                    //'css/editor-style.css': 'editor-style.less'
                 }
             }
         },
@@ -159,6 +142,6 @@ module.exports = function (grunt) {
     });
 	
     // register task
-    grunt.registerTask('default', ['watch', 'sass', 'less', 'autoprefixer', 'cssmin', 'imagemin', /*'uglify', 'browserSync'*/]);
+    grunt.registerTask('default', ['watch', 'sass', 'autoprefixer', 'cssmin', 'imagemin', /*'uglify', 'browserSync'*/]);
 
 };

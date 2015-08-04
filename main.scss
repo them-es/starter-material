@@ -1,17 +1,36 @@
 // Compile "main.scss" as "css/main.css"
 
+
 /**
  * Add custom styles
  */
 
-$gray-light: #9E9E9E;
-$gray-lighter: #EFEFEF;
+// 1. Overwrite MDL variables
+$preferred_font:  "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
-$font-family-sans-serif:  "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
-$font-family-serif:       Georgia, "Times New Roman", Times, serif;
-$font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
+/*
+$color-primary: '$color-primary';
+$color-primary-dark: '$color-primary-dark';
+$color-accent: '$color-accent';
+$color-primary-contrast: '$color-primary-contrast';
+$color-accent-contrast: '$color-accent-contrast';
+*/
+
+// 2. Include custom variables
+$color-gray-light: #9E9E9E;
+$color-gray-lighter: #EFEFEF;
+
+$preferred_font_serif:       Georgia, "Times New Roman", Times, serif;
+$preferred_font_monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
 
 $screen-sm-min: 768px;
+
+
+/**
+ * Import bootstrap source
+ */
+
+@import "bower_components/material-design-lite/src/material-design-lite.scss";
 
 
 /**
@@ -19,7 +38,7 @@ $screen-sm-min: 768px;
  */
 
 html, body {
-	font-family: $font-family-sans-serif;
+	font-family: $preferred_font;
 }
 
 a {
@@ -249,7 +268,7 @@ body.admin-bar .mdl-layout--fixed-header #header {
 
 /* Author */
 
-#author-avatar {
+.author-avatar {
 	
 	.avatar {
 		width: 64px;
@@ -257,7 +276,7 @@ body.admin-bar .mdl-layout--fixed-header #header {
 	}
 }
 
-#author-description {
+.author-description {
 	
 	h2, h3 {
 		margin-top: 0;
@@ -269,7 +288,7 @@ body.admin-bar .mdl-layout--fixed-header #header {
 /* Posts */
 
 .sticky {
-	background-color: $gray-lighter;
+	background-color: $color-gray-lighter;
 }
 
 .entry-meta {
@@ -305,7 +324,7 @@ body.admin-bar .mdl-layout--fixed-header #header {
 		width: 64px;
 		height: 64px;
 		border-radius: 50%;
-		box-shadow: 0 1px 2px $gray-light;
+		box-shadow: 0 1px 2px $color-gray-light;
 		padding: 0;
 		position: absolute;
 		top: 0;
