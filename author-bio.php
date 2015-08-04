@@ -5,7 +5,7 @@
 
 	if ( get_the_author_meta( 'description' ) ) :
 ?>
-	<div id="author-info">
+	<div class="author-info">
 		<div class="mdl-grid">
 			<div id="author-avatar" class="mdl-cell mdl-cell--3-col mdl-cell--12-col-phone text-center">
 				<?php echo get_avatar( get_the_author_meta( 'user_email' ), apply_filters( 'themes_starter_author_bio_avatar_size', 128 ) ); ?>

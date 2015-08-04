@@ -1,6 +1,6 @@
 {
-  "name": "themes-starter",
-  "version": "1.0.0",
+  "name": "themes-starter-mdl",
+  "version": "1.0.4",
   "description": "A WordPress Starter Theme built with Material Design Lite.",
   "homepage": "http://them.es",
   "author": "them.es",
@@ -16,7 +16,6 @@
     "grunt-contrib-cssmin": "*",
     "grunt-contrib-imagemin": "*",
     "grunt-contrib-jshint": "*",
-    "grunt-contrib-less": "*",
     "grunt-contrib-sass": "*",
     "grunt-contrib-uglify": "*",
     "grunt-contrib-watch": "*",

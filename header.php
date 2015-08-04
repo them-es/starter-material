@@ -82,3 +82,12 @@
 
 	<div id="main" class="mdl-layout__content">
     	<div class="mdl-grid section--center">
+			
+		<?php
+			// An Archive is a Category, Tag, Author or a Date based page
+			if ( is_archive() ) :
+		?>
+			<div class="mdl-cell mdl-cell--12-col mdl-cell--top">
+		<?php
+			endif;
+		?>
