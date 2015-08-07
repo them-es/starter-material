@@ -25,9 +25,9 @@
 .mdl-tabs__tab-bar {
     display         : flex;
     flex-direction  : row;
-    justify-content : center; //
-    align-content   : space-between; //
-    align-items     : flex-start; //
+    justify-content : center; // ⇾
+    align-content   : space-between; // ||
+    align-items     : flex-start; // ↓
 
     height          : 48px;
     padding         : 0 0 0 0;

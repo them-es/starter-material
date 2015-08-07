@@ -16,7 +16,7 @@
 
 	<?php the_post(); ?>
 	
-	<div id="post-<?php the_ID(); ?>" <?php if ( isset($class) && $class != "" ) : post_class('content mdl-cell mdl-cell--12-col ' . $class); else: echo post_class('content mdl-cell mdl-cell--12-col'); endif; ?><?php if ( isset($style) && $style != "" ) : echo ' style="' . $style . '"'; endif; ?>>
+	<div id="post-<?php the_ID(); ?>" <?php if ( isset($class) && $class != "" ) : post_class('mdl-cell mdl-cell--12-col ' . $class); else: echo post_class('mdl-cell mdl-cell--12-col'); endif; ?><?php if ( isset($style) && $style != "" ) : echo ' style="' . $style . '"'; endif; ?>>
 		<h1 class="entry-title"><?php the_title(); ?></h1>
 		<?php
 			the_content();

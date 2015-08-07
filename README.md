@@ -16,19 +16,20 @@ If you want to see it in action or want to download a customized Theme for free,
 
 
 ## Compatible with CSS Preprocessors
-You can use [LESS](http://lesscss.org/) or [SASS](http://sass-lang.com/) to create your main stylesheet.
+You can use [SASS](http://sass-lang.com/) to create your main stylesheet.
 
-**`main.less`** or **`main.scss`** needs to be compiled as **`/css/main.css`**
+**`main.scss`** needs to be compiled as **`/css/main.css`**
 
 
 ## Grunt Task Automation
-This Theme comes with a built in Task Automation. LESS/SASS files will be complied if changed, vendor prefixes will be added automatically if required and files will be minified.
+This Theme comes with a built in Task Automation. SASS files will be complied if changed, vendor prefixes will be added automatically if required and files will be minified.
 
 * Prerequisites: [Node.js](https://nodejs.org) (NPM) needs to be installed on your system
-* Open the Project directory in your Terminal and install the required modules from packages.json
+* Open the **Project directory** in Terminal and install the required modules from packages.json
 * `$ npm install`
-* Run Grunt and start working
-* `$ grunt`
+* Run Grunt
+* `$ grunt watch`
+* Modify `main.scss`
 
 
 ## Technology

@@ -519,27 +519,26 @@ $theme_version = "1.0";
 
 
 	/**
-	 * Javascript Workarounds for old IE versions
+	 * Compatibility shims for old IE versions
 	 *
 	 * @since v1.0
 	 */
     function themes_starter_add_ie_html5_shims() {
         echo '
-        <!--[if lt IE 9]>
-            <script src="' . esc_url( get_template_directory_uri() ) . '/js/html5.js"></script>
-            <script src="' . esc_url( get_template_directory_uri() ) . '/js/respond.min.js"></script>
-        <![endif]-->';
-        echo '
-        <!--[if lte IE 9]>
-            <script src="' . esc_url( get_template_directory_uri() ) . '/js/placeholder.min.js"></script>
-            <script>
-                (function ($) {
-                    $("input, textarea").placeholder();
-                    $("input[autofocus]").focus();
-                }(jQuery));
-            </script>
-        <![endif]-->';
+			<!-- IE Compatibility shims -->
+			<!--[if lt IE 9]>
+				<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js""></script>
+			<![endif]-->
+			
+			<!--[if IE]>
+				<script src="//cdnjs.cloudflare.com/ajax/libs/es5-shim/4.1.7/es5-shim.min.js"></script>
+				<script src="//cdnjs.cloudflare.com/ajax/libs/classlist/2014.01.31/classList.min.js"></script>
+				<script src="//cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js"></script>
+				<script src="//cdnjs.cloudflare.com/ajax/libs/flexie/1.0.3/flexie.min.js"></script>
+			<![endif]-->
+			<!-- end shims -->
+			';
     }
-    add_action('wp_footer', 'themes_starter_add_ie_html5_shims', 99);
+    add_action('wp_footer', 'themes_starter_add_ie_html5_shims', 1);
 
 ?>

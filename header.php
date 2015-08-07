@@ -81,7 +81,7 @@
 	</header><!-- /#header -->
 
 	<div id="main" class="mdl-layout__content">
-    	<div class="mdl-grid section--center">
+    	<div class="mdl-grid content">
 			
 		<?php
 			// An Archive is a Category, Tag, Author or a Date based page

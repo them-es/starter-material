@@ -23,11 +23,11 @@ $color-gray-lighter: #EFEFEF;
 $preferred_font_serif:       Georgia, "Times New Roman", Times, serif;
 $preferred_font_monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
 
-$screen-sm-min: 768px;
+$screen-sm: 768px;
 
 
 /**
- * Import bootstrap source
+ * Import MDL source
  */
 
 @import "bower_components/material-design-lite/src/material-design-lite.scss";
@@ -170,7 +170,7 @@ form {
 
 #main {
 	
-	.section--center {
+	.content {
 		max-width: 860px;
 		min-height: 450px;
 	}
@@ -338,7 +338,7 @@ body.admin-bar .mdl-layout--fixed-header #header {
  * Responsive Design
  */
 
-@media (max-width: $screen-sm-min) {
+@media (max-width: $screen-sm) {
 	
 	#sidebar {
 		margin-top: 60px;
