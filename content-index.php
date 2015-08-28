@@ -4,14 +4,14 @@
  */
 
 	if ( is_home() ) {
-		$post_class = 'mdl-card mdl-cell mdl-cell--6-col mdl-cell--12-col-phone mdl-shadow--3dp';
+		$post_class = 'mdl-cell--6-col mdl-cell--12-col-phone';
 	} else {
-		$post_class = 'mdl-card mdl-cell mdl-cell--12-col mdl-shadow--3dp';
+		$post_class = 'mdl-cell--12-col';
 	}
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class($post_class); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class('mdl-card mdl-shadow--3dp mdl-cell ' . $post_class); ?>>
 	
 	<header class="mdl-card__title">
 		<h2 class="mdl-card__title-text"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'my-theme' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
@@ -36,7 +36,7 @@
 						}
 						
 						if ( isset($comments) ) {
-							echo ', <a href="' . get_comments_link() .'">'. $comments.'</a>';
+							echo ' <a href="' . get_comments_link() . '" class="mdl-button mdl-js-button">' . $comments . '</a>';
 						}
 					endif;
 				?>

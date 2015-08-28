@@ -1,6 +1,7 @@
 {
   "name": "themes-starter-mdl",
   "version": "1.0.4",
+  "license": "GPLv2",
   "description": "A WordPress Starter Theme built with Material Design Lite.",
   "homepage": "http://them.es",
   "author": "them.es",

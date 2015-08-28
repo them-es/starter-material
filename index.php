@@ -23,23 +23,16 @@
 	<?php themes_starter_content_nav( 'nav-above' ); ?>
 
 		<?php
-			/** Loading only 3 latest posts (no themes_starter_content_nav!!!) *
-			query_posts(array(
-				'showposts' => 3
-			));*/
+			/* Start the Loop */
+			while ( have_posts() ) : the_post();
 
-			$count = 1;
+				/* Include the Post-Format-specific template for the content.
+				* If you want to overload this in a child theme then include a file
+				* called content-___.php (where ___ is the Post Format name) and that will be used instead.
+				*/
+				get_template_part( 'content', 'index' );
 
-			if ( have_posts() ) : while (have_posts()): the_post();
-
-				get_template_part( 'content', 'index' ); // Post format: content-index.php
-				comments_template( '', false );
-
-				if ( $count%2 == 0) echo '<div class="clearfix"></div>'; // clearfix after 2 posts
-
-				$count++;
-
-			endwhile; endif; wp_reset_query(); // end of the loop.
+			endwhile;
 		?>
 
 	<?php themes_starter_content_nav( 'nav-below' ); ?>

@@ -14,11 +14,15 @@
 				<h2><?php printf( __( 'About %s', 'my-theme' ), get_the_author() ); ?></h2>
 				<p><?php the_author_meta( 'description' ); ?></p>
 				<p id="author-links">
-					<?php printf( __( '<a href="%s" class="www mdl-button mdl-js-button mdl-button--raised btn-sm">Website</a>', 'my-theme' ), esc_url( get_the_author_meta( 'user_url' ) ) ); ?>
+					<?php
+						if ( !empty(get_the_author_meta('user_url')) ):
+							printf( '<a href="%s" class="www mdl-button mdl-js-button">' . __('Website', 'my-theme' ) . '</a>', esc_url( get_the_author_meta( 'user_url' ) ) );
+						endif;
+					?>
 					<?php
 						// Add new Profile fields for Users in functions.php
 						function social_profile_link( $link, $title ) {
-							echo ' <a href="' . esc_url( $link ) . '" class="mdl-button mdl-js-button mdl-button--raised btn-sm" title="' . $title . '">' . $title . '</a> ';
+							echo ' <a href="' . esc_url( $link ) . '" class="mdl-button mdl-js-button" title="' . $title . '">' . $title . '</a> ';
 						}
 
 						$facebook = get_the_author_meta('facebook_profile');

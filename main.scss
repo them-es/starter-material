@@ -45,6 +45,20 @@ a {
 	text-decoration: none;
 }
 
+.show {
+	display: block;
+}
+.hide {
+	display: none;
+}
+
+.pull-right {
+	float: right;
+}
+.pull-left {
+	float: left;
+}
+
 .text-left {
 	text-align: left;
 }

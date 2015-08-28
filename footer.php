@@ -1,14 +1,3 @@
-		<?php
-			// An Archive is a Category, Tag, Author or a Date based page
-			if ( is_archive() ) :
-		?>
-			</div><!-- /.mdl-cell -->
-		<?php
-				get_sidebar(); // echo Sidebar
-			
-			endif;
-		?>
-		
 		</div><!-- /.mdl-grid -->
 
 		<footer id="footer" class="mdl-mega-footer">

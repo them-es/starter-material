@@ -19,8 +19,7 @@
 
 		<?php themes_starter_content_nav( 'nav-above' ); ?>
 
-			<?php 
-				$count = 1;
+			<?php
 				/* Start the Loop */
 				while ( have_posts() ) : the_post();
 
@@ -29,9 +28,6 @@
 					* called content-___.php (where ___ is the Post Format name) and that will be used instead.
 					*/
 					get_template_part( 'content', 'index' );
-
-					if ( $count%2 == 0) echo '<div class="clearfix"></div>';
-					$count++;
 
 				endwhile;
 			?>
