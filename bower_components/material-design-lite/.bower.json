@@ -1,6 +1,6 @@
 {
   "name": "material-design-lite",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "homepage": "https://github.com/google/material-design-lite",
   "authors": [
     "Material Design Lite team"
@@ -26,13 +26,13 @@
     "test",
     "tests"
   ],
-  "_release": "1.0.2",
+  "_release": "1.0.4",
   "_resolution": {
     "type": "version",
-    "tag": "v1.0.2",
-    "commit": "21c6b36a3841adc09a8f880fd2829de255359d83"
+    "tag": "v1.0.4",
+    "commit": "6567dd62c809d8cf9406487ed2799c43b4509876"
   },
   "_source": "git://github.com/google/material-design-lite.git",
   "_target": "*",
-  "_originalSource": "google/material-design-lite"
+  "_originalSource": "material-design-lite"
 }

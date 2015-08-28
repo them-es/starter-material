@@ -31,7 +31,7 @@ to our CSS-only experience.
 Clone the repo using Git:
 
 ```bash
-git clone --bare https://github.com/google/material-design-lite.git
+git clone https://github.com/google/material-design-lite.git
 ```
 
 Alternatively you can [download](https://github.com/google/material-design-lite/archive/master.zip)
@@ -42,6 +42,8 @@ Windows users, if you have trouble compiling due to line endings then make sure 
 ```
 git config core.eol lf
 git config core.autocrlf input
+git rm --cached -r .
+git reset --hard
 ```
 
 > Remember, the master branch is considered unstable. Do not use this in production. Use a tagged state of the repository, npm, or bower for stability!
@@ -77,7 +79,7 @@ Next, run the following one-liner to compile the components and the docs and
 spawn a local instance of the documentation site:
 
 ```bash
-gulp serve
+gulp all && gulp serve
 ```
 
 Most changes made to files inside the `src` or the `docs` directory will cause
@@ -110,7 +112,7 @@ templates:
 
 > Templates are not officially supported in IE9 and legacy browsers that do not
 pass the minimum-requirements defined in our
-[cutting-the-mustard test](https://github.com/google/material-design-lite/blob/master/src/mdlComponentHandler.js#L262-L275).
+[cutting-the-mustard test](https://github.com/google/material-design-lite/blob/87c48c22416c3e83850f7711365b2a43ba19c5ce/src/mdlComponentHandler.js#L336-L349).
 
 ## Versioning
 
@@ -127,6 +129,9 @@ If not, you can request a [new component](https://github.com/Google/material-des
 Please keep in mind that one of the goals of MDL is to adhere to the Material
 Design specs and therefore some requests might not be within the scope of this
 project.
+
+## Want to contribute?
+If you found a bug, have any questions or want to contribute. Follow our [guidelines](https://github.com/google/material-design-lite/blob/master/CONTRIBUTING.md), and help improve the Material Design Lite. For more information visit our [wiki](https://github.com/google/material-design-lite/wiki).
 
 ## Do you include any features that a framework comes with?
 

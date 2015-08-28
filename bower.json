@@ -8,6 +8,6 @@
   "description": "WordPress Starter Theme built with Material Design Lite",
   "license": "GPLv2+",
   "dependencies": {
-    "material-design-lite": "google/material-design-lite"
+    "material-design-lite": "latest"
   }
 }
