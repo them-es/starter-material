@@ -7,13 +7,13 @@
 ?>
 	<div class="author-info">
 		<div class="mdl-grid">
-			<div id="author-avatar" class="mdl-cell mdl-cell--3-col mdl-cell--12-col-phone text-center">
+			<div class="author-avatar mdl-cell mdl-cell--3-col mdl-cell--12-col-phone text-center">
 				<?php echo get_avatar( get_the_author_meta( 'user_email' ), apply_filters( 'themes_starter_author_bio_avatar_size', 128 ) ); ?>
-			</div><!-- #author-avatar -->
-			<div id="author-description" class="mdl-cell mdl-cell--9-col mdl-cell--12-col-phone">
+			</div><!-- /.author-avatar -->
+			<div class="author-description mdl-cell mdl-cell--9-col mdl-cell--12-col-phone">
 				<h2><?php printf( __( 'About %s', 'my-theme' ), get_the_author() ); ?></h2>
 				<p><?php the_author_meta( 'description' ); ?></p>
-				<p id="author-links">
+				<p class="author-links">
 					<?php
 						if ( !empty(get_the_author_meta('user_url')) ):
 							printf( '<a href="%s" class="www mdl-button mdl-js-button">' . __('Website', 'my-theme' ) . '</a>', esc_url( get_the_author_meta( 'user_url' ) ) );
@@ -51,9 +51,9 @@
 						}
 					?>
 				</p>
-			</div><!-- #author-description	-->
+			</div><!-- /.author-description	-->
 		</div><!-- /.row -->
-	</div><!-- #author-info -->
+	</div><!-- /.author-info -->
 
 	<hr>
 

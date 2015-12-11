@@ -19,28 +19,26 @@
 
 	<div class="mdl-card__supporting-text">
 		<?php if ( 'post' == get_post_type() ) : ?>
-			<p>
-				<small>
+			<p class="entry-meta">
 				<?php
 					themes_starter_article_posted_on();
 					
 					$num_comments = get_comments_number();
 					
 					if ( comments_open() ) :
-						if ( $num_comments == 0 ) {
-							//$comments = __( 'No Comments', 'my-theme' );
-						} elseif ( $num_comments > 1 ) {
-							$comments = $num_comments . ' ' . __( 'Comments', 'my-theme' );
-						} else {
-							$comments = '1 ' . __( 'Comment', 'my-theme' );
-						}
-						
-						if ( isset($comments) ) {
-							echo ' <a href="' . get_comments_link() . '" class="mdl-button mdl-js-button">' . $comments . '</a>';
-						}
-					endif;
+							if ( $num_comments == 0 ) {
+								//$comments = __( 'No Comments', 'my-theme' );
+							} elseif ( $num_comments > 1 ) {
+								$comments = $num_comments . ' ' . __( 'Comments', 'my-theme' );
+							} else {
+								$comments = '1 ' . __( 'Comment', 'my-theme' );
+							}
+							
+							if ( isset($comments) ) {
+								echo ' <a href="' . get_comments_link() . '" class="pull-right material-icons mdl-badge" title="' . $comments . '" data-badge="' . $num_comments . '">chat_bubble_outline</a>';
+							}
+						endif;
 				?>
-				</small><!-- /.entry-meta -->
 			</p>
 		<?php endif; ?>
 		<?php
@@ -48,7 +46,7 @@
 				echo '<div class="post-thumbnail">' . get_the_post_thumbnail( get_the_ID(), 'large' ) . '</div>';
 			endif;
 		?>
-		<?php 
+		<?php
 			if ( is_search() ) :
 				the_excerpt();
 			else:

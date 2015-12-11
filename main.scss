@@ -212,7 +212,7 @@ body.admin-bar .mdl-layout--fixed-header #header {
 
 /* WordPress Embeds */
 
-.post-thumbnail,
+.post-thumbnail .img-responsive,
 .wp-video,
 .embed-responsive {
     margin: 5px 0;
@@ -275,6 +275,14 @@ body.admin-bar .mdl-layout--fixed-header #header {
 	ul {
 		list-style: none;
 		padding: 0;
+		
+		li {
+			
+			* {
+				margin: 0;
+			}
+			
+		}
 	}
 	
 }
@@ -305,12 +313,39 @@ body.admin-bar .mdl-layout--fixed-header #header {
 	background-color: $color-gray-lighter;
 }
 
+
+.entry-meta,
+.comment-meta {
+
+	a {
+		color: inherit;
+		font-weight: inherit;
+	}
+
+	a.mdl-badge {
+		color: $color-gray-light;
+
+		&:after {
+			right: -14px;
+		}
+	}
+
+}
+
 .entry-meta {
 	margin-bottom: 5px;
 }
 
 .comment-meta {
 	height: 40px;
+}
+
+.comment-form {
+	
+	.mdl-textfield {
+		width: 100%;
+	}
+	
 }
 
 .commentlist {

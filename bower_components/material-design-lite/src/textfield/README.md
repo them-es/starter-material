@@ -1,16 +1,13 @@
-##Introduction
+## Introduction
+
 The Material Design Lite (MDL) **text field** component is an enhanced version of the standard HTML `<input type="text">` and `<input type="textarea">` elements. A text field consists of a horizontal line indicating where keyboard input can occur and, typically, text that clearly communicates the intended contents of the text field. The MDL text field component provides various types of text fields, and allows you to add both display and click effects.
 
 Text fields are a common feature of most user interfaces, regardless of a site's content or function. Their design and use is therefore an important factor in the overall user experience. See the text field component's [Material Design specifications page](http://www.google.com/design/spec/components/text-fields.html) for details.
 
 The enhanced text field component has a more vivid visual look than a standard text field, and may be initially or programmatically *disabled*.
-
-##Basic use
-To use any MDL component, you must include the minified CSS and JavaScript files using standard relative-path references in the `<head>` section of the page, as described in the MDL Introduction.
-
 There are three main types of text fields in the text field component, each with its own basic coding requirements. The types are *single-line*, *multi-line*, and *expandable*.
 
-###To include a *single-line* MDL **text field** component:
+### To include a *single-line* MDL **text field** component:
 
 &nbsp;1. Code a `<div>` element to hold the text field.
 ```html
@@ -21,20 +18,20 @@ There are three main types of text fields in the text field component, each with
 &nbsp;2. Inside the div, code an `<input>` element with a `type` attribute of `"text"` (the text field), and an `id` attribute of your choice.
 ```html
 <div>
-  <input type="text" id="user" />
+  <input type="text" id="user">
 </div>
 ```
 &nbsp;3. Also inside the div, after the text field, code a `<label>` element with a `for` attribute whose value matches the `input` element's `id` value, and a short string to be used as the field's placeholder text.
 ```html
 <div>
-  <input type="text" id="user" />
+  <input type="text" id="user">
   <label for="user">User name</label>
 </div>
 ```
 &nbsp;4. Optionally, add a `pattern` attribute and value to the `<input>` element (see the [W3C HTML5 forms specification](http://www.w3.org/TR/html5/forms.html#the-pattern-attribute) for details) and an associated error message in a `<span>` element following the `<label>`.
 ```html
 <div>
-  <input type="text" id="user" pattern="[A-Z,a-z, ]*" />
+  <input type="text" id="user" pattern="[A-Z,a-z, ]*">
   <label for="user">User name</label>
   <span>Letters and spaces only</span>
 </div>
@@ -42,19 +39,19 @@ There are three main types of text fields in the text field component, each with
 &nbsp;5. Add one or more MDL classes, separated by spaces, to the div container, text field, field label, and error message using the `class` attribute.
 ```html
 <div class="mdl-textfield mdl-js-textfield">
-  <input class="mdl-textfield__input" type="text" id="user" pattern="[A-Z,a-z, ]*" />
+  <input class="mdl-textfield__input" type="text" id="user" pattern="[A-Z,a-z, ]*">
   <label class="mdl-textfield__label" for="user">User name</label>
   <span class="mdl-textfield__error">Letters and spaces only</span>
 </div>
 ```
 The single-line text field component is ready for use.
 
-####Examples
+#### Examples
 
 Single-line text field with a standard label.
 ```html
 <div class="mdl-textfield mdl-js-textfield">
-  <input class="mdl-textfield__input" type="text" id="fname" />
+  <input class="mdl-textfield__input" type="text" id="fname">
   <label class="mdl-textfield__label" for="fname">First name</label>
 </div>
 ```
@@ -62,7 +59,7 @@ Single-line text field with a standard label.
 Single-line text field with a floating label.
 ```html
 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-  <input class="mdl-textfield__input" type="text" id="addr1" />
+  <input class="mdl-textfield__input" type="text" id="addr1">
   <label class="mdl-textfield__label" for="addr1">Address line 1</label>
 </div>
 ```
@@ -70,13 +67,13 @@ Single-line text field with a floating label.
 Single-line text field with a standard label, pattern matching, and error message.
 ```html
 <div class="mdl-textfield mdl-js-textfield">
-  <input class="mdl-textfield__input" type="text" pattern="[0-9]*" id="phone" />
+  <input class="mdl-textfield__input" type="text" pattern="[0-9]*" id="phone">
   <label class="mdl-textfield__label" for="phone">Phone</label>
   <span class="mdl-textfield__error">Digits only</span>
 </div>
 ```
 
-###To include a *multi-line* MDL **text field** component:
+### To include a *multi-line* MDL **text field** component:
 
 &nbsp;1. Code a `<div>` element to hold the text field.
 ```html
@@ -107,7 +104,7 @@ Single-line text field with a standard label, pattern matching, and error messag
 
 The multi-line text field component is ready for use.
 
-####Examples
+#### Examples
 
 Multi-line text field with one visible input line.
 ```html
@@ -134,7 +131,7 @@ Multi-line text field with multiple visible input lines and a maximum number of 
 </div>
 ```
 
-###To include an *expandable* MDL **text field** component:
+### To include an *expandable* MDL **text field** component:
 
 &nbsp;1. Code an "outer" `<div>` element to hold the expandable text field.
 ```html
@@ -176,7 +173,7 @@ Multi-line text field with multiple visible input lines and a maximum number of 
     <span></span>
   </label>
   <div>
-    <input type="text" id="expando1" />
+    <input type="text" id="expando1">
   </div>
 </div>
 ```
@@ -187,7 +184,7 @@ Multi-line text field with multiple visible input lines and a maximum number of 
     <span></span>
   </label>
   <div>
-    <input type="text" id="expando1" />
+    <input type="text" id="expando1">
     <label for="expando1">Expandable text field</label>
   </div>
 </div>
@@ -199,7 +196,7 @@ Multi-line text field with multiple visible input lines and a maximum number of 
     <i class="material-icons">search</i>
   </label>
   <div class="mdl-textfield__expandable-holder">
-    <input class="mdl-textfield__input" type="text" id="expando1" />
+    <input class="mdl-textfield__input" type="text" id="expando1">
     <label class="mdl-textfield__label" for="expando1">Expandable text field</label>
   </div>
 </div>
@@ -207,7 +204,7 @@ Multi-line text field with multiple visible input lines and a maximum number of 
 
 The expandable text field component is ready for use. It will expand when the icon (the empty `<span>`) is clicked or gains focus.
 
-####Examples
+#### Examples
 
 Expandable text field with a standard label.
 ```html
@@ -216,7 +213,7 @@ Expandable text field with a standard label.
     <i class="material-icons">search</i>
   </label>
   <div class="mdl-textfield__expandable-holder">
-    <input class="mdl-textfield__input" type="text" id="search-expandable" />
+    <input class="mdl-textfield__input" type="text" id="search-expandable">
     <label class="mdl-textfield__label" for="search-expandable">Search text</label>
   </div>
 </div>
@@ -230,14 +227,15 @@ Expandable text field with a floating label.
     <i class="material-icons">search</i>
   </label>
   <div class="mdl-textfield__expandable-holder">
-    <input class="mdl-textfield__input" type="text" id="search-expandable2" />
+    <input class="mdl-textfield__input" type="text" id="search-expandable2">
     <label class="mdl-textfield__label" for="search-expandable2">
       Enter search text below
     </label>
   </div>
 </div>
 ```
-##Configuration options
+## Configuration options
+
 The MDL CSS classes apply various predefined visual and behavioral enhancements to the text field. The table below lists the available classes and their effects.
 
 | MDL class | Effect | Remarks |
@@ -253,8 +251,9 @@ The MDL CSS classes apply various predefined visual and behavioral enhancements 
 | `mdl-js-button` | Assigns basic behavior to icon container | For expandable input fields, required on "outer" div's label element |
 | `mdl-button--icon` | Defines label as an MDL icon container | For expandable input fields, required on "outer" div's label element |
 | `mdl-input__expandable-holder` | Defines a container as an MDL component | For expandable input fields, required on "inner" div element |
+| `is-invalid` | Defines the textfield as invalid on initial load. | Optional on `mdl-textfield` element |
 
 (1) The "search" icon is used here as an example. Other icons can be used by modifying the text. For a list of available icons, see [this page](https://www.google.com/design/icons).
 
->**Note:** Disabled versions of each text field type are provided, and are invoked with the standard HTML boolean attribute `disabled`. `<input class="mdl-textfield mdl-js-textfield" type="text" disabled />`
+>**Note:** Disabled versions of each text field type are provided, and are invoked with the standard HTML boolean attribute `disabled`. `<input class="mdl-textfield mdl-js-textfield" type="text" disabled>`
 >This attribute may be added or removed programmatically via scripting.

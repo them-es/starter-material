@@ -23,6 +23,7 @@
    * Implements MDL component design pattern defined at:
    * https://github.com/jasonmayes/mdl-component-design-pattern
    *
+   * @constructor
    * @param {HTMLElement} element The element that will be upgraded.
    */
   var MaterialMenu = function MaterialMenu(element) {
@@ -31,12 +32,12 @@
     // Initialize instance.
     this.init();
   };
-  window.MaterialMenu = MaterialMenu;
+  window['MaterialMenu'] = MaterialMenu;
 
   /**
    * Store constants in one place so they can be updated easily.
    *
-   * @enum {String | Number}
+   * @enum {string | number}
    * @private
    */
   MaterialMenu.prototype.Constant_ = {
@@ -52,7 +53,7 @@
   /**
    * Keycodes, for code readability.
    *
-   * @enum {Number}
+   * @enum {number}
    * @private
    */
   MaterialMenu.prototype.Keycodes_ = {
@@ -68,7 +69,7 @@
    * JavaScript. This allows us to simply change it in one place should we
    * decide to modify at a later date.
    *
-   * @enum {String}
+   * @enum {string}
    * @private
    */
   MaterialMenu.prototype.CssClasses_ = {
@@ -124,15 +125,15 @@
       }
 
       var items = this.element_.querySelectorAll('.' + this.CssClasses_.ITEM);
-      this.boundItemKeydown = this.handleItemKeyboardEvent_.bind(this);
-      this.boundItemClick = this.handleItemClick_.bind(this);
+      this.boundItemKeydown_ = this.handleItemKeyboardEvent_.bind(this);
+      this.boundItemClick_ = this.handleItemClick_.bind(this);
       for (var i = 0; i < items.length; i++) {
         // Add a listener to each menu item.
-        items[i].addEventListener('click', this.boundItemClick);
+        items[i].addEventListener('click', this.boundItemClick_);
         // Add a tab index to each menu item.
         items[i].tabIndex = '-1';
         // Add a keyboard listener to each menu item.
-        items[i].addEventListener('keydown', this.boundItemKeydown);
+        items[i].addEventListener('keydown', this.boundItemKeydown_);
       }
 
       // Add ripple classes to each item, if the user has enabled ripples.
@@ -293,7 +294,7 @@
    * @private
    */
   MaterialMenu.prototype.handleItemClick_ = function(evt) {
-    if (evt.target.getAttribute('disabled') !== null) {
+    if (evt.target.hasAttribute('disabled')) {
       evt.stopPropagation();
     } else {
       // Wait some time before closing menu, so the user can see the ripple.
@@ -301,7 +302,7 @@
       window.setTimeout(function(evt) {
         this.hide();
         this.closing_ = false;
-      }.bind(this), this.Constant_.CLOSE_TIMEOUT);
+      }.bind(this), /** @type {number} */ (this.Constant_.CLOSE_TIMEOUT));
     }
   };
 
@@ -310,14 +311,14 @@
    * it), and applies it. This allows us to animate from or to the correct point,
    * that is, the point it's aligned to in the "for" element.
    *
-   * @param {Number} height Height of the clip rectangle
-   * @param {Number} width Width of the clip rectangle
+   * @param {number} height Height of the clip rectangle
+   * @param {number} width Width of the clip rectangle
    * @private
    */
   MaterialMenu.prototype.applyClip_ = function(height, width) {
     if (this.element_.classList.contains(this.CssClasses_.UNALIGNED)) {
       // Do not clip.
-      this.element_.style.clip = null;
+      this.element_.style.clip = '';
     } else if (this.element_.classList.contains(this.CssClasses_.BOTTOM_RIGHT)) {
       // Clip to the top right corner of the menu.
       this.element_.style.clip =
@@ -332,7 +333,7 @@
           height + 'px ' + width + 'px)';
     } else {
       // Default: do not clip (same as clipping to the top left corner).
-      this.element_.style.clip = null;
+      this.element_.style.clip = '';
     }
   };
 
@@ -408,7 +409,9 @@
         // displayed the menu in the first place. If so, do nothing.
         // Also check to see if the menu is in the process of closing itself, and
         // do nothing in that case.
-        if (e !== evt && !this.closing_) {
+        // Also check if the clicked element is a menu item
+        // if so, do nothing.
+        if (e !== evt && !this.closing_ && e.target.parentNode !== this.element_) {
           document.removeEventListener('click', callback);
           this.hide();
         }
@@ -416,6 +419,7 @@
       document.addEventListener('click', callback);
     }
   };
+  MaterialMenu.prototype['show'] = MaterialMenu.prototype.show;
 
   /**
    * Hides the menu.
@@ -432,8 +436,9 @@
       }
 
       // Measure the inner element.
-      var height = this.element_.getBoundingClientRect().height;
-      var width = this.element_.getBoundingClientRect().width;
+      var rect = this.element_.getBoundingClientRect();
+      var height = rect.height;
+      var width = rect.width;
 
       // Turn on animation, and apply the final clip. Also make invisible.
       // This triggers the transitions.
@@ -445,6 +450,7 @@
       this.addAnimationEndListener_();
     }
   };
+  MaterialMenu.prototype['hide'] = MaterialMenu.prototype.hide;
 
   /**
    * Displays or hides the menu, depending on current state.
@@ -458,6 +464,7 @@
       this.show(evt);
     }
   };
+  MaterialMenu.prototype['toggle'] = MaterialMenu.prototype.toggle;
 
   /**
    * Downgrade the component.
@@ -468,10 +475,21 @@
     var items = this.element_.querySelectorAll('.' + this.CssClasses_.ITEM);
 
     for (var i = 0; i < items.length; i++) {
-      items[i].removeEventListener('click', this.boundItemClick);
-      items[i].removeEventListener('keydown', this.boundItemKeydown);
+      items[i].removeEventListener('click', this.boundItemClick_);
+      items[i].removeEventListener('keydown', this.boundItemKeydown_);
     }
   };
+
+  /**
+   * Public alias for the downgrade method.
+   *
+   * @public
+   */
+  MaterialMenu.prototype.mdlDowngrade =
+      MaterialMenu.prototype.mdlDowngrade_;
+
+  MaterialMenu.prototype['mdlDowngrade'] =
+      MaterialMenu.prototype.mdlDowngrade;
 
   // The component registers itself. It can assume componentHandler is available
   // in the global scope.

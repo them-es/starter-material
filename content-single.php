@@ -9,9 +9,9 @@
 		<h1 class="entry-title"><?php the_title(); ?></h1>
 
 		<?php if ( 'post' == get_post_type() ) : ?>
-		<small class="entry-meta">
+		<p class="entry-meta">
 			<?php themes_starter_article_posted_on(); ?>
-		</small><!-- /.entry-meta -->
+		</p><!-- /.entry-meta -->
 		<?php endif; ?>
 	</header><!-- /.entry-header -->
 

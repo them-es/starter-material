@@ -8,7 +8,7 @@ If you want to see it in action or want to download a customized Theme for free,
 ## What's included?
 * WordPress Theme
 * Material Design Lite Components
-* LESS/SASS Source files
+* SASS Source files
 * Grunt configuration
 * Customization API
 * 2 Menus

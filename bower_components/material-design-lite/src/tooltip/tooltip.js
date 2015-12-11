@@ -23,6 +23,7 @@
    * Implements MDL component design pattern defined at:
    * https://github.com/jasonmayes/mdl-component-design-pattern
    *
+   * @constructor
    * @param {HTMLElement} element The element that will be upgraded.
    */
   var MaterialTooltip = function MaterialTooltip(element) {
@@ -31,12 +32,12 @@
     // Initialize instance.
     this.init();
   };
-  window.MaterialTooltip = MaterialTooltip;
+  window['MaterialTooltip'] = MaterialTooltip;
 
   /**
    * Store constants in one place so they can be updated easily.
    *
-   * @enum {String | Number}
+   * @enum {string | number}
    * @private
    */
   MaterialTooltip.prototype.Constant_ = {
@@ -48,7 +49,7 @@
    * JavaScript. This allows us to simply change it in one place should we
    * decide to modify at a later date.
    *
-   * @enum {String}
+   * @enum {string}
    * @private
    */
   MaterialTooltip.prototype.CssClasses_ = {
@@ -108,7 +109,7 @@
 
       if (this.forElement_) {
         // Tabindex needs to be set for `blur` events to be emitted
-        if (!this.forElement_.getAttribute('tabindex')) {
+        if (!this.forElement_.hasAttribute('tabindex')) {
           this.forElement_.setAttribute('tabindex', '0');
         }
 
@@ -139,6 +140,17 @@
       this.forElement_.removeEventListener('mouseleave', this.boundMouseLeaveHandler);
     }
   };
+
+  /**
+   * Public alias for the downgrade method.
+   *
+   * @public
+   */
+  MaterialTooltip.prototype.mdlDowngrade =
+      MaterialTooltip.prototype.mdlDowngrade_;
+
+  MaterialTooltip.prototype['mdlDowngrade'] =
+      MaterialTooltip.prototype.mdlDowngrade;
 
   // The component registers itself. It can assume componentHandler is available
   // in the global scope.
