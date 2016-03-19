@@ -14,72 +14,48 @@ module.exports = function (grunt) {
         watch: {
             sass: {
                 files: ['*.{scss,sass}'],
-                tasks: ['sass', 'autoprefixer', 'cssmin']
+                tasks: ['sass', 'postcss']
             },
             images: {
                 files: ['img/*.{png,jpg,gif}'],
                 tasks: ['imagemin']
             },
-            /*js: {
+            js: {
                 files: '<%= jshint.all %>',
                 tasks: ['jshint', 'uglify']
-            }*/
+            }
         },
 
-        // 1. sass
+        // Sass
         sass: {
             dist: {
-				options: {
-                    style: 'expanded',
-                },
-                files: {
-                    'css/main.css': 'main.scss',
-                    //'css/editor-style.css': 'editor-style.scss'
+				files: {
+                    'css/main.min.css': 'main.scss',
+                    //'css/editor-style.min.css': 'editor-style.scss'
                 }
             }
         },
 
-        // autoprefixer
-        autoprefixer: {
-            options: {
-                browsers: ['last 2 versions', 'ie 9', 'ios 6', 'android 4'],
-                map: true
-            },
-            files: {
-                expand: true,
-                flatten: true,
-				cwd: 'css',
-                src: '*.css',
-                dest: 'css'
-            },
-        },
+        // PostCSS: sourcemaps, autoprefix, minify
+        postcss: {
+			options: {
+			  map: {
+				  inline: false, // save all sourcemaps as separate files...
+				  annotation: 'css/' // ...to the specified directory
+			  },
 
-        // css minify
-        cssmin: {
-			target: {
-				files: [{
-					expand: true,
-					cwd: 'css',
-					src: ['*.css', '!*.min.css'],
-					dest: 'css',
-					ext: '.min.css'
-				}]
+			  processors: [
+				require('pixrem')(), // add fallbacks for rem units
+				require('autoprefixer')({ browsers: 'last 2 versions' }), // add vendor prefixes
+				require('cssnano')() // minify the result
+			  ]
+			},
+			dist: {
+			  src: 'css/*.min.css'
 			}
 		},
 		
-        // javascript linting with jshint
-        jshint: {
-            options: {
-                jshintrc: '.jshintrc',
-                "force": true
-            },
-            all: [
-                'Gruntfile.js',
-                'js/*.js'
-            ]
-        },
-		
-		// image optimization
+		// Image optimization
         imagemin: {
             dist: {
                 options: {
@@ -96,21 +72,17 @@ module.exports = function (grunt) {
             }
         },
 		
-        // uglify to concat, minify, and make source maps
-        /*uglify: {
-            plugins: {
-                options: {
-                    sourceMap: 'js/plugins.js.map',
-                    sourceMappingURL: 'plugins.js.map',
-                    sourceMapPrefix: 2
-                },
-                files: {
-                    'js/plugins.min.js': [
-                        'js/plugins.js',
-                        // 'js/yourplugin/yourplugin.js',
-                    ]
-                }
-            },
+        // Javascript linting with jshint
+        jshint: {
+            all: [
+                //'Gruntfile.js',
+                'js/*.js',
+                '!js/*.min.js'
+            ]
+        },
+        
+        // Uglify to concat, minify, and make source maps
+        uglify: {
             main: {
                 options: {
                     sourceMap: 'js/main.js.map',
@@ -123,7 +95,7 @@ module.exports = function (grunt) {
                     ]
                 }
             }
-        },*/
+        },
 
         // browserSync
         /*browserSync: {
@@ -141,6 +113,6 @@ module.exports = function (grunt) {
     });
 	
     // register task
-    grunt.registerTask('default', ['watch', 'sass', 'autoprefixer', 'cssmin', 'imagemin', /*'uglify', 'browserSync'*/]);
+    grunt.registerTask('default', ['watch', 'sass', 'less', 'postcss', 'imagemin', 'uglify', /*'browserSync'*/]);
 
 };
