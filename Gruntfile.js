@@ -113,6 +113,6 @@ module.exports = function (grunt) {
     });
 	
     // register task
-    grunt.registerTask('default', ['watch', 'sass', 'less', 'postcss', 'imagemin', 'uglify', /*'browserSync'*/]);
+    grunt.registerTask('default', ['watch', 'sass', 'postcss', 'imagemin', 'uglify', /*'browserSync'*/]);
 
 };
