@@ -1,13 +1,13 @@
 {
-  "name": "themes-starter-mdl",
-  "version": "1.0",
-  "homepage": "https://github.com/them-es",
-  "authors": [
-    "them.es"
-  ],
-  "description": "WordPress Starter Theme built with Material Design Lite",
-  "license": "GPLv2+",
-  "dependencies": {
-    "material-design-lite": "latest"
-  }
+	"name": "themes-starter-mdl",
+	"version": "1.0",
+	"homepage": "https://github.com/them-es",
+	"authors": [
+		"them.es"
+	],
+	"description": "WordPress Starter Theme built with Material Design Lite",
+	"license": "GPLv2+",
+	"dependencies": {
+		"material-design-lite": "google/material-design-lite#^1.0.0"
+	}
 }
