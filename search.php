@@ -3,7 +3,7 @@
  * The Template for displaying Search Results pages.
  */
 
-    get_header();
+	get_header();
 ?>
 
 	<div class="mdl-cell mdl-cell--12-col">
@@ -42,7 +42,10 @@
 				<?php get_search_form(); ?>
 			</article><!-- /#post-0 -->
 
-		<?php endif; wp_reset_query(); // end of the loop. ?>
+		<?php
+			endif;
+			wp_reset_postdata(); // end of the loop.
+		?>
 		
 	</div><!-- /.mdl-cell -->
 	

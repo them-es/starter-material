@@ -5,13 +5,13 @@
  *
  */
 
-    get_header();
+	get_header();
 
 	$id = get_the_ID();
 
 	// Add class via custom field (optional)
-	$class = sanitize_text_field( get_post_meta($id, '_class', true) );// get custom meta-value
-	$style = sanitize_text_field( get_post_meta($id, '_style', true) );// get custom meta-value
+	$class = sanitize_text_field( get_post_meta( $id, '_class', true ) );// get custom meta-value
+	$style = sanitize_text_field( get_post_meta( $id, '_style', true ) );// get custom meta-value
 ?>
 
 	<div class="mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet mdl-cell--12-col-phone">

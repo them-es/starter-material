@@ -8,7 +8,10 @@
 // 1. Overwrite MDL variables
 $preferred_font:  "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
+$image_path: '../bower_components/material-design-lite/src/images';
+
 /*
+// MDL 1.x requires "quoted" RGB values: e.g. '63,81,181'
 $color-primary: '$color-primary';
 $color-primary-dark: '$color-primary-dark';
 $color-accent: '$color-accent';
@@ -215,8 +218,24 @@ form {
 
 
 /* If WP-Adminbar is visible */
-body.admin-bar .mdl-layout--fixed-header #header {
-	top: 32px;
+body.admin-bar {
+	
+	#header nav.navbar-fixed-top {
+		top: 32px;
+	}
+	
+	.post-edit-link {
+		color: #FFF !important;
+		font-weight: normal !important;
+		text-decoration: none !important;
+		
+		&:before {
+			content: "\270E";
+			display: inline-block;
+			margin-right: 5px;
+		}
+		
+	}
 }
 
 /* WordPress Embeds */
@@ -224,41 +243,41 @@ body.admin-bar .mdl-layout--fixed-header #header {
 .post-thumbnail .img-responsive,
 .wp-video,
 .embed-responsive {
-    margin: 5px 0;
+	margin: 5px 0;
 	width: 100% !important;
 }
 
 // Credit: Nicolas Gallagher and SUIT CSS.
 .embed-responsive {
-  position: relative;
-  display: block;
-  height: 0;
-  padding: 0;
-  overflow: hidden;
+	position: relative;
+	display: block;
+	height: 0;
+	padding: 0;
+	overflow: hidden;
 
-  .embed-responsive-item,
-  iframe,
-  embed,
-  object,
-  video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    height: 100%;
-    width: 100%;
-    border: 0;
-  }
+	.embed-responsive-item,
+	iframe,
+	embed,
+	object,
+	video {
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		height: 100%;
+		width: 100%;
+		border: 0;
+	}
 }
 
 // Modifier class for 16:9 aspect ratio
 .embed-responsive-16by9 {
-  padding-bottom: 56.25%;
+	padding-bottom: 56.25%;
 }
 
 // Modifier class for 4:3 aspect ratio
 .embed-responsive-4by3 {
-  padding-bottom: 75%;
+	padding-bottom: 75%;
 }
 
 

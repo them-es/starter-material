@@ -2,9 +2,9 @@
 /**
  * The template for displaying image attachments
  *
-*/
+ */
 
-get_header();
+	get_header();
 ?>
 
 	<div class="mdl-cell">
@@ -20,7 +20,9 @@ get_header();
 		<?php themes_starter_content_nav( 'nav-above' ); ?>
 
 			<?php
-				if ( have_posts() ) : while (have_posts()): the_post();
+				if ( have_posts() ) :
+					while (have_posts()):
+					the_post();
 			?>
 
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -81,13 +83,16 @@ get_header();
 				) );
 			?>
 
-			<?php endwhile; endif; wp_reset_query(); // end of the loop. ?>
+			<?php
+					endwhile;
+				endif;
+				wp_reset_postdata(); // end of the loop.
+			?>
 
 		<?php themes_starter_content_nav( 'nav-below' ); ?>
 
 	</div><!-- /.mdl-cell -->
 
-    <?php get_sidebar(); ?>
+	<?php get_sidebar(); ?>
 	
-
 <?php get_footer(); ?>

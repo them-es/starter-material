@@ -3,11 +3,11 @@
  * Template Name: Blog Index
  * Description: The template for displaying the Blog index /blog.
  *
-*/
+ */
 
-    get_header();
+	get_header();
 
-    $page_id = get_option('page_for_posts');
+	$page_id = get_option('page_for_posts');
 ?>
 
 	<div class="mdl-cell mdl-cell--12-col">
@@ -22,7 +22,8 @@
 
 		<?php
 			/* Start the Loop */
-			while ( have_posts() ) : the_post();
+			while ( have_posts() ) :
+				the_post();
 
 				/* Include the Post-Format-specific template for the content.
 				* If you want to overload this in a child theme then include a file

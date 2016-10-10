@@ -3,7 +3,7 @@
  * The Template for displaying Category Archive pages.
  */
 
-    get_header();
+	get_header();
 ?>
 
 	<?php if ( have_posts() ) : ?>
@@ -21,7 +21,8 @@
 
 			<?php
 				/* Start the Loop */
-				while ( have_posts() ) : the_post();
+				while ( have_posts() ) :
+					the_post();
 
 					/* Include the Post-Format-specific template for the content.
 					* If you want to overload this in a child theme then include a file
@@ -41,7 +42,10 @@
 			get_template_part( 'content', 'none' );
 		?>
 
-	<?php endif; wp_reset_query(); // end of the loop. ?>
+	<?php
+		endif;
+		wp_reset_postdata(); // end of the loop.
+	?>
 
 
 <?php get_footer(); ?>

@@ -1,7 +1,7 @@
 /*global jQuery:false */
 
 (function ($) {
-    "use strict";
+	"use strict";
 	
 	// Navbar Scroll buttons: (c) https://github.com/google/material-design-lite/blob/master/docs/_assets/main.js
 	var rightScroll = document.querySelector('.scrollindicator.scrollindicator--right'),
@@ -34,10 +34,10 @@
 	leftScroll.addEventListener('tap', scrollMenuBar.bind(null, -delta));
 	
 
-    // JQuery fallback: add title attribute from placeholder
-    $("input, textarea").attr("title", function () {
-        return $(this).attr("placeholder");
-    });
+	// JQuery fallback: add title attribute from placeholder
+	$("input, textarea").attr("title", function () {
+		return $(this).attr("placeholder");
+	});
 	
 	// Focus Search if Searchform is empty
 	$(".searchform").on("submit", function (event) {

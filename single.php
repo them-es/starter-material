@@ -3,7 +3,7 @@
  * The Template for displaying all single posts.
  */
 
-    get_header();
+	get_header();
 ?>
 
 	<div class="mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet mdl-cell--12-col-phone">
@@ -19,7 +19,11 @@
 				endif;
 			?>
 
-		<?php endwhile; endif; wp_reset_query(); // end of the loop. ?>
+		<?php
+				endwhile;
+			endif;
+			wp_reset_postdata(); // end of the loop.
+		?>
 
 		<?php
 			$count_posts = wp_count_posts();
