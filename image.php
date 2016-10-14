@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * The template for displaying image attachments
  *
@@ -11,7 +11,7 @@
 		
 		<p class="lead">
 			<?php
-				echo nl2br( get_post_field('post_content', $page_id) );// = Page content
+				echo nl2br( get_post_field( 'post_content', $page_id ) );// = Page content
 
 				edit_post_link( __( 'Edit', 'my-theme' ), '<span class="edit-link">', '</span>', $page_id );
 			?>
@@ -21,7 +21,7 @@
 
 			<?php
 				if ( have_posts() ) :
-					while (have_posts()):
+					while (have_posts()) :
 					the_post();
 			?>
 

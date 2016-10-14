@@ -21,7 +21,7 @@
 		<header class="page-header">
 			<h1 class="page-title author">
 				<?php
-					printf( __( 'Author Archives: %s', 'my-theme' ), '<span class="vcard">' . get_the_author() . '</span>' ); 
+					printf( __( 'Author Archives: %s', 'my-theme' ), '<span class="vcard">' . get_the_author() . '</span>' );
 				?>
 			</h1>
 		</header>

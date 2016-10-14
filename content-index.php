@@ -49,7 +49,7 @@
 		<?php
 			if ( is_search() ) :
 				the_excerpt();
-			else:
+			else :
 				the_content();
 			endif;
 		?>

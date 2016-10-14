@@ -18,7 +18,8 @@
 
 				<?php
 					/* Start the Loop */
-					while ( have_posts() ) : the_post();
+					while ( have_posts() ) :
+						the_post();
 
 						/* Include the Post-Format-specific template for the content.
 						* If you want to overload this in a child theme then include a file

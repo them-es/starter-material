@@ -224,7 +224,7 @@ $theme_version = "1.0";
 	 */
 	function themes_starter_widgets_init() {
 		// Area 1
-		register_sidebar( array (
+		register_sidebar( array(
 			'name' => 'Primary Widget Area (Sidebar)',
 			'id' => 'primary_widget_area',
 			'before_widget' => '',
@@ -234,7 +234,7 @@ $theme_version = "1.0";
 		) );
 
 		// Area 2
-		register_sidebar( array (
+		register_sidebar( array(
 			'name' => 'Secondary Widget Area (Footer)',
 			'id' => 'secondary_widget_area',
 			'before_widget' => '<div class="mdl-mega-footer__drop-down-section mdl-mega-footer__link-list">',
@@ -245,10 +245,10 @@ $theme_version = "1.0";
 	}
 	add_action( 'widgets_init', 'themes_starter_widgets_init' );
 
-	$preset_widgets = array (
-		'primary_widget_area'  => array( 'search', 'pages', 'categories', 'archives' ),
-		'secondary_widget_area'  => array( 'links', 'meta' ),
-		'third_widget_area'  => array( 'links', 'meta' ),
+	$preset_widgets = array(
+		'primary_widget_area' => array( 'search', 'pages', 'categories', 'archives' ),
+		'secondary_widget_area' => array( 'links', 'meta' ),
+		'third_widget_area' => array( 'links', 'meta' ),
 	);
 	if ( isset( $_GET['activated'] ) ) {
 		update_option( 'sidebars_widgets', $preset_widgets );
@@ -301,18 +301,18 @@ $theme_version = "1.0";
 		global $post;
 		$label = 'pwbox-' . ( empty( $post->ID ) ? rand() : $post->ID );
 
-		$o = '<div class="mdl-grid">';
-			$o .= '<form action="' . esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" method="post">';
-			$o .= '<h4 class="mdl-cell mdl-cell--12-col">' . __( "This content is password protected. To view it please enter your password below.", "my-theme" ) . '</h4>';
-				$o .= '<div class="mdl-cell mdl-cell--6-col mdl-cell mdl-cell--12-col-phone">';
-					$o .= '<div class="mdl-textfield mdl-js-textfield">';
-						$o .= '<input name="post_password" id="' . $label . '" type="password" placeholder="' . __( "Password", 'my-theme' ) . '" class="mdl-textfield__input" />';
-						$o .= '<input type="submit" name="submit" class="mdl-button mdl-js-button mdl-button--raised" value="' . esc_attr( __( "Submit", "my-theme" ) ) . '" />';
-					$o .= '</div><!-- /.input-group -->';
-				$o .= '</div><!-- /.col -->';
-			$o .= '</form>';
-		$o .= '</div><!-- /.row -->';
-		return $o;
+		$output = '<div class="mdl-grid">';
+			$output .= '<form action="' . esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" method="post">';
+			$output .= '<h4 class="mdl-cell mdl-cell--12-col">' . __( "This content is password protected. To view it please enter your password below.", "my-theme" ) . '</h4>';
+				$output .= '<div class="mdl-cell mdl-cell--6-col mdl-cell mdl-cell--12-col-phone">';
+					$output .= '<div class="mdl-textfield mdl-js-textfield">';
+						$output .= '<input name="post_password" id="' . $label . '" type="password" placeholder="' . __( "Password", 'my-theme' ) . '" class="mdl-textfield__input" />';
+						$output .= '<input type="submit" name="submit" class="mdl-button mdl-js-button mdl-button--raised" value="' . esc_attr( __( "Submit", "my-theme" ) ) . '" />';
+					$output .= '</div><!-- /.input-group -->';
+				$output .= '</div><!-- /.col -->';
+			$output .= '</form>';
+		$output .= '</div><!-- /.row -->';
+		return $output;
 	}
 	add_filter( 'the_password_form', 'themes_starter_password_form' );
 
@@ -356,8 +356,9 @@ $theme_version = "1.0";
 						<div class="comment-author vcard">
 							<?php
 								$avatar_size = 136;
-								if ( '0' != $comment->comment_parent )
+								if ( '0' !== $comment->comment_parent ) {
 									$avatar_size = 68;
+								}
 								echo get_avatar( $comment, $avatar_size );
 								/* translators: 1: comment author, 2: date and time */
 								printf( __( '%1$s, %2$s', 'my-theme' ),
@@ -415,7 +416,7 @@ $theme_version = "1.0";
 
 			$req      = get_option( 'require_name_email' );
 			$aria_req = ( $req ? " aria-required='true' required" : '' );
-			$fields   =  array(
+			$fields   = array(
 				'author' => '<p class="mdl-textfield mdl-js-textfield">' .
 							'<input id="author" name="author" class="mdl-textfield__input" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '"' . $aria_req . ' />' .
 							'<label class="mdl-textfield__label" for="author">' . __( 'Name', 'my-theme' ) . ( $req ? '<span class="required">*</span>' : '' ) . '</label></p>',
@@ -466,7 +467,7 @@ $theme_version = "1.0";
 	if ( function_exists( 'register_nav_menus' ) ) {
 		register_nav_menus( array(
 			'main-menu' => 'Main Navigation Menu',
-			'footer-menu' => 'Footer Menu'
+			'footer-menu' => 'Footer Menu',
 		) );
 	}
 

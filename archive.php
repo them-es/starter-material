@@ -52,5 +52,4 @@
 		wp_reset_postdata(); // end of the loop.
 	?>
 
-
 <?php get_footer(); ?>
