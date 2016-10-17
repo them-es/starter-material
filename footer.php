@@ -7,7 +7,7 @@
 					<?php dynamic_sidebar( 'secondary_widget_area' ); ?>
 
 					<?php if ( current_user_can( 'manage_options' ) ) : ?>
-						<a href="<?php echo admin_url( 'widgets.php' ); ?>" class="mdl-badge">Edit</a><!-- Show Edit Widget link -->
+						<p class="edit-link"><a href="<?php echo admin_url( 'widgets.php' ); ?>" class="badge badge-info"><?php _e( 'Edit', 'my-theme' ); ?></a></p><!-- Show Edit Widget link -->
 					<?php endif; ?>
 				</div><!-- .widget-area -->
 
@@ -21,11 +21,11 @@
 						!!! IMPORTANT: After adding all pages to the menu, don't forget to assign this menu to the Footer menu of "Theme locations" /wp-admin/nav-menus.php (on left side) ... Otherwise the themes will not know, which menu to use!!!
 					*/
 					wp_nav_menu( array(
-						'theme_location'  => 'footer-menu',
-						'container'       => '',
-						'fallback_cb'     => '',
-						'items_wrap'      => '<ul id="%1$s" class="mdl-mega-footer__link-list">%3$s</ul>',
-						'walker'          => '',
+						'theme_location' => 'footer-menu',
+						'container'      => '',
+						'fallback_cb'    => '',
+						'items_wrap'     => '<ul id="%1$s" class="mdl-mega-footer__link-list">%3$s</ul>',
+						'walker'         => '',
 					) );
 				?>
 			</div>

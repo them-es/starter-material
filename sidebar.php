@@ -15,7 +15,7 @@ if ( is_active_sidebar( 'primary_widget_area' ) || is_archive() || is_single() )
 			<?php dynamic_sidebar( 'primary_widget_area' ); ?>
 
 			<?php if ( current_user_can( 'manage_options' ) ) : ?>
-				<a href="<?php echo admin_url( 'widgets.php' ); ?>" class="mdl-badge">Edit</a><!-- Show Edit Widget link -->
+				<p class="edit-link"><a href="<?php echo admin_url( 'widgets.php' ); ?>" class="badge badge-info"><?php _e( 'Edit', 'my-theme' ); ?></a></p><!-- Show Edit Widget link -->
 			<?php endif; ?>
 		</div><!-- .widget-area -->
 		
@@ -35,7 +35,7 @@ if ( is_active_sidebar( 'primary_widget_area' ) || is_archive() || is_single() )
 								$output .= '<li>';
 									// Show monthly archive and link to months
 									$month = get_the_date('F, Y');
-									if ($month !== $month_check) : $output .= '<p><a href="' . get_month_link( get_the_date('Y'), get_the_date( 'm' ) ) . '" title="' . get_the_date('F, Y') . '">' . $month . '</a></p>'; endif;
+									if ( $month !== $month_check ) : $output .= '<p><a href="' . get_month_link( get_the_date('Y'), get_the_date( 'm' ) ) . '" title="' . get_the_date('F, Y') . '">' . $month . '</a></p>'; endif;
 									$month_check = $month;
 								$output .= '<h4><a href="' . get_the_permalink() . '" title="' . sprintf( __('Permalink to %s', 'my-theme'), the_title_attribute('echo=0') ) . '" rel="bookmark">' . get_the_title() . '</a></h4>';
 								$output .= '</li>';
