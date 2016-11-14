@@ -22,7 +22,7 @@
 					*/
 					wp_nav_menu( array(
 						'theme_location' => 'footer-menu',
-						'container'      => '',
+						'container'      => 'nav',
 						'fallback_cb'    => '',
 						'items_wrap'     => '<ul id="%1$s" class="mdl-mega-footer__link-list">%3$s</ul>',
 						'walker'         => '',

@@ -1,6 +1,6 @@
 <?php
 
-$theme_version = "1.0";
+$theme_version = '1.0';
 
 	/**
 	 * Include Theme Customizer
@@ -63,11 +63,6 @@ $theme_version = "1.0";
 			add_theme_support( 'html5', array(
 				'search-form', 'comment-form', 'comment-list', 'gallery', 'caption'
 			) );
-			/**
-			add_theme_support( 'post-formats', array(
-				'aside', 'image', 'video', 'audio', 'quote', 'link', 'gallery',
-			) );
-			*/
 
 			// Date/Time Format
 			$theme_dateformat = get_option( 'date_format' );
@@ -303,11 +298,11 @@ $theme_version = "1.0";
 
 		$output = '<div class="mdl-grid">';
 			$output .= '<form action="' . esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" method="post">';
-			$output .= '<h4 class="mdl-cell mdl-cell--12-col">' . __( "This content is password protected. To view it please enter your password below.", "my-theme" ) . '</h4>';
+			$output .= '<h4 class="mdl-cell mdl-cell--12-col">' . __( 'This content is password protected. To view it please enter your password below.', 'my-theme' ) . '</h4>';
 				$output .= '<div class="mdl-cell mdl-cell--6-col mdl-cell mdl-cell--12-col-phone">';
 					$output .= '<div class="mdl-textfield mdl-js-textfield">';
-						$output .= '<input name="post_password" id="' . $label . '" type="password" placeholder="' . __( "Password", 'my-theme' ) . '" class="mdl-textfield__input" />';
-						$output .= '<input type="submit" name="submit" class="mdl-button mdl-js-button mdl-button--raised" value="' . esc_attr( __( "Submit", "my-theme" ) ) . '" />';
+						$output .= '<input name="post_password" id="' . $label . '" type="password" placeholder="' . __( 'Password', 'my-theme' ) . '" class="mdl-textfield__input" />';
+						$output .= '<input type="submit" name="submit" class="mdl-button mdl-js-button mdl-button--raised" value="' . esc_attr( __( 'Submit', 'my-theme' ) ) . '" />';
 					$output .= '</div><!-- /.input-group -->';
 				$output .= '</div><!-- /.col -->';
 			$output .= '</form>';
@@ -422,7 +417,7 @@ $theme_version = "1.0";
 							'<input id="author" name="author" class="mdl-textfield__input" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '"' . $aria_req . ' />' .
 							'<label class="mdl-textfield__label" for="author">' . __( 'Name', 'my-theme' ) . ( $req ? '<span class="required">*</span>' : '' ) . '</label></p>',
 				'email'  => '<p class="mdl-textfield mdl-js-textfield">' .
-							'<input id="email" name="email" class="mdl-textfield__input" type="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '"' . $aria_req . ' />' .
+							'<input id="email" name="email" class="mdl-textfield__input" type="email" value="' . esc_attr( $commenter['comment_author_email'] ) . '"' . $aria_req . ' />' .
 							'<label class="mdl-textfield__label" for="email">' . __( 'Email', 'my-theme' ) . ( $req ? '<span class="required">*</span>' : '' ) . '</label></p>',
 				'url'    => '',
 			);
