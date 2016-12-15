@@ -8,7 +8,11 @@
 
 	<div class="mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet mdl-cell--12-col-phone">
 			
-		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+		<?php
+			if ( have_posts() ) :
+				while ( have_posts() ) :
+				the_post();
+			?>
 
 			<?php
 				get_template_part( 'content', 'single' );

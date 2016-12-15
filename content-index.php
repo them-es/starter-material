@@ -57,6 +57,6 @@
 	</div><!-- /.entry-content -->
 
 	<footer class="mdl-card__actions mdl-card--border">
-		<a href="<?php echo get_permalink(); ?>" class="mdl-button mdl-js-button"><?php _e( 'more', 'my-theme' ); ?></a>
+		<a href="<?php echo get_the_permalink(); ?>" class="mdl-button mdl-js-button"><?php _e( 'more', 'my-theme' ); ?></a>
 	</footer><!-- .entry-meta -->
 </article><!-- /#post-<?php the_ID(); ?> -->
