@@ -1,8 +1,8 @@
-## them.es Starter Theme (MDL)
+## them.es Starter Theme (Material)
 
-**them.es Starter (MDL)** is a WordPress Starter Theme built with Material Design Lite. Please note that the Source files are only recommended for WordPress Developers who are searching for a simple, solid, proved and tested **Material Design Starter Theme** to build upon. **_Don't_ expect a ready-to-use WordPress Theme!**
+**them.es Starter (Material)** is a WordPress Starter Theme built with Material Design Lite. Please note that the Source files are only recommended for WordPress Developers who are searching for a simple, solid, proved and tested **Material Design Starter Theme** to build upon. **_Don't_ expect a ready-to-use WordPress Theme!**
 
-If you want to see it in action or want to download a customized Theme for free, check out [http://them.es/starter-mdl](http://them.es/starter-mdl)
+If you want to see it in action or want to download a customized Theme for free, check out [http://them.es/starter-material](http://them.es/starter-material)
 
 
 ## What's included?
@@ -17,7 +17,7 @@ If you want to see it in action or want to download a customized Theme for free,
 
 
 ## Compatible with CSS Preprocessors
-You can use [SASS](http://sass-lang.com/) to create your main stylesheet.
+You can use [SASS](http://sass-lang.com) to create your main stylesheet.
 
 **`main.scss`** needs to be compiled as **`/css/main.css`**
 
