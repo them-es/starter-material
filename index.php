@@ -11,11 +11,11 @@
 ?>
 
 	<div class="mdl-cell mdl-cell--12-col">
-	<?php
-		echo nl2br( apply_filters('the_content', get_post_field('post_content', $page_id) ) );// = echo content from Bloghome
+		<?php
+			echo nl2br( apply_filters('the_content', get_post_field('post_content', $page_id) ) );// = echo content from Bloghome
 
-		edit_post_link( __( 'Edit', 'my-theme' ), '<span class="edit-link">', '</span>', $page_id );
-	?>
+			edit_post_link( __( 'Edit', 'my-theme' ), '<span class="edit-link">', '</span>', $page_id );
+		?>
 	</div><!-- /.mdl-cell -->
 
 	<?php themes_starter_content_nav( 'nav-above' ); ?>
