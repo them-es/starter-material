@@ -304,9 +304,9 @@ $theme_version = '1.0';
 						$output .= '<input name="post_password" id="' . $label . '" type="password" placeholder="' . __( 'Password', 'my-theme' ) . '" class="mdl-textfield__input" />';
 						$output .= '<input type="submit" name="submit" class="mdl-button mdl-js-button mdl-button--raised" value="' . esc_attr( __( 'Submit', 'my-theme' ) ) . '" />';
 					$output .= '</div><!-- /.input-group -->';
-				$output .= '</div><!-- /.col -->';
+				$output .= '</div><!-- /.mdl-cell -->';
 			$output .= '</form>';
-		$output .= '</div><!-- /.row -->';
+		$output .= '</div><!-- /.mdl-grid -->';
 		return $output;
 	}
 	add_filter( 'the_password_form', 'themes_starter_password_form' );
