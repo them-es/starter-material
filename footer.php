@@ -30,7 +30,7 @@
 				?>
 			</div>
 			
-			<p>&copy; <?php echo date('Y'); ?> <?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?></p>
+			<p>&copy; <?php echo date( 'Y' ); ?> <?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?></p>
 		</footer>
 	
 		</div><!-- /#main -->

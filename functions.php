@@ -201,7 +201,7 @@ $theme_version = '1.0';
 		}
 
 		// Add Class
-		/**
+		/*
 		function posts_link_attributes() {
 			return 'class=""';
 		}
@@ -413,21 +413,21 @@ $theme_version = '1.0';
 			$req = get_option( 'require_name_email' );
 			$aria_req = ( $req ? " aria-required='true' required" : '' );
 			$fields = array(
-				'author' => '<p class="mdl-textfield mdl-js-textfield">' .
+				'author' => '<div class="mdl-textfield mdl-js-textfield">' .
 							'<input id="author" name="author" class="mdl-textfield__input" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '"' . $aria_req . ' />' .
-							'<label class="mdl-textfield__label" for="author">' . __( 'Name', 'my-theme' ) . ( $req ? '<span class="required">*</span>' : '' ) . '</label></p>',
-				'email'  => '<p class="mdl-textfield mdl-js-textfield">' .
+							'<label class="mdl-textfield__label" for="author">' . __( 'Name', 'my-theme' ) . ( $req ? '<span class="required">*</span>' : '' ) . '</label></div>',
+				'email'  => '<div class="mdl-textfield mdl-js-textfield">' .
 							'<input id="email" name="email" class="mdl-textfield__input" type="email" value="' . esc_attr( $commenter['comment_author_email'] ) . '"' . $aria_req . ' />' .
-							'<label class="mdl-textfield__label" for="email">' . __( 'Email', 'my-theme' ) . ( $req ? '<span class="required">*</span>' : '' ) . '</label></p>',
+							'<label class="mdl-textfield__label" for="email">' . __( 'Email', 'my-theme' ) . ( $req ? '<span class="required">*</span>' : '' ) . '</label></div>',
 				'url'    => '',
 			);
 
 			$fields = apply_filters( 'comment_form_default_fields', $fields );
 			$defaults = array(
 				'fields'               => $fields,
-				'comment_field'        => '<fieldset class="mdl-textfield mdl-js-textfield">' .
-														'<textarea id="comment" name="comment" class="mdl-textfield__input" rows="3" aria-required="true" required></textarea>' .
-														'<label class="mdl-textfield__label" for="comment">' . __( 'Comment', 'my-theme' ) . ( $req ? '*' : '' ) . '</label></fieldset>',
+				'comment_field'        => '<div class="mdl-textfield mdl-js-textfield">' .
+											'<textarea id="comment" name="comment" class="mdl-textfield__input" rows="3" aria-required="true" required></textarea>' .
+											'<label class="mdl-textfield__label" for="comment">' . __( 'Comment', 'my-theme' ) . ( $req ? '*' : '' ) . '</label></div>',
 				/** This filter is documented in wp-includes/link-template.php */
 				'must_log_in'          => '<p class="must-log-in">' . sprintf( __( 'You must be <a href="%s">logged in</a> to post a comment.', 'my-theme' ), wp_login_url( apply_filters( 'the_permalink', get_the_permalink( get_the_ID() ) ) ) ) . '</p>',
 				/** This filter is documented in wp-includes/link-template.php */
@@ -443,7 +443,7 @@ $theme_version = '1.0';
 				'cancel_reply_link'    => __( 'Cancel reply', 'my-theme' ),
 				'label_submit'         => __( 'Post Comment', 'my-theme' ),
 				'submit_button'        => '<input name="%1$s" type="submit" id="%2$s" class="%3$s" value="%4$s" />',
-				'submit_field'         => '<p class="form-submit">%1$s %2$s</p>',
+				'submit_field'         => '<div class="form-submit">%1$s %2$s</div>',
 				'format'               => 'html5',
 			);
 

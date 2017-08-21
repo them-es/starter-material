@@ -11,14 +11,14 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class('mdl-card mdl-shadow--3dp mdl-cell ' . $post_class); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'mdl-card mdl-shadow--3dp mdl-cell ' . $post_class ); ?>>
 	
 	<header class="mdl-card__title">
 		<h2 class="mdl-card__title-text"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'my-theme' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 	</header><!-- /.entry-header -->
 
 	<div class="mdl-card__supporting-text">
-		<?php if ( 'post' == get_post_type() ) : ?>
+		<?php if ( 'post' === get_post_type() ) : ?>
 			<p class="entry-meta">
 				<?php
 					themes_starter_article_posted_on();
@@ -26,7 +26,7 @@
 					$num_comments = get_comments_number();
 					
 					if ( comments_open() ) :
-							if ( $num_comments == 0 ) {
+							if ( 0 === $num_comments ) {
 								//$comments = __( 'No Comments', 'my-theme' );
 							} elseif ( $num_comments > 1 ) {
 								$comments = $num_comments . ' ' . __( 'Comments', 'my-theme' );
@@ -34,7 +34,7 @@
 								$comments = '1 ' . __( 'Comment', 'my-theme' );
 							}
 							
-							if ( isset($comments) ) {
+							if ( isset( $comments ) ) {
 								echo ' <a href="' . get_comments_link() . '" class="pull-right material-icons mdl-badge" title="' . $comments . '" data-badge="' . $num_comments . '">chat_bubble_outline</a>';
 							}
 						endif;
