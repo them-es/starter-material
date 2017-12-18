@@ -1,6 +1,6 @@
 <?php
 
-$theme_version = '1.0';
+$theme_version = '1.1.6';
 
 	/**
 	 * Include Theme Customizer
@@ -9,7 +9,7 @@ $theme_version = '1.0';
 	 */
 	$theme_customizer = get_template_directory() . '/inc/customizer.php';
 	if ( is_readable( $theme_customizer ) ) {
-		require_once( $theme_customizer );
+		require_once $theme_customizer;
 	}
 
 
@@ -20,7 +20,7 @@ $theme_version = '1.0';
 	 */
 	$theme_metaboxes = get_template_directory() . '/inc/metaboxes.php';
 	if ( is_readable( $theme_metaboxes ) ) {
-		require_once( $theme_metaboxes );
+		require_once $theme_metaboxes;
 	}
 
 
@@ -31,7 +31,7 @@ $theme_version = '1.0';
 	 */
 	$theme_wordpresscom = get_template_directory() . '/inc/wordpresscom.php';
 	if ( is_readable( $theme_wordpresscom ) ) {
-		require_once( $theme_wordpresscom );
+		require_once $theme_wordpresscom;
 	}
 
 
@@ -158,18 +158,6 @@ $theme_version = '1.0';
 
 
 	/**
-	 * Style Edit buttons as badges: http://getbootstrap.com/components/#badges
-	 *
-	 * @since v1.0
-	 */
-	function themes_starter_custom_edit_post_link( $output ) {
-		$output = str_replace( 'class="post-edit-link"', 'class="post-edit-link badge badge-info"', $output );
-		return $output;
-	}
-	add_filter( 'edit_post_link', 'themes_starter_custom_edit_post_link' );
-
-
-	/**
 	 * Responsive oEmbed filter: http://getbootstrap.com/components/#responsive-embed
 	 *
 	 * @since v1.0
@@ -183,7 +171,7 @@ $theme_version = '1.0';
 
 	if ( ! function_exists( 'themes_starter_content_nav' ) ) :
 		/**
-		 * Display a navigation to next/previous pages when applicable: http://getbootstrap.com/components/#pagination-pager
+		 * Display a navigation to next/previous pages when applicable
 		 *
 		 * @since v1.0
 		 */
@@ -239,29 +227,6 @@ $theme_version = '1.0';
 		) );
 	}
 	add_action( 'widgets_init', 'themes_starter_widgets_init' );
-
-	$preset_widgets = array(
-		'primary_widget_area' => array( 'search', 'pages', 'categories', 'archives' ),
-		'secondary_widget_area' => array( 'links', 'meta' ),
-		'third_widget_area' => array( 'links', 'meta' ),
-	);
-	if ( isset( $_GET['activated'] ) ) {
-		update_option( 'sidebars_widgets', $preset_widgets );
-	}
-	// update_option( 'sidebars_widgets', NULL );
-
-	// Check for static widgets in widget-ready areas
-	function is_sidebar_active( $index ) {
-		global $wp_registered_sidebars;
-
-		$widgetcolums = wp_get_sidebars_widgets();
-
-		if ( $widgetcolums[$index] ) {
-			return true;
-		}
-
-		return false;
-	}
 
 
 	if ( ! function_exists( 'themes_starter_article_posted_on' ) ) :
@@ -470,7 +435,7 @@ $theme_version = '1.0';
 	// Custom Nav Walker: mdl_navwalker()
 	$custom_walker = get_template_directory() . '/inc/mdl_navwalker.php';
 	if ( is_readable( $custom_walker ) ) {
-		require_once( $custom_walker );
+		require_once $custom_walker;
 	}
 
 
