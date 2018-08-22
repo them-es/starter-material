@@ -1,4 +1,5 @@
-/*global module:false, require:false */
+const sass = require('node-sass');
+const postcss = require('postcss');
 
 module.exports = function (grunt) {
 	"use strict";
@@ -23,11 +24,18 @@ module.exports = function (grunt) {
 			js: {
 				files: '<%= jshint.all %>',
 				tasks: ['jshint', 'uglify']
+			},
+			options: {
+				//livereload: true // Install and enable a Browser Plugin first: http://livereload.com/extensions
 			}
 		},
 
 		// Sass
 		sass: {
+			options: {
+				implementation: sass,
+				sourceMap: true
+			},
 			dist: {
 				files: {
 					'css/main.min.css': 'main.scss',
@@ -39,19 +47,18 @@ module.exports = function (grunt) {
 		// PostCSS: sourcemaps, autoprefix, minify
 		postcss: {
 			options: {
-			  map: {
-				  inline: false, // save all sourcemaps as separate files...
-				  annotation: 'css/' // ...to the specified directory
-			  },
-
-			  processors: [
-				require('pixrem')(), // add fallbacks for rem units
-				require('autoprefixer')({ browsers: 'last 2 versions' }), // add vendor prefixes
-				require('cssnano')() // minify the result
-			  ]
+				map: {
+					inline: false, // save all sourcemaps as separate files...
+					annotation: 'css/' // ...to the specified directory
+				},
+				processors: [
+					require('pixrem')(), // add fallbacks for rem units
+					require('autoprefixer')({ browsers: 'last 2 versions' }), // add vendor prefixes
+					require('cssnano')() // minify the result
+				]
 			},
 			dist: {
-			  src: 'css/*.min.css'
+				src: 'css/*.min.css'
 			}
 		},
 		
