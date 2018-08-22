@@ -1,6 +1,6 @@
 <?php
 
-$theme_version = '1.1.6';
+$theme_version = '1.1.7';
 
 	/**
 	 * Include Theme Customizer
@@ -126,7 +126,8 @@ $theme_version = '1.1.6';
 	function is_blog() {
 		global $post;
 		$posttype = get_post_type( $post );
-		return ( ((is_archive()) || (is_author()) || (is_category()) || (is_home()) || (is_single()) || (is_tag())) && ( 'post' === $posttype ) ) ? true : false ;
+		
+		return ( ( is_archive() || is_author() || is_category() || is_home() || is_single() || ( is_tag() && ( 'post' === $posttype ) ) ) ? true : false );
 	}
 
 
@@ -361,8 +362,8 @@ $theme_version = '1.1.6';
 		 * Custom Comment form
 		 *
 		 * @since v1.0
-		 *
 		 * @since v1.1: 'submit_button' and 'submit_field'
+		 * @since v1.1.7: Added '$consent' and 'cookies'
 		 */
 		function themes_starter_custom_commentform( $args = array(), $post_id = null ) {
 			if ( null === $post_id ) {
@@ -377,14 +378,17 @@ $theme_version = '1.1.6';
 
 			$req = get_option( 'require_name_email' );
 			$aria_req = ( $req ? " aria-required='true' required" : '' );
+			$consent  = ( empty( $commenter['comment_author_email'] ) ? '' : ' checked="checked"' );
 			$fields = array(
-				'author' => '<div class="mdl-textfield mdl-js-textfield">' .
+				'author'  => '<div class="mdl-textfield mdl-js-textfield">' .
 							'<input id="author" name="author" class="mdl-textfield__input" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '"' . $aria_req . ' />' .
 							'<label class="mdl-textfield__label" for="author">' . __( 'Name', 'my-theme' ) . ( $req ? '<span class="required">*</span>' : '' ) . '</label></div>',
-				'email'  => '<div class="mdl-textfield mdl-js-textfield">' .
+				'email'   => '<div class="mdl-textfield mdl-js-textfield">' .
 							'<input id="email" name="email" class="mdl-textfield__input" type="email" value="' . esc_attr( $commenter['comment_author_email'] ) . '"' . $aria_req . ' />' .
 							'<label class="mdl-textfield__label" for="email">' . __( 'Email', 'my-theme' ) . ( $req ? '<span class="required">*</span>' : '' ) . '</label></div>',
-				'url'    => '',
+				'url'     => '',
+				'cookies' => '<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes"' . $consent . ' /> ' .
+							 '<label for="wp-comment-cookies-consent">' . __( 'Save my name, email, and website in this browser for the next time I comment.', 'my-theme' ) . '</label></p>',
 			);
 
 			$fields = apply_filters( 'comment_form_default_fields', $fields );

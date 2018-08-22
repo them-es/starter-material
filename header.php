@@ -28,7 +28,7 @@
 				<?php
 					$header_logo = get_theme_mod( 'header_logo' ); // get custom meta-value
 
-					if ( isset( $header_logo ) && ! empty( $header_logo ) ) :
+					if ( ! empty( $header_logo ) ) :
 				?>
 					<img src="<?php echo esc_url( $header_logo ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" />
 				<?php
@@ -41,7 +41,7 @@
 
 			<div class="mdl-layout-spacer"></div>
 
-				<?php if ( isset( $search_enabled ) && '1' === $search_enabled ) : ?>
+				<?php if ( '1' === $search_enabled ) : ?>
 					<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
 						<form role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 							<label class="mdl-button mdl-js-button mdl-button--icon" for="s"><i class="material-icons">search</i></label>
