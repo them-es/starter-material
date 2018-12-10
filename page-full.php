@@ -6,17 +6,10 @@
  */
 
 	get_header();
-
-	$id = get_the_ID();
-
-	// Add class via custom field (optional)
-	$class = sanitize_text_field( get_post_meta( $id, '_class', true ) );// get custom meta-value
-	$style = sanitize_text_field( get_post_meta( $id, '_style', true ) );// get custom meta-value
 ?>
 
 	<?php the_post(); ?>
-	
-	<div id="post-<?php the_ID(); ?>" <?php post_class( 'mdl-cell mdl-cell--12-col content' . ( ! empty( $class ) ? ' ' . $class : '' ) ); ?><?php if ( ! empty( $style ) ) : echo ' style="' . $style . '"'; endif; ?>>
+	<div id="post-<?php the_ID(); ?>" <?php post_class( 'mdl-cell mdl-cell--12-col content' ); ?>>
 		<h1 class="entry-title"><?php the_title(); ?></h1>
 		<?php
 			the_content();
