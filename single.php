@@ -39,7 +39,9 @@
 				<div class="mdl-layout-spacer"></div>
 				<?php next_post_link( '%link', __( 'Next Post', 'my-theme' ) . ' <button class="mdl-button mdl-js-button mdl-button--icon mdl-color--pink-500 mdl-color-text--white"><i class="material-icons">arrow_forward</i></button>' ); ?>
 			</nav><!-- /.blog-nav -->
-		<?php endif; ?>
+		<?php
+			endif;
+		?>
 
 	</div><!-- /.mdl-cell -->
 
