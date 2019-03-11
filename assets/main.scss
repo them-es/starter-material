@@ -1,0 +1,448 @@
+// Compile "main.scss" as "css/main.min.css"
+
+
+/**
+ * Add custom styles
+ * https://material.io/design/color
+ */
+
+@import "../node_modules/material-components-web/node_modules/@material/theme/functions";
+
+// 1. Include custom variables
+$color-gray: #424242;
+$color-gray-light: #9E9E9E;
+$color-gray-lighter: #F1F3F4;
+
+$text-color: $color-gray;
+
+// 2. Overwrite mdc variables
+$preferred_font: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+$mdc-theme-primary: #6200EE;
+$mdc-theme-on-primary: if(mdc-theme-contrast-tone($mdc-theme-primary) == "dark", #000, #FFF);
+
+$mdc-theme-primary--variant: #3700B3;
+
+$mdc-theme-secondary: #03DAC6;
+$mdc-theme-on-secondary: if(mdc-theme-contrast-tone($mdc-theme-secondary) == "dark", #000, #FFF);
+
+$mdc-theme-secondary--variant: #018786;
+
+$mdc-theme-background: #FFF;
+
+$mdc-theme-surface: #FFF;
+$mdc-theme-on-surface: if(mdc-theme-contrast-tone($mdc-theme-surface) == "dark", #000, #FFF);
+
+$preferred_font_serif:       Georgia, "Times New Roman", Times, serif;
+$preferred_font_monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
+
+// Media queries
+$screen-xs-min:	480px;
+$screen-sm-min:	768px;
+$screen-md-min:	992px;
+$screen-lg-min:	1200px;
+
+// Provide a maximum, so media queries don't overlap when required
+$screen-xs-max:	($screen-sm-min - 1);
+$screen-sm-max:	($screen-md-min - 1);
+$screen-md-max:	($screen-lg-min - 1);
+
+
+/**
+ * Import MDC sources
+ */
+
+@import "../node_modules/material-components-web/material-components-web";
+
+
+/**
+ * General
+ */
+
+html,
+body {
+	font-family: $preferred_font;
+}
+
+body {
+	margin: 0;
+	line-height: 1.15;
+	color: $text-color;
+}
+
+.small {
+	font-size: small;
+}
+
+a {
+	text-decoration: none;
+}
+
+.show {
+	display: block;
+}
+.hide {
+	display: none;
+}
+
+.pull-right {
+	float: right;
+}
+.pull-left {
+	float: left;
+}
+
+.text-left {
+	text-align: left;
+}
+.text-right {
+	text-align: right;
+}
+.text-center {
+	text-align: center;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	vertical-align: middle;
+}
+
+hr {
+	border: none;
+	border-top: 1px solid $color-gray-lighter;
+}
+
+a {
+	color: $text-color;
+}
+
+
+/* Layout */
+
+.mdc-toolbar-fixed-adjust {
+	margin-top: 50px;
+}
+
+.mdc-card {
+	.mdc-card__primary {
+		padding: 1rem;
+	}
+}
+
+
+/* Header */
+
+#header {
+	
+	.mdc-tab {
+		color: $mdc-theme-on-primary;
+	}
+	.mdc-tab-indicator {
+		> .mdc-tab-indicator__content--underline {
+			background-color: $mdc-theme-on-primary !important;
+			height: 3px;
+		}
+	}
+	
+	.mdc-top-app-bar__title {
+		color: $mdc-theme-on-primary;
+
+		img {
+			height: 40px;
+		}
+	}
+
+	.mdc-text-field {
+		background-color: transparent;
+		height: 46px;
+		border-radius: 23px;
+		transition: background-color 0.05s cubic-bezier(0.4, 0, 0.2, 1);
+		will-change: background-color;
+
+		&:hover,
+		&.mdc-text-field--focused {
+			background-color: #FFF;
+
+			.material-icons,
+			.mdc-floating-label,
+			.mdc-text-field__input {
+				color: $text-color;
+			}
+		}
+
+		.material-icons,
+		.mdc-floating-label,
+		.mdc-text-field__input {
+			color: #FFF;
+		}
+
+		.mdc-text-field__input {
+			border-radius: 0;
+		}
+
+		&.mdc-text-field--with-trailing-icon .mdc-text-field__icon {
+			bottom: 12px;
+		}
+	}
+}
+
+
+/* Main */
+
+#main {
+	max-width: 1140px;
+
+	.mdc-layout-grid__cell {
+		padding: 0 1rem;
+	}
+
+	.post-navigation {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		padding: 8px 0;
+	}
+	
+}
+
+
+/* Footer */
+
+#footer {
+	background-color: $color-gray-lighter;
+
+	.copyright {
+		display: inline-block;
+		margin-right: 16px;
+	}
+	
+	p {
+		margin-top: 10px;
+	}
+
+	.widget-area,
+	.mdc-list {
+		padding: 0;
+
+		li {
+			margin: 10px 0;
+		}
+	}
+	.mdc-list {
+		display: inline-block;
+		margin-top: 16px;
+
+		li {
+			display: inline-block;
+			margin-right: 16px;
+		}
+	}
+	
+}
+
+
+/**
+ * Wordpress customization
+ */
+
+
+/* If WP-Adminbar is visible */
+body.admin-bar {
+	
+	#header.mdc-toolbar--fixed {
+		top: 32px;
+	}
+	
+	.edit-link a {
+		
+		&::before {
+			content: "\270E";
+			display: inline-block;
+			margin-right: 5px;
+		}
+		
+	}
+}
+
+
+/* WordPress Embeds */
+
+.post-thumbnail,
+.wp-video,
+.embed-responsive {
+	margin: 5px 0;
+	width: 100% !important;
+}
+
+// Credit: Nicolas Gallagher and SUIT CSS.
+.embed-responsive {
+	position: relative;
+	display: block;
+	height: 0;
+	padding: 0;
+	overflow: hidden;
+
+	.embed-responsive-item,
+	iframe,
+	embed,
+	object,
+	video {
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		height: 100%;
+		width: 100%;
+		border: 0;
+	}
+}
+
+// Modifier class for 16:9 aspect ratio
+.embed-responsive-16by9 {
+	padding-bottom: 56.25%;
+}
+
+// Modifier class for 4:3 aspect ratio
+.embed-responsive-4by3 {
+	padding-bottom: 75%;
+}
+
+.widget-area {
+	
+	ul {
+		list-style: none;
+		padding: 0;
+	}
+	
+}
+
+
+/* Author */
+
+.author-avatar {
+	
+	.avatar {
+		width: 64px;
+		height: auto;
+	}
+}
+
+.author-info {
+	margin: 40px 0;
+
+	h2, h3 {
+		margin-top: 0;
+	}
+	
+}
+
+
+/* Posts */
+
+.sticky {
+	background-color: $color-gray-lighter;
+}
+
+.entry-meta,
+.comment-meta {
+
+	a.mdc-badge {
+		color: $color-gray-light;
+
+		&::after {
+			right: -14px;
+		}
+	}
+
+}
+
+.entry-meta {
+	font-size: small;
+}
+
+.single {
+	.entry-content,
+	.post-navigation,
+	#comments-title {
+		margin: 40px 0;
+	}
+}
+
+#comments {
+	margin-top: 40px;
+}
+
+.comment-meta {
+	height: 40px;
+}
+
+.comment-form {
+	
+	.mdc-text-field {
+		width: 100%;
+		margin: 10px 0;
+	}
+
+	.form-submit {
+		margin-top: 20px;
+	}
+	
+}
+
+.comment-notes {
+	margin: 0;
+}
+
+.comment-reply-title {
+	margin: 20px 0 10px;
+}
+
+.commentlist {
+	list-style: none;
+	margin: 0 auto;
+	width: 68.9%;
+		
+	> li.comment {
+		margin: 0 0 1.625em;
+		padding: 1.625em;
+		position: relative;
+	}
+
+	.children {
+		list-style: none;
+		margin-top: 20px;
+
+		> li.comment {
+			padding-top: 10px;
+			position: relative;
+		}
+	}
+
+	.avatar {
+		width: 64px;
+		height: 64px;
+		border-radius: 50%;
+		box-shadow: 0 1px 2px $color-gray-light;
+		padding: 0;
+		position: absolute;
+		top: 0;
+		left: -102px;
+	}
+	
+}
+
+
+/**
+ * Responsive Design
+ */
+
+@media (max-width: $screen-sm-max) {
+	
+	#main {
+		.mdc-layout-grid__cell {
+			padding: 0;
+		}
+	}
+}

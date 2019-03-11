@@ -1,6 +1,6 @@
 <?php
 
-$theme_version = '1.2.1';
+$theme_version = '2.0';
 
 	/**
 	 * Include Theme Customizer
@@ -10,17 +10,6 @@ $theme_version = '1.2.1';
 	$theme_customizer = get_template_directory() . '/inc/customizer.php';
 	if ( is_readable( $theme_customizer ) ) {
 		require_once $theme_customizer;
-	}
-
-
-	/**
-	 * Include Meta Boxes to Page-Edit: class/style
-	 *
-	 * @since v1.0
-	 */
-	$theme_metaboxes = get_template_directory() . '/inc/metaboxes.php';
-	if ( is_readable( $theme_metaboxes ) ) {
-		require_once $theme_metaboxes;
 	}
 
 
@@ -91,21 +80,6 @@ $theme_version = '1.2.1';
 
 
 	/**
-	 * Add title tag if < 4.1: https://make.wordpress.org/core/2014/10/29/title-tags-in-4-1
-	 *
-	 * @since v1.0
-	 */
-	if ( ! function_exists( '_wp_render_title_tag' ) ) :
-		function themes_starter_render_title() {
-		?>
-			<title><?php wp_title( '|', true, 'right' ); ?></title>
-		<?php
-		}
-		add_action( 'wp_head', 'themes_starter_render_title' );
-	endif;
-
-
-	/**
 	 * Add new User fields to Userprofile
 	 *
 	 * @since v1.0
@@ -121,7 +95,7 @@ $theme_version = '1.2.1';
 
 			return $fields;
 		}
-		add_filter( 'user_contactmethods', 'themes_starter_add_user_fields' ); // get_user_meta( $user->ID, 'facebook_profile', true );
+		add_filter( 'user_contactmethods', 'themes_starter_add_user_fields' );
 	endif;
 
 
@@ -188,23 +162,34 @@ $theme_version = '1.2.1';
 			global $wp_query;
 
 			if ( $wp_query->max_num_pages > 1 ) : ?>
-				<nav id="<?php echo $nav_id; ?>" class="blog-nav mdl-cell mdl-cell--12-col">
-					<?php next_posts_link( '<button class="mdl-button mdl-js-button mdl-button--icon mdl-color--pink-500 mdl-color-text--white"><i class="material-icons">arrow_back</i></button> ' . __( 'Older posts', 'my-theme' ) ); ?>
-					<div class="mdl-layout-spacer"></div>
-					<?php previous_posts_link( __( 'Newer posts', 'my-theme' ) . ' <button class="mdl-button mdl-js-button mdl-button--icon mdl-color--pink-500 mdl-color-text--white"><i class="material-icons">arrow_forward</i></button>' ); ?>
+				<nav id="<?php echo $nav_id; ?>" class="blog-nav mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+					<?php next_posts_link( '<i class="material-icons mdc-button__icon" aria-hidden="true">arrow_back</i> ' . __( 'Older posts', 'my-theme' ) ); ?>
+					<div class="mdc-layout-spacer"></div>
+					<?php previous_posts_link( __( 'Newer posts', 'my-theme' ) . ' <i class="material-icons mdc-button__icon" aria-hidden="true">arrow_forward</i>' ); ?>
 				</nav><!-- /.blog-nav -->
 			<?php
 			endif;
 		}
 
 		// Add Class
-		/*
 		function posts_link_attributes() {
-			return 'class=""';
+			return 'class="mdc-button"';
 		}
-		add_filter('next_posts_link_attributes', 'posts_link_attributes');
-		add_filter('previous_posts_link_attributes', 'posts_link_attributes');
-		*/
+		add_filter( 'next_posts_link_attributes', 'posts_link_attributes' );
+		add_filter( 'previous_posts_link_attributes', 'posts_link_attributes' );
+		
+
+		/**
+		 * Display a navigation to next/previous single posts
+		 *
+		 * @since v2.0
+		 */
+		function post_link_attributes( $output ) {
+			$class = ' class="mdc-button"';
+			return str_replace( '<a href=', '<a'. $class . ' href=', $output );
+		}
+		add_filter( 'next_post_link', 'post_link_attributes' );
+		add_filter( 'previous_post_link', 'post_link_attributes' );
 
 	endif; // content navigation
 
@@ -229,9 +214,9 @@ $theme_version = '1.2.1';
 		register_sidebar( array(
 			'name' => 'Secondary Widget Area (Footer)',
 			'id' => 'secondary_widget_area',
-			'before_widget' => '<div class="mdl-mega-footer__drop-down-section mdl-mega-footer__link-list">',
+			'before_widget' => '<div class="mdc-layout-grid__cell">',
 			'after_widget' => '</div>',
-			'before_title' => '<h3 class="widget-title mdl-mega-footer__heading">',
+			'before_title' => '<h3 class="widget-title">',
 			'after_title' => '</h3>',
 		) );
 	}
@@ -270,17 +255,27 @@ $theme_version = '1.2.1';
 		global $post;
 		$label = 'pwbox-' . ( empty( $post->ID ) ? rand() : $post->ID );
 
-		$output = '<div class="mdl-grid">';
-			$output .= '<form action="' . esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" method="post">';
-			$output .= '<h4 class="mdl-cell mdl-cell--12-col">' . __( 'This content is password protected. To view it please enter your password below.', 'my-theme' ) . '</h4>';
-				$output .= '<div class="mdl-cell mdl-cell--6-col mdl-cell mdl-cell--12-col-phone">';
-					$output .= '<div class="mdl-textfield mdl-js-textfield">';
-						$output .= '<input name="post_password" id="' . $label . '" type="password" placeholder="' . __( 'Password', 'my-theme' ) . '" class="mdl-textfield__input" />';
-						$output .= '<input type="submit" name="submit" class="mdl-button mdl-js-button mdl-button--raised" value="' . esc_attr( __( 'Submit', 'my-theme' ) ) . '" />';
-					$output .= '</div><!-- /.input-group -->';
-				$output .= '</div><!-- /.mdl-cell -->';
-			$output .= '</form>';
-		$output .= '</div><!-- /.mdl-grid -->';
+		$output = '<form action="' . esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" method="post">';
+			$output .= '<div class="mdc-layout-grid">';
+				$output .= '<div class="mdc-layout-grid__inner">';
+					$output .= '<h4 class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">' . __( 'This content is password protected. To view it please enter your password below.', 'my-theme' ) . '</h4>';
+					$output .= '<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-12-phone">';
+						$output .= '<div class="mdc-text-field mdc-text-field--outlined mdc-text-field--fullwidth" data-mdc-auto-init="MDCTextField">';
+							$output .= '<input type="password" id="post_password" name="post_password" id="' . $label . '" class="mdc-text-field__input" />';
+							$output .= '<div class="mdc-notched-outline">
+							<div class="mdc-notched-outline__leading"></div>
+							<div class="mdc-notched-outline__notch">
+							  <label for="post_password" class="mdc-floating-label">' . __( 'Password', 'my-theme' ) . '</label>
+							</div>
+							<div class="mdc-notched-outline__trailing"></div>
+						  </div>';
+							$output .= '<input type="submit" name="submit" class="mdc-button mdc-button--raised" value="' . esc_attr( __( 'Submit', 'my-theme' ) ) . '" />';
+						$output .= '</div><!-- /.mdc-text-field -->';
+					$output .= '</div><!-- /.mdc-cell -->';
+				$output .= '</div><!-- /.mdc-grid__inner -->';
+			$output .= '</div><!-- /.mdc-grid -->';
+		$output .= '</form>';
+
 		return $output;
 	}
 	add_filter( 'the_password_form', 'themes_starter_password_form' );
@@ -294,7 +289,7 @@ $theme_version = '1.2.1';
 		 * @since v1.0
 		 */
 		function themes_starter_replace_reply_link_class( $class ) {
-			$output = str_replace( "class='comment-reply-link", "class='comment-reply-link mdl-button mdl-js-button mdl-button--raised", $class );
+			$output = str_replace( "class='comment-reply-link", "class='comment-reply-link mdc-button mdc-button--stroked", $class );
 			return $output;
 		}
 		add_filter( 'comment_reply_link', 'themes_starter_replace_reply_link_class' );
@@ -338,7 +333,7 @@ $theme_version = '1.2.1';
 										get_comment_time( 'c' ),
 										/* translators: 1: date, 2: time */
 										//sprintf( __( '%1$s - %2$s', 'my-theme' ), get_comment_time( $theme_dateformat ), get_comment_time( $theme_timeformat ) )
-										sprintf( __( '%1$s ago', 'my-theme' ), human_time_diff( get_comment_time('U'), current_time('timestamp') ) )
+										sprintf( __( '%1$s ago', 'my-theme' ), human_time_diff( get_comment_time( 'U' ), current_time( 'timestamp' ) ) )
 									)
 								);
 							?>
@@ -371,7 +366,7 @@ $theme_version = '1.2.1';
 		 *
 		 * @since v1.0
 		 * @since v1.1: 'submit_button' and 'submit_field'
-		 * @since v1.1.7: Added '$consent' and 'cookies'
+		 * @since v2.0: Added '$consent' and 'cookies'
 		 */
 		function themes_starter_custom_commentform( $args = array(), $post_id = null ) {
 			if ( null === $post_id ) {
@@ -388,23 +383,54 @@ $theme_version = '1.2.1';
 			$aria_req = ( $req ? " aria-required='true' required" : '' );
 			$consent  = ( empty( $commenter['comment_author_email'] ) ? '' : ' checked="checked"' );
 			$fields = array(
-				'author'  => '<div class="mdl-textfield mdl-js-textfield">' .
-							'<input id="author" name="author" class="mdl-textfield__input" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '"' . $aria_req . ' />' .
-							'<label class="mdl-textfield__label" for="author">' . __( 'Name', 'my-theme' ) . ( $req ? '<span class="required">*</span>' : '' ) . '</label></div>',
-				'email'   => '<div class="mdl-textfield mdl-js-textfield">' .
-							'<input id="email" name="email" class="mdl-textfield__input" type="email" value="' . esc_attr( $commenter['comment_author_email'] ) . '"' . $aria_req . ' />' .
-							'<label class="mdl-textfield__label" for="email">' . __( 'Email', 'my-theme' ) . ( $req ? '<span class="required">*</span>' : '' ) . '</label></div>',
+				'author'   => '<div class="mdc-text-field mdc-text-field--outlined" data-mdc-auto-init="MDCTextField">
+								<input type="text" id="author" name="author" class="mdc-text-field__input" value="' . esc_attr( $commenter['comment_author'] ) . '"' . $aria_req . ' />
+								<div class="mdc-notched-outline">
+									<div class="mdc-notched-outline__leading"></div>
+									<div class="mdc-notched-outline__notch">
+										<label for="author" class="mdc-floating-label">' . __( 'Name', 'my-theme' ) . '</label>
+									</div>
+									<div class="mdc-notched-outline__trailing"></div>
+								</div>
+							</div>',
+				'email'   => '<div class="mdc-text-field mdc-text-field--outlined" data-mdc-auto-init="MDCTextField">
+								<input type="email" id="email" name="email" class="mdc-text-field__input" value="' . esc_attr( $commenter['comment_author_email'] ) . '"' . $aria_req . ' />
+								<div class="mdc-notched-outline">
+									<div class="mdc-notched-outline__leading"></div>
+									<div class="mdc-notched-outline__notch">
+										<label for="email" class="mdc-floating-label">' . __( 'Email', 'my-theme' ) . '</label>
+									</div>
+									<div class="mdc-notched-outline__trailing"></div>
+								</div>
+							</div>',
 				'url'     => '',
-				'cookies' => '<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes"' . $consent . ' /> ' .
-							 '<label for="wp-comment-cookies-consent">' . __( 'Save my name, email, and website in this browser for the next time I comment.', 'my-theme' ) . '</label></p>',
+				'cookies' => '<div class="mdc-form-field">
+								<div class="mdc-checkbox">
+									<input type="checkbox" class="mdc-checkbox__native-control" id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" value="yes"' . $consent . ' />
+									<div class="mdc-checkbox__background">
+										<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+											<path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+										</svg>
+										<div class="mdc-checkbox__mixedmark"></div>
+									</div>
+								</div>
+								<label for="wp-comment-cookies-consent">' . __( 'Save my name, email, and website in this browser for the next time I comment.', 'my-theme' ) . '</label>
+							</div>',
 			);
 
 			$fields = apply_filters( 'comment_form_default_fields', $fields );
 			$defaults = array(
 				'fields'               => $fields,
-				'comment_field'        => '<div class="mdl-textfield mdl-js-textfield">' .
-											'<textarea id="comment" name="comment" class="mdl-textfield__input" rows="3" aria-required="true" required></textarea>' .
-											'<label class="mdl-textfield__label" for="comment">' . __( 'Comment', 'my-theme' ) . ( $req ? '*' : '' ) . '</label></div>',
+				'comment_field'        => '<div class="mdc-text-field mdc-text-field--textarea" data-mdc-auto-init="MDCTextField">
+											<textarea id="comment" name="comment" class="mdc-text-field__input" rows="3" aria-required="true" required></textarea>
+												<div class="mdc-notched-outline">
+													<div class="mdc-notched-outline__leading"></div>
+													<div class="mdc-notched-outline__notch">
+														<label class="mdc-floating-label" for="comment">' . __( 'Comment', 'my-theme' ) . '</label>
+													</div>
+													<div class="mdc-notched-outline__trailing"></div>
+												</div>
+											</div>',
 				/** This filter is documented in wp-includes/link-template.php */
 				'must_log_in'          => '<p class="must-log-in">' . sprintf( __( 'You must be <a href="%s">logged in</a> to post a comment.', 'my-theme' ), wp_login_url( apply_filters( 'the_permalink', get_the_permalink( get_the_ID() ) ) ) ) . '</p>',
 				/** This filter is documented in wp-includes/link-template.php */
@@ -413,7 +439,7 @@ $theme_version = '1.2.1';
 				'comment_notes_after'  => '<p class="small comment-notes">' . __( 'Your Email address will not be published.', 'my-theme' ) . '</p>',
 				'id_form'              => 'commentform',
 				'id_submit'            => 'submit',
-				'class_submit'         => 'mdl-button mdl-js-button mdl-button--raised',
+				'class_submit'         => 'mdc-button mdc-button--raised',
 				'name_submit'          => 'submit',
 				'title_reply'          => '',
 				'title_reply_to'       => __( 'Leave a Reply to %s', 'my-theme' ),
@@ -444,8 +470,8 @@ $theme_version = '1.2.1';
 		) );
 	}
 
-	// Custom Nav Walker: mdl_navwalker()
-	$custom_walker = get_template_directory() . '/inc/mdl_navwalker.php';
+	// Custom Nav Walker: mdc_navwalker()
+	$custom_walker = get_template_directory() . '/inc/mdc_navwalker.php';
 	if ( is_readable( $custom_walker ) ) {
 		require_once $custom_walker;
 	}
@@ -463,42 +489,21 @@ $theme_version = '1.2.1';
 		wp_enqueue_style( 'style', get_template_directory_uri() . '/style.css', false, $theme_version, 'all' );
 		wp_enqueue_style( 'robotofont', '//fonts.googleapis.com/css?family=Roboto:300,400,500,700', false, $theme_version, 'all' );
 		wp_enqueue_style( 'materialiconsfont', '//fonts.googleapis.com/icon?family=Material+Icons', false, $theme_version, 'all' );
-		// wp_enqueue_style( 'materialdesign', get_template_directory_uri() . '/bower_components/material-design-lite/material.min.css', false, $theme_version, 'all' );
-		wp_enqueue_style( 'main', get_template_directory_uri() . '/css/main.min.css', false, $theme_version, 'all' ); // main.scss: Compiled Framework source + custom styles
+		//wp_enqueue_style( 'materialdesign', get_template_directory_uri() . '/node_modules/material-components-web/dist/material-components-web.min.css', false, $theme_version, 'all' );
+		wp_enqueue_style( 'main', get_template_directory_uri() . '/assets/css/main.min.css', false, $theme_version, 'all' ); // main.scss: Compiled Framework source + custom styles
+		
 		if ( is_rtl() ) {
-			wp_enqueue_style( 'rtl', get_template_directory_uri() . '/css/rtl.min.css', false, $theme_version, 'all' );
+			wp_enqueue_style( 'rtl', get_template_directory_uri() . '/assets/css/rtl.min.css', false, $theme_version, 'all' );
 		}
 
 		// 2. Scripts
-		wp_enqueue_script( 'materialjs', get_template_directory_uri() . '/bower_components/material-design-lite/material.min.js', false, $theme_version, true );
-		wp_enqueue_script( 'mainjs', get_template_directory_uri() . '/js/main.min.js', array( 'jquery' ), $theme_version, true );
+		wp_enqueue_script( 'materialjs', get_template_directory_uri() . '/node_modules/material-components-web/dist/material-components-web.min.js', false, $theme_version, true );
+		wp_add_inline_script( 'materialjs', 'window.mdc.autoInit();' ); // https://material.io/develop/web/components/auto-init
+		
+		wp_enqueue_script( 'mainjs', get_template_directory_uri() . '/assets/js/main.min.js', array( 'jquery' ), $theme_version, true );
 
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 			wp_enqueue_script( 'comment-reply' );
 		}
 	}
 	add_action( 'wp_enqueue_scripts', 'themes_starter_scripts_loader' );
-
-
-	/**
-	 * Compatibility shims for old IE versions
-	 *
-	 * @since v1.0
-	 */
-	function themes_starter_add_ie_html5_shims() {
-		echo '
-			<!-- IE Compatibility shims -->
-			<!--[if lt IE 9]>
-				<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js""></script>
-			<![endif]-->
-			
-			<!--[if IE]>
-				<script src="//cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js"></script>
-				<script src="//cdnjs.cloudflare.com/ajax/libs/classlist/2014.01.31/classList.min.js"></script>
-				<script src="//cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js"></script>
-				<script src="//cdnjs.cloudflare.com/ajax/libs/flexie/1.0.3/flexie.min.js"></script>
-			<![endif]-->
-			<!-- end shims -->
-			';
-	}
-	add_action( 'wp_footer', 'themes_starter_add_ie_html5_shims', 1 );

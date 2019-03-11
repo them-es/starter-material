@@ -81,7 +81,7 @@
 			</span>
 		<?php endif; // End if comments_open() ?>
 		
-		<a href="<?php echo get_the_permalink(); ?>" class="mdl-button mdl-js-button mdl-button--raised"><?php _e( 'more', 'my-theme' ); ?></a>
+		<a href="<?php echo get_the_permalink(); ?>" class="mdc-button mdc-button--raised"><?php _e( 'more', 'my-theme' ); ?></a>
 		
 		<?php edit_post_link( __( 'Edit', 'my-theme' ), '<span class="edit-link">', '</span>' ); ?>
 	</footer><!-- /.entry-meta -->

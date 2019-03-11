@@ -68,9 +68,9 @@ function themes_starter_customize( $wp_customize ) {
 		'label'         => __( 'Navbar', 'my-theme' ),
 		'section'       => 'theme_header_section',
 		'choices' => array(
-			'scroll'       => __( 'Scroll', 'my-theme' ),
-			'fixed'    => __( 'Fixed', 'my-theme' ),
-			'waterfall'    => __( 'Waterfall', 'my-theme' ),
+			'fixed'     => __( 'Fixed', 'my-theme' ),
+			'prominent' => __( 'Prominent', 'my-theme' ),
+			'dense'     => __( 'Dense', 'my-theme' ),
 		),
 		'settings'   => 'navbar_position',
 		'priority'   => 2,

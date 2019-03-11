@@ -1,19 +1,20 @@
 {
-  "name": "themes-starter-mdl",
-  "version": "1.1.1",
+  "name": "themes-starter-material",
+  "version": "2.0.0",
   "license": "GPL-2.0",
-  "description": "A WordPress Starter Theme built with Material Design Lite.",
+  "description": "A WordPress Starter Theme built with Material Components.",
   "homepage": "http://them.es",
   "author": "them.es",
   "repository": {
     "type": "git",
-    "url": "git://github.com/them-es/themes-starter-mdl.git"
+    "url": "git://github.com/them-es/themes-starter-material.git"
   },
   "scripts": {
     "watch": "grunt watch"
   },
   "dependencies": {},
   "devDependencies": {
+    "material-components-web": ">=0.39.0",
     "autoprefixer": "^9.1.2",
     "cssnano": "^4.0.5",
     "grunt": "^1.0.3",

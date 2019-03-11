@@ -9,12 +9,16 @@
 ?>
 
 	<?php the_post(); ?>
-	<div id="post-<?php the_ID(); ?>" <?php post_class( 'mdl-cell mdl-cell--12-col content' ); ?>>
+
+	<div id="post-<?php the_ID(); ?>" <?php post_class( 'mdc-layout-grid__cell mdc-layout-grid__cell--span-12 content' ); ?>>
 		<h1 class="entry-title"><?php the_title(); ?></h1>
 		<?php
 			the_content();
 			
-			wp_link_pages('before=<div class="page-link">' . __( 'Pages:', 'my-theme' ) . '&after=</div>');
+			wp_link_pages( array(
+				'before' => '<div class="page-links">' . __( 'Pages:', 'my-theme' ),
+				'after'  => '</div>',
+			) );
 			edit_post_link( __( 'Edit', 'my-theme' ), '<span class="edit-link">', '</span>' );
 		?>
 	</div><!-- /#post-<?php the_ID(); ?> -->

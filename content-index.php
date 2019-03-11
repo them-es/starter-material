@@ -4,40 +4,27 @@
  */
 
 	if ( is_home() ) {
-		$post_class = 'mdl-cell--6-col mdl-cell--12-col-phone';
+		$post_class = 'mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-12-phone';
 	} else {
-		$post_class = 'mdl-cell--12-col';
+		$post_class = 'mdc-layout-grid__cell--span-12';
 	}
-
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class( 'mdl-card mdl-shadow--3dp mdl-cell ' . $post_class ); ?>>
-	
-	<header class="mdl-card__title">
-		<h2 class="mdl-card__title-text"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'my-theme' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
-	</header><!-- /.entry-header -->
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'mdc-card mdc-shadow--3dp mdc-layout-grid__cell mdc-layout-grid__cell--align-top ' . $post_class ); ?>>
+	<section class="mdc-card__primary">
+		<header class="mdc-card__title">
+			<h2 class="mdc-card__title-text"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'my-theme' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+		</header><!-- /.entry-header -->
 
-	<div class="mdl-card__supporting-text">
 		<?php if ( 'post' === get_post_type() ) : ?>
 			<p class="entry-meta">
 				<?php
 					themes_starter_article_posted_on();
 					
 					$num_comments = get_comments_number();
-					
-					if ( comments_open() ) :
-							if ( 0 === $num_comments ) {
-								//$comments = __( 'No Comments', 'my-theme' );
-							} elseif ( $num_comments > 1 ) {
-								$comments = $num_comments . ' ' . __( 'Comments', 'my-theme' );
-							} else {
-								$comments = '1 ' . __( 'Comment', 'my-theme' );
-							}
-							
-							if ( isset( $comments ) ) {
-								echo ' <a href="' . get_comments_link() . '" class="pull-right material-icons mdl-badge" title="' . $comments . '" data-badge="' . $num_comments . '">chat_bubble_outline</a>';
-							}
-						endif;
+					if ( comments_open() && $num_comments >= 1 ) :
+						echo ' <a href="' . get_comments_link() . '" class="pull-right mdc-badge" title="' . esc_attr( sprintf( _n( '%s Comment', '%s Comments', $num_comments, 'my-theme' ), $num_comments ) ) . '" data-badge="' . $num_comments . '">' . $num_comments . ' <i class="material-icons">chat_bubble_outline</i></a>';
+					endif;
 				?>
 			</p>
 		<?php endif; ?>
@@ -54,9 +41,9 @@
 			endif;
 		?>
 		<?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'my-theme' ) . '</span>', 'after' => '</div>' ) ); ?>
-	</div><!-- /.entry-content -->
+	</section>
 
-	<footer class="mdl-card__actions mdl-card--border">
-		<a href="<?php echo get_the_permalink(); ?>" class="mdl-button mdl-js-button"><?php _e( 'more', 'my-theme' ); ?></a>
-	</footer><!-- .entry-meta -->
+	<footer class="mdc-card__actions mdc-card--border">
+		<a href="<?php echo get_the_permalink(); ?>" class="mdc-button mdc-button--stroked"><?php _e( 'more', 'my-theme' ); ?></a>
+	</footer>
 </article><!-- /#post-<?php the_ID(); ?> -->

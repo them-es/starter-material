@@ -2,16 +2,16 @@ const sass = require('node-sass');
 const postcss = require('postcss');
 
 module.exports = function (grunt) {
-	"use strict";
+	'use strict';
 	
-	// load all grunt tasks matching the `grunt-*` pattern
+	// Load all Grunt tasks matching the `grunt-*` pattern
 	require('load-grunt-tasks')(grunt);
 
 	grunt.initConfig({
 		
 		pkg: grunt.file.readJSON('package.json'),
 
-		// watch for changes and trigger tasks
+		// Watch for changes and trigger tasks
 		watch: {
 			sass: {
 				files: ['*.{scss,sass}'],
@@ -34,7 +34,8 @@ module.exports = function (grunt) {
 		sass: {
 			options: {
 				implementation: sass,
-				sourceMap: true
+				sourceMap: true,
+				includePaths: ['../node_modules', '../node_modules/material-components-web/node_modules'], // https://github.com/material-components/material-components-web#include-css-for-a-component
 			},
 			dist: {
 				files: {
@@ -44,21 +45,21 @@ module.exports = function (grunt) {
 			}
 		},
 
-		// PostCSS: sourcemaps, autoprefix, minify
+		// PostCSS: Source maps, Autoprefix, Minify
 		postcss: {
 			options: {
 				map: {
-					inline: false, // save all sourcemaps as separate files...
+					inline: false, // Save all Source maps as separate files...
 					annotation: 'css/' // ...to the specified directory
 				},
 				processors: [
-					require('pixrem')(), // add fallbacks for rem units
-					require('autoprefixer')({ browsers: 'last 2 versions' }), // add vendor prefixes
-					require('cssnano')() // minify the result
+					require('pixrem')(), // Add fallbacks for rem units
+					require('autoprefixer')({ browsers: 'last 2 versions' }), // Add vendor prefixes
+					require('cssnano')() // Minify the result
 				]
 			},
 			dist: {
-				src: 'css/*.min.css'
+			  src: 'css/*.min.css'
 			}
 		},
 		
@@ -88,7 +89,7 @@ module.exports = function (grunt) {
 			]
 		},
 		
-		// Uglify to concat, minify, and make source maps
+		// Uglify to concat, minify, and make Source maps
 		uglify: {
 			main: {
 				options: {
@@ -105,8 +106,11 @@ module.exports = function (grunt) {
 		},
 
 	});
+
+	// Set base directory to "/assets": https://gruntjs.com/api/grunt.file#grunt.file.setbase
+	grunt.file.setBase('assets');
 	
-	// register task
+	// Register tasks
 	grunt.registerTask('default', ['watch', 'sass', 'postcss', 'imagemin', 'uglify']);
 
 };

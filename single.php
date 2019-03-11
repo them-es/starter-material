@@ -6,8 +6,8 @@
 	get_header();
 ?>
 
-	<div class="mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet mdl-cell--12-col-phone">
-			
+	<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8 mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-12-phone">
+		
 		<?php
 			if ( have_posts() ) :
 				while ( have_posts() ) :
@@ -34,16 +34,16 @@
 
 			if ( $count_posts->publish > '1' ) :
 		?>
-			<nav class="blog-nav mdl-cell mdl-cell--12-col">
-				<?php previous_post_link( '%link', '<button class="mdl-button mdl-js-button mdl-button--icon mdl-color--pink-500 mdl-color-text--white"><i class="material-icons">arrow_back</i></button> ' . __( 'Previous Post', 'my-theme' ) ); ?>
-				<div class="mdl-layout-spacer"></div>
-				<?php next_post_link( '%link', __( 'Next Post', 'my-theme' ) . ' <button class="mdl-button mdl-js-button mdl-button--icon mdl-color--pink-500 mdl-color-text--white"><i class="material-icons">arrow_forward</i></button>' ); ?>
+			<nav class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 post-navigation">
+				<?php previous_post_link( '%link', '<i class="material-icons mdc-button__icon">arrow_back</i> ' . __( 'Previous Post', 'my-theme' ) ); ?>
+				<div class="mdc-layout-spacer"></div>
+				<?php next_post_link( '%link', __( 'Next Post', 'my-theme' ) . ' <i class="material-icons mdc-button__icon">arrow_forward</i>' ); ?>
 			</nav><!-- /.blog-nav -->
 		<?php
 			endif;
 		?>
 
-	</div><!-- /.mdl-cell -->
+	</div><!-- /.mdc-cell -->
 
 	<?php get_sidebar(); ?>
 

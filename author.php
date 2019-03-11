@@ -18,13 +18,17 @@
 			the_post();
 		?>
 
-		<header class="page-header">
-			<h1 class="page-title author">
-				<?php
-					printf( __( 'Author Archives: %s', 'my-theme' ), '<span class="vcard">' . get_the_author() . '</span>' );
-				?>
-			</h1>
-		</header>
+		<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+			<header class="page-header">
+				<h1 class="page-title author">
+					<?php
+						printf( __( 'Author Archives: %s', 'my-theme' ), '<span class="vcard">' . get_the_author() . '</span>' );
+					?>
+				</h1>
+			</header>
+		</div><!-- /.mdc-cell -->
+
+		<?php get_template_part( 'author', 'bio' ); ?>
 
 		<?php
 			/* Since we called the_post() above, we need to
@@ -34,25 +38,9 @@
 			rewind_posts();
 		?>
 
-		<?php themes_starter_content_nav( 'nav-above' ); ?>
-
-			<?php get_template_part( 'author', 'bio' ); ?>
-
-			<?php
-				/* Start the Loop */
-				while ( have_posts() ) :
-					the_post();
-
-					/* Include the Post-Format-specific template for the content.
-					* If you want to overload this in a child theme then include a file
-					* called content-___.php (where ___ is the Post Format name) and that will be used instead.
-					*/
-					get_template_part( 'content', 'index' );
-
-				endwhile;
-			?>
-
-		<?php themes_starter_content_nav( 'nav-below' ); ?>
+		<?php
+			get_template_part( 'archive', 'loop' );
+		?>
 
 	<?php else : ?>
 

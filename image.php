@@ -7,14 +7,14 @@
 	get_header();
 ?>
 
-	<div class="mdl-cell">
+	<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
 		
 		<?php themes_starter_content_nav( 'nav-above' ); ?>
 
 			<?php
 				if ( have_posts() ) :
 					while (have_posts()) :
-					the_post();
+						the_post();
 			?>
 
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -90,7 +90,7 @@
 
 		<?php themes_starter_content_nav( 'nav-below' ); ?>
 
-	</div><!-- /.mdl-cell -->
+	</div><!-- /.mdc-cell -->
 
 	<?php get_sidebar(); ?>
 	

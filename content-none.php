@@ -4,7 +4,7 @@
  */
 ?>
 
-	<article id="post-0" class="post no-results not-found mdl-cell mdl-cell--12-col">
+	<article id="post-0" class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 post no-results not-found">
 		<header class="entry-header">
 			<h1 class="entry-title"><?php _e( 'Nothing Found', 'my-theme' ); ?></h1>
 		</header><!-- .entry-header -->
