@@ -1,6 +1,6 @@
 <?php
 
-$theme_version = '2.0';
+$theme_version = '2.0.1';
 
 	/**
 	 * Include Theme Customizer
@@ -260,7 +260,7 @@ $theme_version = '2.0';
 				$output .= '<div class="mdc-layout-grid__inner">';
 					$output .= '<h4 class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">' . __( 'This content is password protected. To view it please enter your password below.', 'my-theme' ) . '</h4>';
 					$output .= '<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-12-phone">';
-						$output .= '<div class="mdc-text-field mdc-text-field--outlined mdc-text-field--fullwidth" data-mdc-auto-init="MDCTextField">';
+						$output .= '<div class="mdc-text-field mdc-text-field--outlined" data-mdc-auto-init="MDCTextField">';
 							$output .= '<input type="password" id="post_password" name="post_password" id="' . $label . '" class="mdc-text-field__input" />';
 							$output .= '<div class="mdc-notched-outline">
 							<div class="mdc-notched-outline__leading"></div>

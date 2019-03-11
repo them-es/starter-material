@@ -14,7 +14,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "material-components-web": ">=0.39.0",
+    "material-components-web": ">=1.0.0",
     "autoprefixer": "^9.1.2",
     "cssnano": "^4.0.5",
     "grunt": "^1.0.3",
