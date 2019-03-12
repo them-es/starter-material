@@ -70,6 +70,13 @@ body {
 	color: $text-color;
 }
 
+/* Improve consistency with WordPress Default Blocks (i.e. Columns, Gallery)  */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 .small {
 	font-size: small;
 }
