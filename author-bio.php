@@ -50,10 +50,10 @@
 				);
 		
 				foreach ( $fields as $key => $data ) {
-					$link = get_the_author_meta( esc_attr( $data['meta'] ) );
-					if ( ! empty( $link ) ) {
+					$author_link = get_the_author_meta( esc_attr( $data['meta'] ) );
+					if ( ! empty( $author_link ) ) {
 						$label = esc_html( $data['label'] );
-						echo ' <a href="' . esc_url( $link ) . '" class="mdc-button mdc-js-button" title="' . $label . '">' . $label . '</a> ';
+						echo ' <a href="' . esc_url( $author_link ) . '" class="mdc-button mdc-js-button" title="' . $label . '">' . $label . '</a> ';
 					}
 				}
 			?>

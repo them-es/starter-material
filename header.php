@@ -16,6 +16,8 @@
 
 <body <?php body_class( 'mdc-typography' ); ?>>
 
+<?php wp_body_open(); ?>
+
 <div id="wrapper">
 	<header id="header" class="mdc-top-app-bar mdc-top-app-bar--<?php echo $navbar_position; ?><?php if ( is_home() || is_front_page() ) : echo ' home'; endif; ?>">
 		<div class="mdc-top-app-bar__row">

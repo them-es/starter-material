@@ -1,6 +1,6 @@
 <?php
 
-$theme_version = '2.0.2';
+$theme_version = '2.1.0';
 
 	/**
 	 * Include Theme Customizer
@@ -76,6 +76,25 @@ $theme_version = '2.0.2';
 
 		}
 		add_action( 'after_setup_theme', 'themes_starter_setup_theme' );
+	endif;
+
+
+	/**
+	 * Fire the wp_body_open action.
+	 *
+	 * Added for backwards compatibility to support pre 5.2.0 WordPress versions.
+	 *
+	 * @since v2.1
+	 */
+	if ( ! function_exists( 'wp_body_open' ) ) :
+		function wp_body_open() {
+			/**
+			 * Triggered after the opening <body> tag.
+			 *
+			 * @since v2.1
+			 */
+			do_action( 'wp_body_open' );
+		}
 	endif;
 
 
