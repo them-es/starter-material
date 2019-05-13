@@ -49,22 +49,21 @@
 			<?php endif; ?>
 		</div><!-- /.mdc-top-app-bar__row -->
 		
-		<div id="tab-bar-menu" class="mdc-tab-bar">
+		<div id="tab-bar-menu" class="mdc-tab-bar" role="tablist">
 			<div class="mdc-tab-scroller">
 				<div class="mdc-tab-scroller__scroll-area">
 					<nav id="scrollable-tab-bar-menu" class="mdc-tab-scroller__scroll-content">
 						<?php
-						/** Loading WordPress Custom Menu (theme_location) **/
-						wp_nav_menu( array(
-							'theme_location' => 'main-menu',
-							'container'      => '',
-							'items_wrap'     => '%3$s',
-							'depth'          => 1,
-							//'fallback_cb'    => 'WP_MDC_Navwalker::fallback',
-							'walker'         => new WP_MDC_Navwalker(),
-						) );
+							/** Loading WordPress Custom Menu (theme_location) **/
+							wp_nav_menu( array(
+								'theme_location' => 'main-menu',
+								'container'      => '',
+								'items_wrap'     => '%3$s',
+								'depth'          => 1,
+								//'fallback_cb'    => 'WP_MDC_Navwalker::fallback',
+								'walker'         => new WP_MDC_Navwalker(),
+							) );
 						?>
-						<span class="mdc-tab-bar__indicator"></span>
 					</nav>
 				</div>
 			</div><!-- /.mdc-tab-scroller -->
