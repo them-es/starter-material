@@ -16,6 +16,10 @@ If you want to see it in action or want to download a customized Theme for free,
 * Demo Content
 
 
+## What's not included?
+* jQuery is not needed for Material Components Web and will not be used on the frontend anymore
+
+
 ## Compatible with CSS Preprocessors
 You can use [SASS](http://sass-lang.com) to create your main stylesheet which includes all the required styles.
 
