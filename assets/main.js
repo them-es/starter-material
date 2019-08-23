@@ -1,3 +1,7 @@
+// Webpack Imports
+import * as mdc from 'material-components-web'; // Get all components
+
+
 document.addEventListener('DOMContentLoaded', function () {
 	
 	// Focus Search if Searchform is empty
@@ -13,3 +17,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	window.tabBarScroller = new mdc.tabScroller.MDCTabScroller(document.querySelector('#tab-bar-menu'));
 
 });
+
+// https://material.io/develop/web/components/auto-init
+mdc.autoInit();

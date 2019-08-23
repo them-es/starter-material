@@ -6,7 +6,7 @@
  * https://material.io/design/color
  */
 
-@import "@material/theme/functions";
+@import "../node_modules/material-components-web/node_modules/@material/theme/functions";
 
 // 1. Include custom variables
 $color-gray: #424242;
@@ -110,8 +110,6 @@ a {
 }
 
 img {
-	max-width: 100%;
-	height: auto;
 	vertical-align: middle;
 }
 
@@ -126,10 +124,6 @@ a {
 
 
 /* Layout */
-
-.mdc-toolbar-fixed-adjust {
-	margin-top: 50px;
-}
 
 .mdc-card {
 	.mdc-card__primary {

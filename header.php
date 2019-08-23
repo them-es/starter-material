@@ -70,5 +70,5 @@
 		</div><!-- /.mdc-tab-bar -->
 	</header><!-- /#header -->
 	
-	<main id="main" class="mdc-layout-grid">
-		<div class="mdc-layout-grid__inner<?php if ( 'fixed' === $navbar_position ) : echo ' mdc-toolbar-fixed-adjust'; endif; ?>">
+	<main id="main" class="mdc-layout-grid<?php if ( 'fixed' === $navbar_position ) : echo ' mdc-top-app-bar--prominent-fixed-adjust'; endif; ?>">
+		<div class="mdc-layout-grid__inner">

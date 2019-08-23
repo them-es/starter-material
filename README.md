@@ -9,7 +9,7 @@ If you want to see it in action or want to download a customized Theme for free,
 * WordPress Theme
 * Material Design UI components
 * SASS Source files
-* Grunt configuration
+* gulp + webpack configuration
 * NPM configuration to keep the required build libraries updated and to add new libraries
 * Customization API
 * 2 Menus
@@ -26,17 +26,15 @@ You can use [SASS](http://sass-lang.com) to create your main stylesheet which in
 **`/assets/main.scss`** needs to be compiled as **`/assets/css/main.min.css`**
 
 
-## Grunt Task Automation
+## Task Automation
 This Theme comes with a built in Task Automation. SASS files will be complied if changed, vendor prefixes will be added automatically if required and files will be minified.
 
 * Prerequisites: [Node.js](https://nodejs.org) (NPM) needs to be installed on your system
-* Open the **Project directory** `/` in Terminal and install the required Node.js dependencies: Grunt, SASS-Compiler, Autoprefixer, etc.
-* `$ npm install`
-* Open the **Build directory** `/build` in Terminal and install the required Node.js dependencies: Material Components, etc.
+* Open the **Project directory** `/` in Terminal and install the required Node.js dependencies: gulp, SASS-Compiler, Autoprefixer, etc.
 * `$ npm install`
 * Run the **`watch`** script
 * `$ npm run watch`
-* Modify `/main.scss` and `/js/main.js`
+* Modify `/assets/main.scss` and `/assets/main.js`
 
 
 ## Material Components for the web is the successor to the Material Design Lite project
@@ -47,7 +45,8 @@ This Theme comes with a built in Task Automation. SASS files will be complied if
 
 * [Material Components](https://material.io/components), [MIT licence](https://github.com/material-components/material-components-web/blob/master/LICENSE)
 * [SASS](https://github.com/sass/sass), [MIT licence](https://github.com/sass/sass/blob/stable/MIT-LICENSE)
-* [Grunt](https://github.com/gruntjs/grunt), [MIT licence](https://github.com/gruntjs/grunt/blob/master/LICENSE-MIT)
+* [gulp](https://github.com/gulpjs/gulp), [MIT licence](https://github.com/gulpjs/gulp/blob/master/LICENSE)
+* [webpack](https://github.com/webpack/webpack), [MIT licence](https://github.com/webpack/webpack/blob/master/LICENSE)
 
 
 ## Copyright & License

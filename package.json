@@ -10,7 +10,7 @@
     "url": "git://github.com/them-es/themes-starter-material.git"
   },
   "scripts": {
-    "watch": "grunt watch"
+    "watch": "gulp watch"
   },
   "browserslist": [
     "last 2 versions"

@@ -1,6 +1,6 @@
 <?php
 
-$theme_version = '2.2';
+$theme_version = '2.3.0';
 
 /**
  * Include Theme Customizer
@@ -508,19 +508,15 @@ function themes_starter_scripts_loader() {
 	wp_enqueue_style( 'style', get_template_directory_uri() . '/style.css', false, $theme_version, 'all' );
 	wp_enqueue_style( 'robotofont', '//fonts.googleapis.com/css?family=Roboto:300,400,500,700', false, $theme_version, 'all' );
 	wp_enqueue_style( 'materialiconsfont', '//fonts.googleapis.com/icon?family=Material+Icons', false, $theme_version, 'all' );
-	//wp_enqueue_style( 'materialdesign', get_template_directory_uri() . '/node_modules/material-components-web/dist/material-components-web.min.css', false, $theme_version, 'all' );
-	wp_enqueue_style( 'main', get_template_directory_uri() . '/assets/css/main.min.css', false, $theme_version, 'all' ); // main.scss: Compiled Framework source + custom styles
+	wp_enqueue_style( 'main', get_template_directory_uri() . '/assets/css/main.css', false, $theme_version, 'all' ); // main.scss: Compiled Framework source + custom styles
 	
 	if ( is_rtl() ) {
-		wp_enqueue_style( 'rtl', get_template_directory_uri() . '/assets/css/rtl.min.css', false, $theme_version, 'all' );
+		wp_enqueue_style( 'rtl', get_template_directory_uri() . '/assets/css/rtl.css', false, $theme_version, 'all' );
 	}
 
 	// 2. Scripts
-	wp_enqueue_script( 'materialjs', get_template_directory_uri() . '/node_modules/material-components-web/dist/material-components-web.min.js', false, $theme_version, true );
-	wp_add_inline_script( 'materialjs', 'window.mdc.autoInit();' ); // https://material.io/develop/web/components/auto-init
+	wp_enqueue_script( 'mainjs', get_template_directory_uri() . '/assets/js/main.bundle.js', false, $theme_version, true );
 	
-	wp_enqueue_script( 'mainjs', get_template_directory_uri() . '/assets/js/main.min.js', false, $theme_version, true );
-
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
