@@ -5,11 +5,11 @@ import * as mdc from 'material-components-web'; // Get all components
 document.addEventListener('DOMContentLoaded', function () {
 	
 	// Focus Search if Searchform is empty
-	document.querySelector('.search-form').addEventListener('submit', function (event) {
-		var search = document.getElementById('s');
-		if (search.value === '') {
+	document.querySelector('.search-form').addEventListener('submit', function (e) {
+		var search = document.querySelector('#s');
+		if (search.value.length < 1) {
+			e.preventDefault();
 			search.focus();
-			return false;
 		}
 	});
 
