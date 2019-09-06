@@ -47,6 +47,8 @@ $screen-xs-max:	($screen-sm-min - 1);
 $screen-sm-max:	($screen-md-min - 1);
 $screen-md-max:	($screen-lg-min - 1);
 
+$gutter: 30px;
+
 
 /**
  * Import MDC sources
@@ -375,12 +377,12 @@ body.admin-bar {
 	.entry-content,
 	.post-navigation,
 	#comments-title {
-		margin: 40px 0;
+		margin: $gutter 0;
 	}
 }
 
 #comments {
-	margin-top: 40px;
+	margin-top: $gutter;
 }
 
 .comment-meta {
@@ -405,7 +407,7 @@ body.admin-bar {
 }
 
 .comment-reply-title {
-	margin: 20px 0 10px;
+	margin: $gutter 0 ($gutter/2);
 }
 
 .commentlist {
@@ -421,10 +423,10 @@ body.admin-bar {
 
 	.children {
 		list-style: none;
-		margin-top: 20px;
+		margin-top: $gutter;
 
 		> li.comment {
-			padding-top: 10px;
+			padding-top: $gutter;
 			position: relative;
 		}
 	}
