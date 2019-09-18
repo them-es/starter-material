@@ -1,6 +1,6 @@
 <?php
 
-$theme_version = '2.3.1';
+$theme_version = '2.3.2';
 
 /**
  * Include Theme Customizer
@@ -196,19 +196,6 @@ if ( ! function_exists( 'themes_starter_content_nav' ) ) :
 	}
 	add_filter( 'next_posts_link_attributes', 'posts_link_attributes' );
 	add_filter( 'previous_posts_link_attributes', 'posts_link_attributes' );
-	
-
-	/**
-	 * Display a navigation to next/previous single posts
-	 *
-	 * @since v2.0
-	 */
-	function post_link_attributes( $output ) {
-		$class = ' class="mdc-button"';
-		return str_replace( '<a href=', '<a'. $class . ' href=', $output );
-	}
-	add_filter( 'next_post_link', 'post_link_attributes' );
-	add_filter( 'previous_post_link', 'post_link_attributes' );
 
 endif; // content navigation
 

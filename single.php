@@ -33,16 +33,39 @@
 			$count_posts = wp_count_posts();
 
 			if ( $count_posts->publish > '1' ) :
+				$next_post = get_next_post();
+				$prev_post = get_previous_post();
 		?>
-			<nav class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 post-navigation">
-				<?php previous_post_link( '%link', '<i class="material-icons mdc-button__icon">arrow_back</i> ' . __( 'Previous Post', 'my-theme' ) ); ?>
-				<div class="mdc-layout-spacer"></div>
-				<?php next_post_link( '%link', __( 'Next Post', 'my-theme' ) . ' <i class="material-icons mdc-button__icon">arrow_forward</i>' ); ?>
-			</nav><!-- /.blog-nav -->
+			<br>
+			<hr>
+			<div class="post-navigation mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+				<?php
+					if ( $prev_post ) {
+						$prev_title = get_the_title( $prev_post->ID );
+				?>
+					<a class="previous-post mdc-button" href="<?php echo esc_url( get_permalink( $prev_post->ID ) ); ?>" title="<?php echo esc_attr( $prev_title ); ?>">
+						<i class="material-icons mdc-button__icon">arrow_back</i>
+						<span class="title"><?php echo wp_kses_post( $prev_title ); ?></span>
+					</a>
+				<?php
+					}
+				?>
+					<div class="mdc-layout-spacer"></div>
+				<?php
+					if ( $next_post ) {
+						$next_title = get_the_title( $next_post->ID );
+				?>
+					<a class="next-post mdc-button" href="<?php echo esc_url( get_permalink( $next_post->ID ) ); ?>" title="<?php echo esc_attr( $next_title ); ?>">
+						<span class="title"><?php echo wp_kses_post( $next_title ); ?></span>
+						<i class="material-icons mdc-button__icon">arrow_forward</i>
+					</a>
+				<?php
+					}
+				?>
+			</div><!-- /.post-navigation -->
 		<?php
 			endif;
 		?>
-
 	</div><!-- /.mdc-cell -->
 
 	<?php get_sidebar(); ?>
