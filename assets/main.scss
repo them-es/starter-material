@@ -9,11 +9,14 @@
 @import "@material/theme/functions";
 
 // 1. Include custom variables
-$color-gray: #424242;
+$color-gray-dark: #212121;
+$color-gray: #616161;
 $color-gray-light: #9E9E9E;
 $color-gray-lighter: #F1F3F4;
 
 $text-color: $color-gray;
+
+$link-hover-color: $color-gray-dark;
 
 // 2. Overwrite mdc variables
 $preferred_font: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -67,9 +70,17 @@ body {
 }
 
 body {
+	font-size: 1rem;
+	line-height: 1.5;
 	margin: 0;
-	line-height: 1.15;
 	color: $text-color;
+}
+
+h1,
+h2,
+h3 {
+	font-weight: normal;
+	color: $color-gray-dark;
 }
 
 /* Improve consistency with WordPress Default Blocks (i.e. Columns, Gallery)  */
@@ -122,6 +133,11 @@ hr {
 
 a {
 	color: $text-color;
+
+	&:hover,
+	&[aria-current="page"] {
+		color: $color-gray-dark;
+	}
 }
 
 
@@ -184,8 +200,10 @@ a {
 			border-radius: 0;
 		}
 
-		&.mdc-text-field--with-trailing-icon .mdc-text-field__icon {
-			bottom: 12px;
+		&.mdc-text-field--with-trailing-icon {
+			.mdc-text-field__icon {
+				bottom: 12px;
+			}
 		}
 	}
 }
@@ -354,6 +372,11 @@ body.admin-bar {
 
 .sticky {
 	background-color: $color-gray-lighter;
+}
+
+.entry-title {
+	font-size: 3.5rem;
+	color: $color-gray-dark;
 }
 
 .entry-meta,

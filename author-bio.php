@@ -60,6 +60,4 @@
 		</p>
 	</div><!-- /.author-info -->
 
-	<hr>
-
 <?php endif; ?>
