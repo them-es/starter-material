@@ -11,11 +11,11 @@
 ?>
 
 	<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-	<?php
-		echo nl2br( apply_filters( 'the_content', get_post_field( 'post_content', $page_id ) ) );// = echo content from Bloghome
-
-		edit_post_link( __( 'Edit', 'my-theme' ), '<span class="edit-link">', '</span>', $page_id );
-	?>
+		<?php
+			echo apply_filters( 'the_content', get_post_field( 'post_content', $page_id ) );
+			
+			edit_post_link( __( 'Edit', 'my-theme' ), '<span class="edit-link">', '</span>', $page_id );
+		?>
 	</div><!-- /.mdc-cell -->
 
 	<?php

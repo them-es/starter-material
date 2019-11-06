@@ -13,7 +13,7 @@ if ( ! class_exists( 'WP_MDC_Navwalker' ) ) {
 	 */
 	class WP_MDC_Navwalker extends Walker_Nav_Menu {
 		
-		public function walk( $elements ) {
+		public function walk( $elements, $max_depth = 1, ...$args ) {
 			$list = array ();
 			
 			foreach ( $elements as $item ) {
@@ -31,7 +31,7 @@ if ( ! class_exists( 'WP_MDC_Navwalker' ) ) {
 				$indicator_classes = array();
 				$indicator_classes[] = 'mdc-tab-indicator';
 	
-				if ( $item->current || in_array( 'current_page_parent', (array)$item->classes ) ) {
+				if ( $item->current || in_array( 'current_page_parent', (array) $item->classes ) ) {
 					$classes[] = 'mdc-tab--active';
 					$indicator_classes[] = 'mdc-tab-indicator--active';
 					$atts['aria-current'] = 'page';

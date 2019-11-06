@@ -11,7 +11,7 @@
 						</div>
 
 						<?php if ( current_user_can( 'manage_options' ) ) : ?>
-							<p class="edit-link"><a href="<?php echo admin_url( 'widgets.php' ); ?>" class="badge badge-info"><?php _e( 'Edit', 'my-theme' ); ?></a></p><!-- Show Edit Widget link -->
+							<span class="edit-link"><a href="<?php echo admin_url( 'widgets.php' ); ?>" class="badge badge-info"><?php _e( 'Edit', 'my-theme' ); ?></a></span><!-- Show Edit Widget link -->
 						<?php endif; ?>
 					</div><!-- .widget-area -->
 				<?php endif; ?>
