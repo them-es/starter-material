@@ -83,13 +83,6 @@ h3 {
 	color: $color-gray-dark;
 }
 
-/* Improve consistency with WordPress Default Blocks (i.e. Columns, Gallery)  */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
 .small {
 	font-size: small;
 }
@@ -368,6 +361,37 @@ body.admin-bar {
 }
 
 
+/* Blocks */
+
+.alignfull,
+.alignwide {
+	position: relative;
+	left: 50%;
+	right: 50%;
+	width: 100vw;
+	max-width: 100vw;
+	margin-left: -50vw;
+	margin-right: -50vw;
+}
+
+.alignwide {
+	padding-right: $gutter/2;
+	padding-left: $gutter/2;
+}
+
+/* Improve consistency with WordPress Default Blocks (i.e. Columns, Gallery) */
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+figure {
+	margin: 0;
+}
+
+
 /* Posts */
 
 .sticky {
@@ -430,7 +454,7 @@ body.admin-bar {
 }
 
 .comment-reply-title {
-	margin: $gutter 0 ($gutter/2);
+	margin: $gutter 0 $gutter/2;
 }
 
 .commentlist {
@@ -472,6 +496,17 @@ body.admin-bar {
  * Responsive Design
  */
 
+@media (min-width: $screen-lg-min) {
+	
+	.alignwide {
+		width: 80vw;
+		max-width: 80vw;
+		margin-left: -40vw;
+		margin-right: -40vw;
+	}
+
+}
+
 @media (max-width: $screen-sm-max) {
 	
 	#main {
@@ -479,4 +514,5 @@ body.admin-bar {
 			padding: 0;
 		}
 	}
+
 }
