@@ -55,14 +55,16 @@
 					<nav id="scrollable-tab-bar-menu" class="mdc-tab-scroller__scroll-content">
 						<?php
 							/** Loading WordPress Custom Menu (theme_location) **/
-							wp_nav_menu( array(
-								'theme_location' => 'main-menu',
-								'container'      => '',
-								'items_wrap'     => '%3$s',
-								'depth'          => 1,
-								//'fallback_cb'    => 'WP_MDC_Navwalker::fallback',
-								'walker'         => new WP_MDC_Navwalker(),
-							) );
+							wp_nav_menu(
+								array(
+									'theme_location' => 'main-menu',
+									'container'      => '',
+									'items_wrap'     => '%3$s',
+									'depth'          => 1,
+									//'fallback_cb'    => 'WP_MDC_Navwalker::fallback',
+									'walker'         => new WP_MDC_Navwalker(),
+								)
+							);
 						?>
 					</nav>
 				</div>

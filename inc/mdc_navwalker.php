@@ -21,14 +21,14 @@ if ( ! class_exists( 'WP_MDC_Navwalker' ) ) {
 					$list[] = '<a href="' . esc_url( admin_url( 'nav-menus.php' ) ) . '" title="">' . esc_attr( 'Add a menu', 'my-theme' ) . '</a>';
 				}
 
-				$atts    = array();
+				$atts           = array();
 				$atts['target'] = empty( $item->target ) ? array() : (array) $item->target;
 				$atts['rel']    = empty( $item->xfn ) ? array() : (array) $item->xfn;
 
-				$classes = empty( $item->classes ) ? array() : (array) $item->classes;
+				$classes   = empty( $item->classes ) ? array() : (array) $item->classes;
 				$classes[] = 'mdc-tab';
 
-				$indicator_classes = array();
+				$indicator_classes   = array();
 				$indicator_classes[] = 'mdc-tab-indicator';
 	
 				if ( $item->current || in_array( 'current_page_parent', (array) $item->classes ) ) {

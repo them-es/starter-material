@@ -21,12 +21,14 @@
 				</p>
 
 				<?php
-					wp_nav_menu( array(
-						'theme_location' => 'footer-menu',
-						'container'      => '',
-						'items_wrap'     => '<ul class="mdc-list">%3$s</ul>',
-						'depth'          => 1,
-					) );
+					wp_nav_menu(
+						array(
+							'theme_location' => 'footer-menu',
+							'container'      => '',
+							'items_wrap'     => '<ul class="mdc-list">%3$s</ul>',
+							'depth'          => 1,
+						)
+					);
 				?>
 			</div><!-- /.footer-content -->
 		</footer>

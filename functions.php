@@ -1,6 +1,6 @@
 <?php
 
-$theme_version = '2.3.3';
+$theme_version = wp_get_theme()->get( 'Version' );
 
 /**
  * Include Theme Customizer
@@ -133,7 +133,7 @@ endif;
 function is_blog() {
 	global $post;
 	$posttype = get_post_type( $post );
-	
+
 	return ( ( is_archive() || is_author() || is_category() || is_home() || is_single() || ( is_tag() && ( 'post' === $posttype ) ) ) ? true : false );
 }
 
@@ -186,13 +186,14 @@ if ( ! function_exists( 'themes_starter_content_nav' ) ) :
 	function themes_starter_content_nav( $nav_id ) {
 		global $wp_query;
 
-		if ( $wp_query->max_num_pages > 1 ) : ?>
+		if ( $wp_query->max_num_pages > 1 ) :
+	?>
 			<nav id="<?php echo $nav_id; ?>" class="blog-nav mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
 				<?php next_posts_link( '<i class="material-icons mdc-button__icon" aria-hidden="true">arrow_back</i> ' . __( 'Older posts', 'my-theme' ) ); ?>
 				<div class="mdc-layout-spacer"></div>
 				<?php previous_posts_link( __( 'Newer posts', 'my-theme' ) . ' <i class="material-icons mdc-button__icon" aria-hidden="true">arrow_forward</i>' ); ?>
 			</nav><!-- /.blog-nav -->
-		<?php
+	<?php
 		endif;
 	}
 
@@ -203,7 +204,7 @@ if ( ! function_exists( 'themes_starter_content_nav' ) ) :
 	add_filter( 'next_posts_link_attributes', 'posts_link_attributes' );
 	add_filter( 'previous_posts_link_attributes', 'posts_link_attributes' );
 
-endif; // content navigation
+endif;
 
 
 /**
@@ -213,24 +214,28 @@ endif; // content navigation
  */
 function themes_starter_widgets_init() {
 	// Area 1
-	register_sidebar( array(
-		'name' => 'Primary Widget Area (Sidebar)',
-		'id' => 'primary_widget_area',
-		'before_widget' => '',
-		'after_widget' => '',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
+	register_sidebar(
+		array(
+			'name'          => 'Primary Widget Area (Sidebar)',
+			'id'            => 'primary_widget_area',
+			'before_widget' => '',
+			'after_widget'  => '',
+			'before_title'  => '<h3 class="widget-title">',
+			'after_title'   => '</h3>',
+		)
+	);
 
 	// Area 2
-	register_sidebar( array(
-		'name' => 'Secondary Widget Area (Footer)',
-		'id' => 'secondary_widget_area',
-		'before_widget' => '<div class="mdc-layout-grid__cell">',
-		'after_widget' => '</div>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
+	register_sidebar(
+		array(
+			'name'          => 'Secondary Widget Area (Sidebar)',
+			'id'            => 'secondary_widget_area',
+			'before_widget' => '<div class="mdc-layout-grid__cell">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<h3 class="widget-title">',
+			'after_title'   => '</h3>',
+		)
+	);
 }
 add_action( 'widgets_init', 'themes_starter_widgets_init' );
 
@@ -319,22 +324,19 @@ if ( ! function_exists( 'themes_starter_comment' ) ) :
 		switch ( $comment->comment_type ) :
 			case 'pingback' :
 			case 'trackback' :
-		?>
+	?>
 		<li class="post pingback">
 			<p><?php _e( 'Pingback:', 'my-theme' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __( 'Edit', 'my-theme' ), '<span class="edit-link">', '</span>' ); ?></p>
-		<?php
+	<?php
 				break;
 			default :
-		?>
+	?>
 		<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
 			<article id="comment-<?php comment_ID(); ?>" class="comment">
 				<footer class="comment-meta">
 					<div class="comment-author vcard">
 						<?php
-							$avatar_size = 136;
-							if ( '0' !== $comment->comment_parent ) {
-								$avatar_size = 68;
-							}
+							$avatar_size = ( '0' !== $comment->comment_parent ? 68 : 136 );
 							echo get_avatar( $comment, $avatar_size );
 							
 							/* translators: 1: comment author, 2: date and time */
@@ -350,7 +352,9 @@ if ( ! function_exists( 'themes_starter_comment' ) ) :
 							);
 						?>
 
-						<?php edit_comment_link( __( 'Edit', 'my-theme' ), '<span class="edit-link">', '</span>' ); ?>
+						<?php
+							edit_comment_link( __( 'Edit', 'my-theme' ), '<span class="edit-link">', '</span>' );
+						?>
 					</div><!-- .comment-author .vcard -->
 
 					<?php if ( '0' === $comment->comment_approved ) : ?>
@@ -363,7 +367,9 @@ if ( ! function_exists( 'themes_starter_comment' ) ) :
 				<div class="comment-content"><?php comment_text(); ?></div>
 
 				<div class="reply">
-					<?php comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Reply', 'my-theme' ) . ' <i class="material-icons">reply</i>', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+					<?php
+						comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Reply', 'my-theme' ) . ' <i class="material-icons">reply</i>', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) );
+					?>
 				</div><!-- .reply -->
 			</article><!-- #comment-## -->
 
@@ -463,7 +469,6 @@ if ( ! function_exists( 'themes_starter_comment' ) ) :
 		);
 
 		return $defaults;
-
 	}
 	add_filter( 'comment_form_defaults', 'themes_starter_custom_commentform' );
 
@@ -476,10 +481,12 @@ endif;
  * @since v1.0
  */
 if ( function_exists( 'register_nav_menus' ) ) {
-	register_nav_menus( array(
-		'main-menu' => 'Main Navigation Menu',
-		'footer-menu' => 'Footer Menu',
-	) );
+	register_nav_menus(
+		array(
+			'main-menu'   => 'Main Navigation Menu',
+			'footer-menu' => 'Footer Menu',
+		)
+	);
 }
 
 // Custom Nav Walker: mdc_navwalker()
@@ -502,14 +509,14 @@ function themes_starter_scripts_loader() {
 	wp_enqueue_style( 'robotofont', '//fonts.googleapis.com/css?family=Roboto:300,400,500,700', false, $theme_version, 'all' );
 	wp_enqueue_style( 'materialiconsfont', '//fonts.googleapis.com/icon?family=Material+Icons', false, $theme_version, 'all' );
 	wp_enqueue_style( 'main', get_template_directory_uri() . '/assets/css/main.css', false, $theme_version, 'all' ); // main.scss: Compiled Framework source + custom styles
-	
+
 	if ( is_rtl() ) {
 		wp_enqueue_style( 'rtl', get_template_directory_uri() . '/assets/css/rtl.css', false, $theme_version, 'all' );
 	}
 
 	// 2. Scripts
 	wp_enqueue_script( 'mainjs', get_template_directory_uri() . '/assets/js/main.bundle.js', false, $theme_version, true );
-	
+
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
