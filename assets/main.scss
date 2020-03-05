@@ -361,37 +361,6 @@ body.admin-bar {
 }
 
 
-/* Blocks */
-
-.alignfull,
-.alignwide {
-	position: relative;
-	left: 50%;
-	right: 50%;
-	width: 100vw;
-	max-width: 100vw;
-	margin-left: -50vw;
-	margin-right: -50vw;
-}
-
-.alignwide {
-	padding-right: $gutter/2;
-	padding-left: $gutter/2;
-}
-
-/* Improve consistency with WordPress Default Blocks (i.e. Columns, Gallery) */
-
-*,
-*::before,
-*::after {
-	box-sizing: border-box;
-}
-
-figure {
-	margin: 0;
-}
-
-
 /* Posts */
 
 .sticky {
@@ -492,20 +461,73 @@ figure {
 }
 
 
+/* WordPress Blocks */
+
+// Improve consistency with WordPress Default Blocks (i.e. Columns, Gallery)
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+figure {
+	margin: 0;
+}
+
+// Buttons
+
+.wp-block-button {
+	&.is-style-outline {
+		.wp-block-button__link {
+			@extend .mdc-button;
+			@extend .mdc-button--unelevated;
+		}
+	}
+
+	.wp-block-button__link {
+		@extend .mdc-button;
+		@extend .mdc-button--raised;
+		text-decoration: none;
+	}
+}
+
+// Table
+
+.wp-block-table {
+	@extend .mdc-data-table;
+
+	table {
+		@extend .mdc-data-table__table;
+
+		thead {
+			tr {
+				@extend .mdc-data-table__header-row;
+
+				th {
+					@extend .mdc-data-table__header-cell;
+				}
+			}
+		}
+
+		tbody {
+			@extend .mdc-data-table__content;
+
+			tr {
+				@extend .mdc-data-table__row;
+
+				td {
+					@extend .mdc-data-table__cell;
+				}
+			}
+		}
+	}
+}
+
+
 /**
  * Responsive Design
  */
-
-@media (min-width: $screen-lg-min) {
-	
-	.alignwide {
-		width: 80vw;
-		max-width: 80vw;
-		margin-left: -40vw;
-		margin-right: -40vw;
-	}
-
-}
 
 @media (max-width: $screen-sm-max) {
 	
