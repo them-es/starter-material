@@ -10,16 +10,6 @@ module.exports = {
 		path: path.resolve( __dirname, 'assets/js' ),
 		filename: '[name].bundle.js',
 	},
-	externals: {
-		jquery: 'jQuery'
-	},
-	plugins: [
-		new webpack.ProvidePlugin( {
-			$: 'jquery',
-			jQuery: 'jquery',
-			'window.jQuery': 'jquery',
-		} ),
-	],
 	devtool: 'source-map',
 	watch: true,
 };

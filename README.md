@@ -43,10 +43,10 @@ This Theme comes with a built in Task Automation. SASS files will be complied if
 
 ## Technology
 
-* [Material Components](https://material.io/components), [MIT licence](https://github.com/material-components/material-components-web/blob/master/LICENSE)
-* [SASS](https://github.com/sass/sass), [MIT licence](https://github.com/sass/sass/blob/stable/MIT-LICENSE)
-* [gulp](https://github.com/gulpjs/gulp), [MIT licence](https://github.com/gulpjs/gulp/blob/master/LICENSE)
-* [webpack](https://github.com/webpack/webpack), [MIT licence](https://github.com/webpack/webpack/blob/master/LICENSE)
+* [Material Components](https://material.io/components), [MIT license](https://github.com/material-components/material-components-web/blob/master/LICENSE)
+* [SASS](https://github.com/sass/sass), [MIT license](https://github.com/sass/sass/blob/stable/MIT-LICENSE)
+* [gulp](https://github.com/gulpjs/gulp), [MIT license](https://github.com/gulpjs/gulp/blob/master/LICENSE)
+* [webpack](https://github.com/webpack/webpack), [MIT license](https://github.com/webpack/webpack/blob/master/LICENSE)
 
 
 ## Copyright & License
