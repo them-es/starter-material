@@ -20,14 +20,8 @@ If you want to see it in action or want to download a customized Theme for free,
 * jQuery is not needed for Material Components Web and will not be used on the frontend anymore
 
 
-## Compatible with CSS Preprocessors
-You can use [Sass](http://sass-lang.com) to create your main stylesheet which includes all the required styles.
-
-**`/assets/main.scss`** needs to be compiled as **`/assets/css/main.min.css`**
-
-
 ## Task Automation
-This Theme comes with a built in Task Automation. Sass files will be complied if changed, vendor prefixes will be added automatically if required and files will be minified.
+This Theme comes with a built in webpack task automation. Sass source files will be compiled if changed, vendor prefixes will be added automatically and the CSS will be minified. JS source files will be bundled and minified.
 
 * Prerequisites: [Node.js](https://nodejs.org) (NPM) needs to be installed on your system
 * Open the **Project directory** `/` in Terminal and install the required Node.js dependencies: webpack, Sass-Compiler, Autoprefixer, etc.
