@@ -8,8 +8,8 @@ If you want to see it in action or want to download a customized Theme for free,
 ## What's included?
 * WordPress Theme
 * Material Design UI components
-* SASS Source files
-* gulp + webpack configuration
+* Sass Source files
+* webpack configuration
 * NPM configuration to keep the required build libraries updated and to add new libraries
 * Customization API
 * 2 Menus
@@ -21,31 +21,30 @@ If you want to see it in action or want to download a customized Theme for free,
 
 
 ## Compatible with CSS Preprocessors
-You can use [SASS](http://sass-lang.com) to create your main stylesheet which includes all the required styles.
+You can use [Sass](http://sass-lang.com) to create your main stylesheet which includes all the required styles.
 
 **`/assets/main.scss`** needs to be compiled as **`/assets/css/main.min.css`**
 
 
 ## Task Automation
-This Theme comes with a built in Task Automation. SASS files will be complied if changed, vendor prefixes will be added automatically if required and files will be minified.
+This Theme comes with a built in Task Automation. Sass files will be complied if changed, vendor prefixes will be added automatically if required and files will be minified.
 
 * Prerequisites: [Node.js](https://nodejs.org) (NPM) needs to be installed on your system
-* Open the **Project directory** `/` in Terminal and install the required Node.js dependencies: gulp, SASS-Compiler, Autoprefixer, etc.
+* Open the **Project directory** `/` in Terminal and install the required Node.js dependencies: webpack, Sass-Compiler, Autoprefixer, etc.
 * `$ npm install`
 * Run the **`watch`** script
 * `$ npm run watch`
 * Modify `/assets/main.scss` and `/assets/main.js`
 
 
-## Material Components for the web is the successor to the Material Design Lite project
-* [Migrating from Material Design Lite](https://material.io/develop/web/docs/migrating-from-mdl)
+## More information on the Sass Module System
+* [Sass Module System](https://sass-lang.com/blog/the-module-system-is-launched)
 
 
 ## Technology
 
 * [Material Components](https://material.io/components), [MIT license](https://github.com/material-components/material-components-web/blob/master/LICENSE)
-* [SASS](https://github.com/sass/sass), [MIT license](https://github.com/sass/sass/blob/stable/MIT-LICENSE)
-* [gulp](https://github.com/gulpjs/gulp), [MIT license](https://github.com/gulpjs/gulp/blob/master/LICENSE)
+* [Sass](https://github.com/sass/sass), [MIT license](https://github.com/sass/sass/blob/stable/MIT-LICENSE)
 * [webpack](https://github.com/webpack/webpack), [MIT license](https://github.com/webpack/webpack/blob/master/LICENSE)
 
 

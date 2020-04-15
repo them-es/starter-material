@@ -1,12 +1,68 @@
-// Compile "main.scss" as "css/main.min.css"
+// Compile "main.scss" as "dist/main.css"
 
 
 /**
  * Add custom styles
  * https://material.io/design/color
+ *
+ * https://material.io/develop/web/docs/getting-started
+ * https://sass-lang.com/blog/the-module-system-is-launched
  */
 
-@import "@material/theme/functions";
+@use "@material/theme/functions"; // https://github.com/material-components/material-components-web/blob/master/packages/mdc-theme/README.md
+
+$mdc-theme-primary: #6200EE;
+$mdc-theme-secondary: #03DAC6;
+$mdc-theme-primary--variant: #3700B3;
+$mdc-theme-secondary--variant: #018786;
+$mdc-theme-on-primary: if(functions.contrast-tone($mdc-theme-primary) == "dark", #000, #FFF);
+$mdc-theme-on-secondary: if(functions.contrast-tone($mdc-theme-secondary) == "dark", #000, #FFF);
+
+@use "@material/theme" with (
+	$primary: $mdc-theme-primary,
+	$secondary: $mdc-theme-secondary,
+	$on-primary: $mdc-theme-on-primary,
+	$on-secondary: $mdc-theme-on-secondary,
+);
+
+@use "@material/button";
+@use "@material/button/mdc-button";
+@use "@material/button/variables" as button-variables;
+@use "@material/card/mdc-card";
+@use "@material/checkbox/mdc-checkbox";
+@use "@material/chips/mdc-chips";
+@use "@material/data-table";
+@use "@material/data-table/mdc-data-table";
+@use "@material/data-table/variables" as data-table-variables;
+@use "@material/dialog/mdc-dialog";
+@use "@material/drawer/mdc-drawer";
+@use "@material/elevation/mdc-elevation";
+@use "@material/fab/mdc-fab";
+@use "@material/floating-label/mdc-floating-label";
+@use "@material/form-field/mdc-form-field";
+@use "@material/icon-button/mdc-icon-button";
+@use "@material/image-list/mdc-image-list";
+@use "@material/layout-grid/mdc-layout-grid";
+@use "@material/line-ripple/mdc-line-ripple";
+@use "@material/linear-progress/mdc-linear-progress";
+@use "@material/list/mdc-list";
+@use "@material/menu/mdc-menu";
+@use "@material/menu-surface/mdc-menu-surface";
+@use "@material/notched-outline/mdc-notched-outline";
+@use "@material/radio/mdc-radio";
+@use "@material/ripple/mdc-ripple";
+@use "@material/select/mdc-select";
+@use "@material/slider/mdc-slider";
+@use "@material/snackbar/mdc-snackbar";
+@use "@material/switch/mdc-switch";
+@use "@material/tab/mdc-tab";
+@use "@material/tab-bar/mdc-tab-bar";
+@use "@material/tab-indicator/mdc-tab-indicator";
+@use "@material/tab-scroller/mdc-tab-scroller";
+@use "@material/textfield/mdc-text-field";
+@use "@material/theme/mdc-theme";
+@use "@material/top-app-bar/mdc-top-app-bar";
+@use "@material/typography/mdc-typography";
 
 // 1. Include custom variables
 $color-gray-dark: #212121;
@@ -20,24 +76,12 @@ $link-hover-color: $color-gray-dark;
 
 // 2. Overwrite mdc variables
 $preferred_font: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
-
-$mdc-theme-primary: #6200EE;
-$mdc-theme-on-primary: if(mdc-theme-contrast-tone($mdc-theme-primary) == "dark", #000, #FFF);
-
-$mdc-theme-primary--variant: #3700B3;
-
-$mdc-theme-secondary: #03DAC6;
-$mdc-theme-on-secondary: if(mdc-theme-contrast-tone($mdc-theme-secondary) == "dark", #000, #FFF);
-
-$mdc-theme-secondary--variant: #018786;
+$preferred_font_serif: Georgia, "Times New Roman", Times, serif;
+$preferred_font_monospace: Menlo, Monaco, Consolas, "Courier New", monospace;
 
 $mdc-theme-background: #FFF;
-
 $mdc-theme-surface: #FFF;
-$mdc-theme-on-surface: if(mdc-theme-contrast-tone($mdc-theme-surface) == "dark", #000, #FFF);
-
-$preferred_font_serif:       Georgia, "Times New Roman", Times, serif;
-$preferred_font_monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
+$mdc-theme-on-surface: if(functions.contrast-tone($mdc-theme-surface) == "dark", #000, #FFF);
 
 // Media queries
 $screen-xs-min:	480px;
@@ -51,13 +95,6 @@ $screen-sm-max:	($screen-md-min - 1);
 $screen-md-max:	($screen-lg-min - 1);
 
 $gutter: 30px;
-
-
-/**
- * Import MDC sources
- */
-
-@import "../node_modules/material-components-web/material-components-web";
 
 
 /**
@@ -354,7 +391,8 @@ body.admin-bar {
 .author-info {
 	margin: 40px 0;
 
-	h2, h3 {
+	h2,
+	h3 {
 		margin-top: 0;
 	}
 	
@@ -478,16 +516,32 @@ figure {
 // Buttons
 
 .wp-block-button {
+	@include button.core-styles;
+	@include button.theme-baseline;
+	display: inline-flex !important;
+	align-items: center;
+	justify-content: center;
+
 	&.is-style-outline {
 		.wp-block-button__link {
-			@extend .mdc-button;
-			@extend .mdc-button--unelevated;
+			@include button.outline-color(button-variables.$outline-color);
+			@include button.outline-width(button-variables.$outlined-border-width);
+			@include button.container-fill-color(transparent);
+			@include button.ink-color($mdc-theme-primary);
 		}
 	}
 
 	.wp-block-button__link {
-		@extend .mdc-button;
-		@extend .mdc-button--raised;
+		@include button.container-fill-color($mdc-theme-primary);
+		@include button.ink-color($mdc-theme-on-primary);
+		@include button.density(button-variables.$density-scale);
+		@include button.horizontal-padding(button-variables.$contained-horizontal-padding);
+		@include button.shape-radius(button-variables.$shape-radius);
+		@include button.disabled-container-fill-color(button-variables.$disabled-container-color);
+		@include button.disabled-ink-color(button-variables.$disabled-ink-color);
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		text-decoration: none;
 	}
 }
@@ -495,29 +549,46 @@ figure {
 // Table
 
 .wp-block-table {
-	@extend .mdc-data-table;
+	@include data-table.core-styles;
+	@include data-table.theme-baseline;
+	@include data-table.fill-color(data-table-variables.$fill-color);
+	@include data-table.shape-radius(data-table-variables.$shape-radius);
+	@include data-table.stroke-size(data-table-variables.$stroke-size);
+	@include data-table.stroke-color(data-table-variables.$stroke-color);
+	@include data-table.divider-color(data-table-variables.$divider-color);
+	@include data-table.divider-size(data-table-variables.$divider-size);
 
 	table {
-		@extend .mdc-data-table__table;
+		@include data-table.density(data-table-variables.$default-density-scale);
+		border: 0;
+		table-layout: fixed;
 
 		thead {
 			tr {
-				@extend .mdc-data-table__header-row;
+				@include data-table.header-row-fill-color(data-table-variables.$header-row-fill-color);
+				@include data-table.header-row-text-color(data-table-variables.$header-row-text-color);
 
 				th {
-					@extend .mdc-data-table__header-cell;
+					@include data-table.header-cell-height(data-table-variables.$header-cell-height);
+					box-sizing: border-box;
+					border: none;
 				}
 			}
 		}
 
 		tbody {
-			@extend .mdc-data-table__content;
-
 			tr {
-				@extend .mdc-data-table__row;
+				@include data-table.row-text-color(data-table-variables.$row-text-color);
+				@include data-table.row-fill-color(data-table-variables.$row-fill-color);
 
 				td {
-					@extend .mdc-data-table__cell;
+					@include data-table.cell-height(data-table-variables.$cell-height);
+					@include data-table.cell-padding(
+						$leading-padding: data-table-variables.$cell-leading-padding,
+						$trailing-padding: data-table-variables.$cell-trailing-padding
+					);
+					box-sizing: border-box;
+					border: none;
 				}
 			}
 		}
