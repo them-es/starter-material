@@ -1,6 +1,6 @@
 {
   "name": "themes-starter-material",
-  "version": "2.0.0",
+  "version": "2.4.0",
   "license": "GPL-2.0",
   "description": "A WordPress Starter Theme built with Material Components.",
   "homepage": "http://them.es",
@@ -10,22 +10,25 @@
     "url": "git://github.com/them-es/themes-starter-material.git"
   },
   "scripts": {
-    "watch": "gulp watch"
+    "watch": "webpack -p"
   },
   "browserslist": [
     "last 2 versions"
   ],
   "dependencies": {},
   "devDependencies": {
-    "material-components-web": ">=2.1.0",
-    "gulp": "^4.0.2",
-    "gulp-sass": "^4.0.2",
-    "gulp-sourcemaps": "^2.6.5",
-    "gulp-postcss": "^8.0.0",
-    "autoprefixer": "^6.1.0",
-    "cssnano": "^4.1.10",
-    "fancy-log": "^1.3.3",
-    "webpack": "^4.1.0",
-    "webpack-stream": "^5.2.1"
+    "@babel/core": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
+    "autoprefixer": "^9.7.0",
+    "babel-loader": "^7.1.5",
+    "css-loader": "^1.0.0",
+    "dart-sass": "^1.24.3",
+    "extract-loader": "^3.0.0",
+    "file-loader": "^2.0.0",
+    "material-components-web": "^5.1.0",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^7.1.0",
+    "webpack": "^4.34.0",
+    "webpack-cli": "^3.3.11"
   }
 }
