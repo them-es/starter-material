@@ -9,14 +9,14 @@
  * https://sass-lang.com/blog/the-module-system-is-launched
  */
 
-@use "@material/theme/functions"; // https://github.com/material-components/material-components-web/blob/master/packages/mdc-theme/README.md
+@use "@material/theme/functions" as theme-functions; // https://github.com/material-components/material-components-web/blob/master/packages/mdc-theme/README.md
 
 $mdc-theme-primary: #6200EE;
 $mdc-theme-secondary: #03DAC6;
 $mdc-theme-primary--variant: #3700B3;
 $mdc-theme-secondary--variant: #018786;
-$mdc-theme-on-primary: if(functions.contrast-tone($mdc-theme-primary) == "dark", #000, #FFF);
-$mdc-theme-on-secondary: if(functions.contrast-tone($mdc-theme-secondary) == "dark", #000, #FFF);
+$mdc-theme-on-primary: if(theme-functions.contrast-tone($mdc-theme-primary) == "dark", #000, #FFF);
+$mdc-theme-on-secondary: if(theme-functions.contrast-tone($mdc-theme-secondary) == "dark", #000, #FFF);
 
 @use "@material/theme" with (
 	$primary: $mdc-theme-primary,
@@ -25,35 +25,36 @@ $mdc-theme-on-secondary: if(functions.contrast-tone($mdc-theme-secondary) == "da
 	$on-secondary: $mdc-theme-on-secondary,
 );
 
-@use "@material/button";
+// Uncomment all components that are not needed to reduce the filesize
+@use "@material/button" as button;
 @use "@material/button/mdc-button";
 @use "@material/button/variables" as button-variables;
 @use "@material/card/mdc-card";
 @use "@material/checkbox/mdc-checkbox";
-@use "@material/chips/mdc-chips";
-@use "@material/data-table";
+//@use "@material/chips/mdc-chips";
+@use "@material/data-table" as data-table;
 @use "@material/data-table/mdc-data-table";
 @use "@material/data-table/variables" as data-table-variables;
-@use "@material/dialog/mdc-dialog";
-@use "@material/drawer/mdc-drawer";
-@use "@material/elevation/mdc-elevation";
-@use "@material/fab/mdc-fab";
+//@use "@material/dialog/mdc-dialog";
+//@use "@material/drawer/mdc-drawer";
+//@use "@material/elevation/mdc-elevation";
+//@use "@material/fab/mdc-fab";
 @use "@material/floating-label/mdc-floating-label";
 @use "@material/form-field/mdc-form-field";
 @use "@material/icon-button/mdc-icon-button";
-@use "@material/image-list/mdc-image-list";
+//@use "@material/image-list/mdc-image-list";
 @use "@material/layout-grid/mdc-layout-grid";
 @use "@material/line-ripple/mdc-line-ripple";
 @use "@material/linear-progress/mdc-linear-progress";
 @use "@material/list/mdc-list";
-@use "@material/menu/mdc-menu";
-@use "@material/menu-surface/mdc-menu-surface";
+//@use "@material/menu/mdc-menu";
+//@use "@material/menu-surface/mdc-menu-surface";
 @use "@material/notched-outline/mdc-notched-outline";
 @use "@material/radio/mdc-radio";
 @use "@material/ripple/mdc-ripple";
 @use "@material/select/mdc-select";
-@use "@material/slider/mdc-slider";
-@use "@material/snackbar/mdc-snackbar";
+//@use "@material/slider/mdc-slider";
+//@use "@material/snackbar/mdc-snackbar";
 @use "@material/switch/mdc-switch";
 @use "@material/tab/mdc-tab";
 @use "@material/tab-bar/mdc-tab-bar";
@@ -63,6 +64,7 @@ $mdc-theme-on-secondary: if(functions.contrast-tone($mdc-theme-secondary) == "da
 @use "@material/theme/mdc-theme";
 @use "@material/top-app-bar/mdc-top-app-bar";
 @use "@material/typography/mdc-typography";
+
 
 // 1. Include custom variables
 $color-gray-dark: #212121;
@@ -81,7 +83,7 @@ $preferred_font_monospace: Menlo, Monaco, Consolas, "Courier New", monospace;
 
 $mdc-theme-background: #FFF;
 $mdc-theme-surface: #FFF;
-$mdc-theme-on-surface: if(functions.contrast-tone($mdc-theme-surface) == "dark", #000, #FFF);
+$mdc-theme-on-surface: if(theme-functions.contrast-tone($mdc-theme-surface) == "dark", #000, #FFF);
 
 // Media queries
 $screen-xs-min:	480px;
