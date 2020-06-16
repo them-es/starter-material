@@ -1,14 +1,26 @@
-const path = require( 'path' );
-const autoprefixer = require( 'autoprefixer' );
+const path = require( 'path' ),
+	autoprefixer = require( 'autoprefixer' ),
+	// Modify "dev_url" to actual localhost url
+	dev_url = 'http://localhost/starter-material';
 
 // https://github.com/material-components/material-components-web/blob/master/docs/getting-started.md
 
-module.exports = [{
+module.exports = [ {
 	context: path.resolve( __dirname, 'assets' ),
 	entry: [ './main.scss', './main.js' ],
 	output: {
+		path: path.resolve( __dirname, 'assets/dist' ),
 		filename: './main.bundle.js',
-		path: path.resolve( __dirname, 'assets/dist' )
+	},
+	devtool: 'inline-source-map',
+	watch: true,
+	devServer: {
+		proxy: {
+			'*': {
+				target: dev_url,
+				changeOrigin: true,
+			}
+		}
 	},
 	module: {
 		rules: [
@@ -50,5 +62,4 @@ module.exports = [{
 			}
 		]
 	},
-	watch: true,
 } ];
