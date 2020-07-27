@@ -31,9 +31,9 @@ if ( ! class_exists( 'WP_MDC_Navwalker' ) ) {
 				$indicator_classes   = array();
 				$indicator_classes[] = 'mdc-tab-indicator';
 	
-				if ( $item->current || in_array( 'current_page_parent', (array) $item->classes ) ) {
-					$classes[] = 'mdc-tab--active';
-					$indicator_classes[] = 'mdc-tab-indicator--active';
+				if ( preg_grep( '/^current/', $classes ) ) {
+					$classes[]            = 'mdc-tab--active';
+					$indicator_classes[]  = 'mdc-tab-indicator--active';
 					$atts['aria-current'] = 'page';
 				}
 

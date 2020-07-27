@@ -11,7 +11,7 @@
 <?php
 	$navbar_position = get_theme_mod( 'navbar_position', 'fixed' ); // get custom meta-value
 
-	$search_enabled = get_theme_mod( 'search_enabled', '1' ); // get custom meta-value
+	$search_enabled  = get_theme_mod( 'search_enabled', '1' ); // get custom meta-value
 ?>
 
 <body <?php body_class( 'mdc-typography' ); ?>>
