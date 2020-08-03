@@ -22,7 +22,7 @@
 	<header id="header" class="mdc-top-app-bar mdc-top-app-bar--<?php echo $navbar_position; ?><?php if ( is_home() || is_front_page() ) : echo ' home'; endif; ?>">
 		<div class="mdc-top-app-bar__row">
 			<section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-				<a href="<?php echo home_url(); ?>" class="mdc-top-app-bar__title" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+				<a href="<?php echo esc_url( home_url() ); ?>" class="mdc-top-app-bar__title" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
 				<?php
 					$header_logo = get_theme_mod( 'header_logo' ); // get custom meta-value
 
@@ -37,7 +37,9 @@
 				</a>
 			</section>
 			
-			<?php if ( '1' === $search_enabled ) : ?>
+			<?php
+				if ( '1' === $search_enabled ) :
+			?>
 				<section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
 					<form class="mdc-form-field mdc-form-field--align-end search-form" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 						<div class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-trailing-icon" data-mdc-auto-init="MDCTextField">
@@ -46,7 +48,9 @@
 						</div>
 					</form>
 				</section>
-			<?php endif; ?>
+			<?php
+				endif;
+			?>
 		</div><!-- /.mdc-top-app-bar__row -->
 		
 		<div id="tab-bar-menu" class="mdc-tab-bar" role="tablist">
