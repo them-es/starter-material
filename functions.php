@@ -39,7 +39,6 @@ if ( ! isset( $content_width ) ) {
  */
 if ( ! function_exists( 'themes_starter_setup_theme' ) ) :
 	function themes_starter_setup_theme() {
-
 		// Make theme available for translation: Translations can be filed in the /languages/ directory
 		load_theme_textdomain( 'my-theme', get_template_directory() . '/languages' );
 
@@ -73,7 +72,6 @@ if ( ! function_exists( 'themes_starter_setup_theme' ) ) :
 
 		// Custom CSS-Styles of Wordpress Gallery
 		add_filter( 'use_default_gallery_style', '__return_false' );
-
 	}
 	add_action( 'after_setup_theme', 'themes_starter_setup_theme' );
 endif;
@@ -197,7 +195,6 @@ if ( ! function_exists( 'themes_starter_content_nav' ) ) :
 	}
 	add_filter( 'next_posts_link_attributes', 'posts_link_attributes' );
 	add_filter( 'previous_posts_link_attributes', 'posts_link_attributes' );
-
 endif;
 
 
@@ -250,7 +247,6 @@ if ( ! function_exists( 'themes_starter_article_posted_on' ) ) :
 			esc_attr( sprintf( __( 'View all posts by %s', 'my-theme' ), get_the_author() ) ),
 			get_the_author()
 		);
-
 	}
 endif;
 
@@ -328,7 +324,7 @@ if ( ! function_exists( 'themes_starter_comment' ) ) :
 						<?php
 							$avatar_size = ( '0' !== $comment->comment_parent ? 68 : 136 );
 							echo get_avatar( $comment, $avatar_size );
-							
+
 							/* translators: 1: comment author, 2: date and time */
 							printf( __( '%1$s, %2$s', 'my-theme' ),
 								sprintf( '<span class="fn">%s</span>', get_comment_author_link() ),
@@ -339,18 +335,15 @@ if ( ! function_exists( 'themes_starter_comment' ) ) :
 									sprintf( __( '%1$s ago', 'my-theme' ), human_time_diff( get_comment_time( 'U' ), current_time( 'timestamp' ) ) )
 								)
 							);
-						?>
 
-						<?php
 							edit_comment_link( __( 'Edit', 'my-theme' ), '<span class="edit-link">', '</span>' );
 						?>
-					</div><!-- .comment-author .vcard -->
+					</div><!-- /.comment-author .vcard -->
 
 					<?php if ( '0' === $comment->comment_approved ) : ?>
 						<em class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'my-theme' ); ?></em>
 						<br />
 					<?php endif; ?>
-
 				</footer>
 
 				<div class="comment-content"><?php comment_text(); ?></div>
@@ -359,13 +352,11 @@ if ( ! function_exists( 'themes_starter_comment' ) ) :
 					<?php
 						comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Reply', 'my-theme' ) . ' <i class="material-icons">reply</i>', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) );
 					?>
-				</div><!-- .reply -->
-			</article><!-- #comment-## -->
-
+				</div><!-- /.reply -->
+			</article><!-- /#comment-## -->
 		<?php
 				break;
 		endswitch;
-
 	}
 
 	/**

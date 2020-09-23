@@ -292,7 +292,6 @@ a {
 			margin-right: 16px;
 		}
 	}
-	
 }
 
 
@@ -303,7 +302,6 @@ a {
 
 /* If WP-Adminbar is visible */
 body.admin-bar {
-	
 	#header.mdc-toolbar--fixed {
 		top: 32px;
 	}
@@ -315,7 +313,6 @@ body.admin-bar {
 			display: inline-block;
 			margin-right: 5px;
 		}
-		
 	}
 }
 
@@ -371,19 +368,16 @@ body.admin-bar {
 }
 
 .widget-area {
-	
 	ul {
 		list-style: none;
 		padding: 0;
 	}
-	
 }
 
 
 /* Author */
 
 .author-avatar {
-	
 	.avatar {
 		width: 64px;
 		height: auto;
@@ -397,7 +391,6 @@ body.admin-bar {
 	h3 {
 		margin-top: 0;
 	}
-	
 }
 
 
@@ -414,7 +407,6 @@ body.admin-bar {
 
 .entry-meta,
 .comment-meta {
-
 	a.mdc-badge {
 		color: $color-gray-light;
 
@@ -422,7 +414,6 @@ body.admin-bar {
 			right: -14px;
 		}
 	}
-
 }
 
 .entry-meta {
@@ -446,7 +437,6 @@ body.admin-bar {
 }
 
 .comment-form {
-	
 	.mdc-text-field {
 		width: 100%;
 		margin: 10px 0;
@@ -455,7 +445,6 @@ body.admin-bar {
 	.form-submit {
 		margin-top: 20px;
 	}
-	
 }
 
 .comment-notes {
@@ -497,7 +486,6 @@ body.admin-bar {
 		top: 0;
 		left: -102px;
 	}
-	
 }
 
 
