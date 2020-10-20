@@ -9,9 +9,9 @@
 </head>
 
 <?php
-	$navbar_position = get_theme_mod( 'navbar_position', 'fixed' ); // get custom meta-value
+	$navbar_position = get_theme_mod( 'navbar_position', 'fixed' ); // Get custom meta-value
 
-	$search_enabled  = get_theme_mod( 'search_enabled', '1' ); // get custom meta-value
+	$search_enabled  = get_theme_mod( 'search_enabled', '1' ); // Get custom meta-value
 ?>
 
 <body <?php body_class( 'mdc-typography' ); ?>>
@@ -24,7 +24,7 @@
 			<section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
 				<a href="<?php echo esc_url( home_url() ); ?>" class="mdc-top-app-bar__title" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
 				<?php
-					$header_logo = get_theme_mod( 'header_logo' ); // get custom meta-value
+					$header_logo = get_theme_mod( 'header_logo' ); // Get custom meta-value
 
 					if ( ! empty( $header_logo ) ) :
 				?>
