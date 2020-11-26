@@ -16,7 +16,7 @@ if ( ! class_exists( 'WP_MDC_Navwalker' ) ) {
 
 			foreach ( $elements as $item ) {
 				if ( empty( $item->title ) ) {
-					$list[] = '<a href="' . esc_url( admin_url( 'nav-menus.php' ) ) . '" title="">' . esc_attr( 'Add a menu', 'my-theme' ) . '</a>';
+					$list[] = '<a href="' . esc_url( admin_url( 'nav-menus.php' ) ) . '" title="">' . esc_html( __( 'Add a menu', 'my-theme' ) ) . '</a>';
 				}
 
 				$atts           = array();

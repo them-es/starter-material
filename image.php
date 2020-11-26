@@ -15,8 +15,8 @@ get_header();
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<div class="mdc-layout-grid">
 				<div class="mdc-layout-grid__inner">
-					<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6"><?php previous_image_link( false, '<span aria-hidden="true">&larr;</span> ' . __( 'Previous Image', 'my-theme' ) ); ?></div>
-					<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 text-right"><?php next_image_link( false, __( 'Next Image', 'my-theme' ) . ' <span aria-hidden="true">&rarr;</span>' ); ?></div>
+					<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6"><?php previous_image_link( 'large', '<span aria-hidden="true">&larr;</span> ' . __( 'Previous Image', 'my-theme' ) ); ?></div>
+					<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 text-right"><?php next_image_link( 'large', __( 'Next Image', 'my-theme' ) . ' <span aria-hidden="true">&rarr;</span>' ); ?></div>
 				</div><!-- /.mdc-layout-grid__inner -->
 			</div><!-- /.mdc-layout-grid -->
 
