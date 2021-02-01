@@ -14,9 +14,8 @@ import * as mdc from 'material-components-web'; // Get all components
 		}
 	} );
 
-	// Scrollable tab bar menu: https://github.com/material-components/material-components-web/blob/master/demos/tab-scroller.html
+	// Scrollable tab bar menu: https://material-components.github.io/material-components-web-catalog/#/component/tabs
 	window.tabBarScroller = new mdc.tabScroller.MDCTabScroller( document.querySelector( '#tab-bar-menu' ) );
-
 } )();
 
 // https://material.io/develop/web/components/auto-init

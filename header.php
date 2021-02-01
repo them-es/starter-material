@@ -9,9 +9,9 @@
 </head>
 
 <?php
-	$navbar_position = get_theme_mod( 'navbar_position', 'fixed' ); // Get custom meta-value
+	$navbar_position = get_theme_mod( 'navbar_position', 'fixed' ); // Get custom meta-value.
 
-	$search_enabled  = get_theme_mod( 'search_enabled', '1' ); // Get custom meta-value
+	$search_enabled  = get_theme_mod( 'search_enabled', '1' ); // Get custom meta-value.
 ?>
 
 <body <?php body_class( 'mdc-typography' ); ?>>
@@ -19,12 +19,12 @@
 <?php wp_body_open(); ?>
 
 <div id="wrapper">
-	<header id="header" class="mdc-top-app-bar mdc-top-app-bar--<?php echo $navbar_position; ?><?php if ( is_home() || is_front_page() ) : echo ' home'; endif; ?>">
+	<header id="header" class="mdc-top-app-bar mdc-top-app-bar--<?php echo esc_attr( $navbar_position ); ?><?php if ( is_home() || is_front_page() ) : echo ' home'; endif; ?>">
 		<div class="mdc-top-app-bar__row">
 			<section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
 				<a href="<?php echo esc_url( home_url() ); ?>" class="mdc-top-app-bar__title" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
 				<?php
-					$header_logo = get_theme_mod( 'header_logo' ); // Get custom meta-value
+					$header_logo = get_theme_mod( 'header_logo' ); // Get custom meta-value.
 
 					if ( ! empty( $header_logo ) ) :
 				?>
@@ -58,7 +58,7 @@
 				<div class="mdc-tab-scroller__scroll-area">
 					<nav id="scrollable-tab-bar-menu" class="mdc-tab-scroller__scroll-content">
 						<?php
-							/** Loading WordPress Custom Menu (theme_location) **/
+							// Loading WordPress Custom Menu (theme_location).
 							wp_nav_menu(
 								array(
 									'theme_location' => 'main-menu',

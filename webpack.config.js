@@ -1,5 +1,4 @@
 const path = require( 'path' ),
-	autoprefixer = require( 'autoprefixer' ),
 	// Modify "dev_url" to actual localhost url
 	dev_url = 'http://localhost/starter-material';
 
@@ -38,7 +37,11 @@ module.exports = [ {
 					{
 						loader: 'postcss-loader',
 						options: {
-							plugins: () => [ autoprefixer() ]
+							postcssOptions: {
+								plugins: [
+									require( 'autoprefixer' )
+								]
+							},
 						}
 					},
 					{
@@ -56,7 +59,7 @@ module.exports = [ {
 			{
 				test: /\.js$/,
 				loader: 'babel-loader',
-				query: {
+				options: {
 					presets: [ '@babel/preset-env' ],
 				},
 			}

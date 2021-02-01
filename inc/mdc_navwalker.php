@@ -4,6 +4,7 @@
  * Class Name: WP_MDC_Navwalker
  * Description: A custom WordPress nav walker class to implement the Material Design navigation style in a custom theme using the WordPress built in menu manager.
  */
+
 if ( ! class_exists( 'WP_MDC_Navwalker' ) ) {
 	/**
 	 * WP_MDC_Navwalker class.
@@ -11,12 +12,23 @@ if ( ! class_exists( 'WP_MDC_Navwalker' ) ) {
 	 * @extends Walker_Nav_Menu
 	 */
 	class WP_MDC_Navwalker extends Walker_Nav_Menu {
+
+		/**
+		 * Display array of elements hierarchically.
+		 *
+		 * Does not assume any existing order of elements.
+		 *
+		 * @param array $elements  An array of elements.
+		 * @param int   $max_depth The maximum hierarchical depth.
+		 * @param mixed ...$args   Optional additional arguments.
+		 * @return string The hierarchical item output.
+		 */
 		public function walk( $elements, $max_depth = 1, ...$args ) {
 			$list = array();
 
 			foreach ( $elements as $item ) {
 				if ( empty( $item->title ) ) {
-					$list[] = '<a href="' . esc_url( admin_url( 'nav-menus.php' ) ) . '" title="">' . esc_html( __( 'Add a menu', 'my-theme' ) ) . '</a>';
+					return '<a href="' . esc_url( admin_url( 'nav-menus.php' ) ) . '" title="">' . esc_html( __( 'Add a menu', 'my-theme' ) ) . '</a>';
 				}
 
 				$atts           = array();
@@ -39,14 +51,14 @@ if ( ! class_exists( 'WP_MDC_Navwalker' ) ) {
 				foreach ( $atts as $attr => $value ) {
 					if ( ! empty( $value ) ) {
 						$value       = ( 'href' === $attr ) ? esc_url( $value ) : esc_attr( $value );
-						$attributes .= ' ' . $attr . '="' . $value . '"';
+						$attributes .= ' ' . esc_attr( $attr ) . '="' . esc_attr( $value ) . '"';
 					}
 				}
 
 				$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ) ) );
 				$indicator_class_names = join( ' ', $indicator_classes );
 
-				$list[] = '<a href="' . $item->url . '" class="' . $class_names . '"' . $attributes . ' role="tab"><span class="mdc-tab__content">' . $item->title . '</span><span class="' . $indicator_class_names . '"><span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span></span><span class="mdc-tab__ripple"></span></a>';
+				$list[] = '<a href="' . esc_url( $item->url ) . '" class="' . esc_attr( $class_names ) . '"' . $attributes . ' role="tab"><span class="mdc-tab__content">' . esc_html( $item->title ) . '</span><span class="' . esc_attr( $indicator_class_names ) . '"><span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span></span><span class="mdc-tab__ripple"></span></a>';
 			}
 
 			return join( "\n", $list );
