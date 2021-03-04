@@ -62,12 +62,12 @@ get_header();
 			</footer><!-- /.entry-footer -->
 		</article><!-- /#post-## -->
 		<?php
-			// If comments are open or we have at least one comment, load up the comment template
+			// If comments are open or we have at least one comment, load up the comment template.
 			if ( comments_open() || get_comments_number() ) :
 				comments_template();
 			endif;
 
-			// Parent post navigation
+			// Parent post navigation.
 			the_post_navigation(
 				array(
 					'prev_text' => _x( 'Published in %title', 'Parent post link', 'my-theme' ),
@@ -76,7 +76,7 @@ get_header();
 			);
 			endwhile;
 		endif;
-		wp_reset_postdata(); // end of the loop.
+		wp_reset_postdata(); // End of the loop.
 	?>
 </div><!-- /.mdc-cell -->
 <?php

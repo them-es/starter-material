@@ -6,6 +6,7 @@
  * https://material.io/design/color
  *
  * https://material.io/develop/web/docs/getting-started
+ * https://material.io/develop/web/theming/theming-guide
  * https://sass-lang.com/blog/the-module-system-is-launched
  */
 
@@ -18,6 +19,7 @@ $mdc-theme-secondary--variant: #018786;
 $mdc-theme-on-primary: if(theme-functions.contrast-tone($mdc-theme-primary) == "dark", #000, #FFF);
 $mdc-theme-on-secondary: if(theme-functions.contrast-tone($mdc-theme-secondary) == "dark", #000, #FFF);
 
+// https://material.io/develop/web/theming/theming-guide#step-3-changing-the-theme-with-sass
 @use "@material/theme" with (
 	$primary: $mdc-theme-primary,
 	$secondary: $mdc-theme-secondary,
@@ -26,14 +28,16 @@ $mdc-theme-on-secondary: if(theme-functions.contrast-tone($mdc-theme-secondary) 
 );
 
 // Uncomment all components that are not needed to reduce the filesize
-@use "@material/button" as button;
 @use "@material/button/mdc-button";
+@use "@material/button" as button;
+@use "@material/button/mixins" as button-mixins;
 @use "@material/button/variables" as button-variables;
 @use "@material/card/mdc-card";
 @use "@material/checkbox/mdc-checkbox";
 //@use "@material/chips/mdc-chips";
-@use "@material/data-table" as data-table;
 @use "@material/data-table/mdc-data-table";
+@use "@material/data-table" as data-table;
+@use "@material/data-table/mixins" as data-table-mixins;
 @use "@material/data-table/variables" as data-table-variables;
 //@use "@material/dialog/mdc-dialog";
 //@use "@material/drawer/mdc-drawer";
@@ -185,7 +189,6 @@ a {
 /* Header */
 
 #header {
-	
 	.mdc-tab {
 		color: $mdc-theme-on-primary;
 	}
@@ -250,6 +253,7 @@ a {
 		padding: 0 1rem;
 	}
 
+	.blog-navigation,
 	.post-navigation {
 		display: flex;
 		flex-direction: row;
@@ -257,7 +261,6 @@ a {
 		align-items: center;
 		padding: 8px 0;
 	}
-	
 }
 
 
@@ -506,8 +509,7 @@ figure {
 // Buttons
 
 .wp-block-button {
-	@include button.core-styles;
-	@include button.theme-baseline;
+	@include button-mixins.core-styles;
 	display: inline-flex !important;
 	align-items: center;
 	justify-content: center;
@@ -539,8 +541,7 @@ figure {
 // Table
 
 .wp-block-table {
-	@include data-table.core-styles;
-	@include data-table.theme-baseline;
+	@include data-table-mixins.core-styles;
 	@include data-table.fill-color(data-table-variables.$fill-color);
 	@include data-table.shape-radius(data-table-variables.$shape-radius);
 	@include data-table.stroke-size(data-table-variables.$stroke-size);

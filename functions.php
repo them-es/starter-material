@@ -152,8 +152,7 @@ add_filter( 'comments_open', 'themes_starter_filter_media_comment_status', 10, 2
  * @since v1.0
  */
 function themes_starter_oembed_filter( $html ) {
-	$output = '<div class="embed-responsive embed-responsive-16by9">' . $html . '</div>';
-	return $output;
+	return '<div class="embed-responsive embed-responsive-16by9">' . $html . '</div>';
 }
 add_filter( 'embed_oembed_html', 'themes_starter_oembed_filter', 10, 4 );
 
@@ -169,11 +168,12 @@ if ( ! function_exists( 'themes_starter_content_nav' ) ) :
 
 		if ( $wp_query->max_num_pages > 1 ) :
 	?>
-			<nav id="<?php echo $nav_id; ?>" class="blog-nav mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-				<?php next_posts_link( '<i class="material-icons mdc-button__icon" aria-hidden="true">arrow_back</i> ' . __( 'Older posts', 'my-theme' ) ); ?>
-				<div class="mdc-layout-spacer"></div>
-				<?php previous_posts_link( __( 'Newer posts', 'my-theme' ) . ' <i class="material-icons mdc-button__icon" aria-hidden="true">arrow_forward</i>' ); ?>
-			</nav><!-- /.blog-nav -->
+			<nav id="<?php echo esc_attr( $nav_id ); ?>" class="blog-navigation mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+				<?php
+					next_posts_link( '<i class="material-icons mdc-button__icon" aria-hidden="true">arrow_back</i> ' . __( 'Older posts', 'my-theme' ) );
+					previous_posts_link( __( 'Newer posts', 'my-theme' ) . ' <i class="material-icons mdc-button__icon" aria-hidden="true">arrow_forward</i>' );
+				?>
+			</nav><!-- /.blog-navigation -->
 	<?php
 		endif;
 	}
@@ -193,7 +193,7 @@ endif;
  * @since v1.0
  */
 function themes_starter_widgets_init() {
-	// Area 1
+	// Area 1.
 	register_sidebar(
 		array(
 			'name'          => 'Primary Widget Area (Sidebar)',
@@ -205,7 +205,7 @@ function themes_starter_widgets_init() {
 		)
 	);
 
-	// Area 2
+	// Area 2.
 	register_sidebar(
 		array(
 			'name'          => 'Secondary Widget Area (Sidebar)',
@@ -255,7 +255,7 @@ function themes_starter_password_form() {
 				$output .= '<h4 class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">' . __( 'This content is password protected. To view it please enter your password below.', 'my-theme' ) . '</h4>';
 				$output .= '<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-12-phone">';
 					$output .= '<div class="mdc-text-field mdc-text-field--outlined" data-mdc-auto-init="MDCTextField">';
-						$output .= '<input type="password" id="post_password" name="post_password" id="' . $label . '" class="mdc-text-field__input" />';
+						$output .= '<input type="password" id="post_password" name="post_password" id="' . esc_attr( $label ) . '" class="mdc-text-field__input" />';
 						$output .= '<div class="mdc-notched-outline">
 						<div class="mdc-notched-outline__leading"></div>
 						<div class="mdc-notched-outline__notch">
@@ -283,8 +283,7 @@ if ( ! function_exists( 'themes_starter_comment' ) ) :
 	 * @since v1.0
 	 */
 	function themes_starter_replace_reply_link_class( $class ) {
-		$output = str_replace( "class='comment-reply-link", "class='comment-reply-link mdc-button mdc-button--stroked", $class );
-		return $output;
+		return str_replace( "class='comment-reply-link", "class='comment-reply-link mdc-button mdc-button--stroked", $class );
 	}
 	add_filter( 'comment_reply_link', 'themes_starter_replace_reply_link_class' );
 
@@ -405,9 +404,8 @@ if ( ! function_exists( 'themes_starter_comment' ) ) :
 						</div>',
 		);
 
-		$fields = apply_filters( 'comment_form_default_fields', $fields );
 		$defaults = array(
-			'fields'               => $fields,
+			'fields'               => apply_filters( 'comment_form_default_fields', $fields ),
 			'comment_field'        => '<div class="mdc-text-field mdc-text-field--textarea" data-mdc-auto-init="MDCTextField">
 										<textarea id="comment" name="comment" class="mdc-text-field__input" rows="3" aria-required="true" required></textarea>
 											<div class="mdc-notched-outline">
@@ -458,7 +456,7 @@ if ( function_exists( 'register_nav_menus' ) ) {
 	);
 }
 
-// Custom Nav Walker: mdc_navwalker()
+// Custom Nav Walker: mdc_navwalker().
 $custom_walker = get_template_directory() . '/inc/mdc_navwalker.php';
 if ( is_readable( $custom_walker ) ) {
 	require_once $custom_walker;

@@ -11,7 +11,7 @@ module.exports = [ {
 		path: path.resolve( __dirname, 'assets/dist' ),
 		filename: './main.bundle.js',
 	},
-	devtool: 'inline-source-map',
+	//devtool: 'source-map',
 	watch: true,
 	devServer: {
 		proxy: {
@@ -62,7 +62,17 @@ module.exports = [ {
 				options: {
 					presets: [ '@babel/preset-env' ],
 				},
-			}
+			},
+			{
+				test: /\.(jpe?g|png|gif|svg)$/i, 
+				loader: 'file-loader',
+				options: {
+					esModule: false,
+					outputPath: './assets/img',
+					publicPath: './assets/img',
+					name: '[name].[ext]',
+				},
+			},
 		]
 	},
 } ];

@@ -1,7 +1,6 @@
 // Webpack Imports
 import * as mdc from 'material-components-web'; // Get all components
 
-
 ( function () {
 	'use strict';
 
@@ -19,4 +18,4 @@ import * as mdc from 'material-components-web'; // Get all components
 } )();
 
 // https://material.io/develop/web/components/auto-init
-mdc.autoInit();
+//mdc.autoInit();

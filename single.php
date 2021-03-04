@@ -20,7 +20,7 @@ get_header();
 			endwhile;
 		endif;
 
-		wp_reset_postdata(); // end of the loop.
+		wp_reset_postdata(); // End of the loop.
 
 		$count_posts = wp_count_posts();
 

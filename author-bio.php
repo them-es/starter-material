@@ -20,7 +20,7 @@
 				if ( ! empty( get_the_author_meta( 'user_url' ) ) ) :
 					printf( '<a href="%s" class="www mdc-button mdc-js-button">' . __( 'Website', 'my-theme' ) . '</a>', esc_url( get_the_author_meta( 'user_url' ) ) );
 				endif;
-				
+
 				// Add new Profile fields for Users in functions.php
 				$fields = array(
 					array(
@@ -44,12 +44,12 @@
 						'label' => 'GitHub',
 					),
 				);
-		
+
 				foreach ( $fields as $key => $data ) {
 					$author_link = get_the_author_meta( esc_attr( $data['meta'] ) );
 					if ( ! empty( $author_link ) ) {
-						$label = esc_html( $data['label'] );
-						echo ' <a href="' . esc_url( $author_link ) . '" class="mdc-button mdc-js-button" title="' . $label . '">' . $label . '</a> ';
+						$label = $data['label'];
+						echo ' <a href="' . esc_url( $author_link ) . '" class="mdc-button mdc-js-button" title="' . esc_attr( $label ) . '">' . esc_html( $label ) . '</a> ';
 					}
 				}
 			?>
