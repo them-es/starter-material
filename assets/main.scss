@@ -216,7 +216,7 @@ a {
 		background-color: transparent;
 		height: 46px;
 		border-radius: 4px;
-		transition: background-color 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+		transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 		will-change: background-color;
 
 		&:hover,
@@ -635,7 +635,7 @@ figure {
 			&:hover,
 			&.mdc-text-field--focused {
 				.mdc-text-field__input {
-					width: calc(100vw - 60px);
+					width: calc(100vw - 90px);
 				}
 			}
 		}
