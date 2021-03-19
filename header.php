@@ -2,7 +2,6 @@
 <html <?php language_attributes(); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<?php wp_head(); ?>
@@ -36,23 +35,23 @@
 				?>
 				</a>
 			</section>
-			
+
 			<?php
 				if ( '1' === $search_enabled ) :
 			?>
 				<section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
 					<form class="mdc-form-field mdc-form-field--align-end search-form" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-						<div class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-trailing-icon" data-mdc-auto-init="MDCTextField">
-							<input type="text" id="s" name="s" class="mdc-text-field__input" title="<?php echo esc_attr( __( 'Search', 'my-theme' ) ); ?>" />
+						<label class="mdc-text-field mdc-text-field--outlined" data-mdc-auto-init="MDCTextField">
+							<input type="text" name="s" class="mdc-text-field__input" title="<?php echo esc_attr( __( 'Search', 'my-theme' ) ); ?>" />
 							<button type="submit" class="mdc-icon-button material-icons">search</button>
-						</div>
+						</label>
 					</form>
 				</section>
 			<?php
 				endif;
 			?>
 		</div><!-- /.mdc-top-app-bar__row -->
-		
+
 		<div id="tab-bar-menu" class="mdc-tab-bar" role="tablist">
 			<div class="mdc-tab-scroller">
 				<div class="mdc-tab-scroller__scroll-area">
@@ -75,6 +74,6 @@
 			</div><!-- /.mdc-tab-scroller -->
 		</div><!-- /.mdc-tab-bar -->
 	</header><!-- /#header -->
-	
+
 	<main id="main" class="mdc-layout-grid<?php if ( 'fixed' === $navbar_position ) : echo ' mdc-top-app-bar--prominent-fixed-adjust'; endif; ?>">
 		<div class="mdc-layout-grid__inner">

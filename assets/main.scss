@@ -183,6 +183,11 @@ a {
 	.mdc-card__primary {
 		padding: 1rem;
 	}
+
+	.mdc-card__title-text {
+		hyphens: auto;
+		word-wrap: break-word;
+	}
 }
 
 
@@ -210,29 +215,41 @@ a {
 	.mdc-text-field {
 		background-color: transparent;
 		height: 46px;
-		border-radius: 23px;
-		transition: background-color 0.05s cubic-bezier(0.4, 0, 0.2, 1);
+		border-radius: 4px;
+		transition: background-color 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 		will-change: background-color;
 
 		&:hover,
 		&.mdc-text-field--focused {
 			background-color: #FFF;
 
-			.material-icons,
-			.mdc-floating-label,
+			.mdc-text-field__input {
+				width: 290px;
+			}
+
+			.mdc-icon-button,
 			.mdc-text-field__input {
 				color: $text-color;
 			}
 		}
 
-		.material-icons,
-		.mdc-floating-label,
+		.mdc-text-field__input {
+			width: 0;
+			transition: width .15s cubic-bezier(0.4, 0, 0.2, 1);
+			will-change: width;
+		}
+
+		.mdc-icon-button,
 		.mdc-text-field__input {
 			color: #FFF;
 		}
 
-		.mdc-text-field__input {
-			border-radius: 0;
+		.mdc-icon-button {
+			&::before,
+			&::after {
+				background-color: transparent;
+				border-radius: 4px;
+			}
 		}
 
 		&.mdc-text-field--with-trailing-icon {
@@ -606,6 +623,21 @@ figure {
 	#main {
 		.mdc-layout-grid__cell {
 			padding: 0;
+		}
+	}
+
+}
+
+@media (max-width: $screen-xs-max) {
+	
+	#header {
+		.mdc-text-field {
+			&:hover,
+			&.mdc-text-field--focused {
+				.mdc-text-field__input {
+					width: calc(100vw - 60px);
+				}
+			}
 		}
 	}
 
