@@ -2,7 +2,7 @@
 
 **them.es Starter (Material)** is a WordPress Starter Theme built with Material Design UI components for the web. Please note that the Source files are only recommended for WordPress Developers who are searching for a simple, solid, proved and tested **Material Design Starter Theme** to build upon. **_Don't_ expect a ready-to-use WordPress Theme!**
 
-If you want to see it in action or want to download a customized Theme for free, check out [http://them.es/starter-material](http://them.es/starter-material)
+If you want to see it in action or want to download a customized Theme for free, check out [https://them.es/starter-material](https://them.es/starter-material)
 
 
 ## What's included?
@@ -44,6 +44,6 @@ This Theme comes with a built in webpack task automation. Sass source files will
 
 ## Copyright & License
 
-Code and Documentation &copy; [them.es](http://them.es)
+Code and Documentation &copy; [them.es](https://them.es)
 
-Code released under [GPLv2+](http://www.gnu.org/licenses/gpl-2.0.html)
+Code released under [GPLv2+](https://www.gnu.org/licenses/gpl-2.0.html)

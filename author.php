@@ -19,14 +19,17 @@ if ( have_posts() ) :
 		<header class="page-header">
 			<h1 class="page-title author">
 				<?php
-					printf( __( 'Author Archives: %s', 'my-theme' ), '<span class="vcard">' . esc_html( get_the_author() ) . '</span>' );
+					printf( esc_html__( 'Author Archives: %s', 'my-theme' ), get_the_author() );
 				?>
 			</h1>
 		</header>
 	</div><!-- /.mdc-cell -->
+	<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+		<?php
+			get_template_part( 'author', 'bio' );
+		?>
+	</div><!-- /.mdc-cell -->
 <?php
-	get_template_part( 'author', 'bio' );
-
 	/**
 	 * Since we called the_post() above, we need to
 	 * rewind the loop back to the beginning that way

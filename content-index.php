@@ -10,13 +10,17 @@
 	}
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class( 'mdc-card mdc-shadow--3dp mdc-layout-grid__cell mdc-layout-grid__cell--align-top ' . $post_class ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'mdc-card mdc-shadow--3dp mdc-layout-grid__cell mdc-layout-grid__cell--align-top ' . esc_attr( $post_class ) ); ?>>
 	<section class="mdc-card__primary">
 		<header class="mdc-card__title">
-			<h2 class="mdc-card__title-text"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'my-theme' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+			<h2 class="mdc-card__title-text">
+				<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'my-theme' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
+			</h2>
 		</header><!-- /.entry-header -->
 
-		<?php if ( 'post' === get_post_type() ) : ?>
+		<?php
+			if ( 'post' === get_post_type() ) :
+		?>
 			<p class="entry-meta">
 				<?php
 					themes_starter_article_posted_on();
@@ -27,8 +31,9 @@
 					endif;
 				?>
 			</p>
-		<?php endif; ?>
 		<?php
+			endif;
+
 			if ( has_post_thumbnail() ) :
 				echo '<div class="post-thumbnail">' . get_the_post_thumbnail( get_the_ID(), 'large' ) . '</div>';
 			endif;
@@ -38,11 +43,12 @@
 			else :
 				the_content();
 			endif;
+
+			wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'my-theme' ) . '</span>', 'after' => '</div>' ) );
 		?>
-		<?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'my-theme' ) . '</span>', 'after' => '</div>' ) ); ?>
 	</section>
 
 	<footer class="mdc-card__actions mdc-card--border">
-		<a href="<?php echo get_the_permalink(); ?>" class="mdc-button mdc-button--stroked"><?php _e( 'more', 'my-theme' ); ?></a>
+		<a href="<?php echo get_the_permalink(); ?>" class="mdc-button mdc-button--stroked"><?php esc_html_e( 'more', 'my-theme' ); ?></a>
 	</footer>
 </article><!-- /#post-<?php the_ID(); ?> -->

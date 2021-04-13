@@ -9,7 +9,7 @@
 		<h1 class="entry-title"><?php the_title(); ?></h1>
 
 		<?php
-			if ( 'post' == get_post_type() ) :
+			if ( 'post' === get_post_type() ) :
 		?>
 			<div class="entry-meta">
 				<?php themes_starter_article_posted_on(); ?>
@@ -63,7 +63,5 @@
 		<hr>
 
 		<?php get_template_part( 'author', 'bio' ); ?>
-
 	</footer><!-- /.entry-meta -->
-
 </article><!-- /#post-<?php the_ID(); ?> -->

@@ -12,7 +12,6 @@ if ( ! class_exists( 'WP_MDC_Navwalker' ) ) {
 	 * @extends Walker_Nav_Menu
 	 */
 	class WP_MDC_Navwalker extends Walker_Nav_Menu {
-
 		/**
 		 * Display array of elements hierarchically.
 		 *
@@ -28,7 +27,7 @@ if ( ! class_exists( 'WP_MDC_Navwalker' ) ) {
 
 			foreach ( $elements as $item ) {
 				if ( empty( $item->title ) && empty( $item->url ) ) {
-					return '<a href="' . esc_url( admin_url( 'nav-menus.php' ) ) . '" title="">' . esc_html( __( 'Add a menu', 'my-theme' ) ) . '</a>';
+					return '<a href="' . esc_url( admin_url( 'nav-menus.php' ) ) . '" title="">' . esc_html__( 'Add a menu', 'my-theme' ) . '</a>';
 				}
 
 				$atts           = array();

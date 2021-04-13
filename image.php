@@ -15,8 +15,8 @@ get_header();
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<div class="mdc-layout-grid">
 				<div class="mdc-layout-grid__inner">
-					<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6"><?php previous_image_link( 'large', '<span aria-hidden="true">&larr;</span> ' . __( 'Previous Image', 'my-theme' ) ); ?></div>
-					<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 text-right"><?php next_image_link( 'large', __( 'Next Image', 'my-theme' ) . ' <span aria-hidden="true">&rarr;</span>' ); ?></div>
+					<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6"><?php previous_image_link( 'large', '<span aria-hidden="true">&larr;</span> ' . esc_html__( 'Previous Image', 'my-theme' ) ); ?></div>
+					<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 text-right"><?php next_image_link( 'large', esc_html__( 'Next Image', 'my-theme' ) . ' <span aria-hidden="true">&rarr;</span>' ); ?></div>
 				</div><!-- /.mdc-layout-grid__inner -->
 			</div><!-- /.mdc-layout-grid -->
 
@@ -46,11 +46,11 @@ get_header();
 
 					wp_link_pages(
 						array(
-							'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'my-theme' ) . '</span>',
+							'before'      => '<div class="page-links"><span class="page-links-title">' . esc_html__( 'Pages:', 'my-theme' ) . '</span>',
 							'after'       => '</div>',
 							'link_before' => '<span>',
 							'link_after'  => '</span>',
-							'pagelink'    => '<span class="screen-reader-text">' . __( 'Page', 'my-theme' ) . ' </span>%',
+							'pagelink'    => '<span class="screen-reader-text">' . esc_html__( 'Page', 'my-theme' ) . ' </span>%',
 							'separator'   => '<span class="screen-reader-text">, </span>',
 						)
 					);
@@ -58,7 +58,7 @@ get_header();
 			</div><!-- /.entry-content -->
 
 			<footer class="entry-footer">
-				<?php edit_post_link( __( 'Edit', 'my-theme' ), '<span class="edit-link">', '</span>' ); ?>
+				<?php edit_post_link( esc_html__( 'Edit', 'my-theme' ), '<span class="edit-link">', '</span>' ); ?>
 			</footer><!-- /.entry-footer -->
 		</article><!-- /#post-## -->
 		<?php

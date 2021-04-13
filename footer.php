@@ -14,7 +14,7 @@
 						<?php
 							if ( current_user_can( 'manage_options' ) ) :
 						?>
-							<span class="edit-link"><a href="<?php echo esc_url( admin_url( 'widgets.php' ) ); ?>" class="badge badge-info"><?php _e( 'Edit', 'my-theme' ); ?></a></span><!-- Show Edit Widget link -->
+							<span class="edit-link"><a href="<?php echo esc_url( admin_url( 'widgets.php' ) ); ?>" class="badge badge-info"><?php esc_html_e( 'Edit', 'my-theme' ); ?></a></span><!-- Show Edit Widget link -->
 						<?php
 							endif;
 						?>
@@ -22,9 +22,9 @@
 				<?php
 					endif;
 				?>
-				
+
 				<p class="copyright">
-					<?php printf( __( '&copy; %1$s %2$s. All rights reserved.', 'my-theme' ), esc_attr( date_i18n( 'Y' ) ), esc_attr( get_bloginfo( 'name', 'display' ) ) ); ?>
+					<?php printf( esc_html__( '&copy; %1$s %2$s. All rights reserved.', 'my-theme' ), date_i18n( 'Y' ), get_bloginfo( 'name', 'display' ) ); ?>
 				</p>
 
 				<?php

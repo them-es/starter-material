@@ -8,7 +8,7 @@
 		<span class="mdc-notched-outline">
 			<span class="mdc-notched-outline__leading"></span>
 			<span class="mdc-notched-outline__notch">
-				<span class="mdc-floating-label"><?php _e( 'Search', 'my-theme' ); ?></span>
+				<span class="mdc-floating-label"><?php esc_html_e( 'Search', 'my-theme' ); ?></span>
 			</span>
 			<span class="mdc-notched-outline__trailing"></span>
 		</span>

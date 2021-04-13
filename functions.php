@@ -46,20 +46,23 @@ if ( ! function_exists( 'themes_starter_setup_theme' ) ) :
 		add_theme_support( 'title-tag' );
 		add_theme_support( 'automatic-feed-links' );
 		add_theme_support( 'post-thumbnails' );
-		add_theme_support( 'html5', array(
-			'search-form',
-			'comment-form',
-			'comment-list',
-			'gallery',
-			'caption',
-			'script',
-			'style',
-			'navigation-widgets',
-		) );
+		add_theme_support(
+			'html5',
+			array(
+				'search-form',
+				'comment-form',
+				'comment-list',
+				'gallery',
+				'caption',
+				'script',
+				'style',
+				'navigation-widgets',
+			)
+		);
 
 		// Add support for Block Styles.
 		add_theme_support( 'wp-block-styles' );
-		// Add support for full and wide align images.
+		// Add support for full and wide alignment.
 		add_theme_support( 'align-wide' );
 		// Add support for editor styles.
 		add_theme_support( 'editor-styles' );
@@ -75,6 +78,10 @@ if ( ! function_exists( 'themes_starter_setup_theme' ) ) :
 		add_filter( 'use_default_gallery_style', '__return_false' );
 	}
 	add_action( 'after_setup_theme', 'themes_starter_setup_theme' );
+
+	// Disable Block Directory: https://github.com/WordPress/gutenberg/blob/trunk/docs/reference-guides/filters/editor-filters.md#block-directory
+	remove_action( 'enqueue_block_editor_assets', 'wp_enqueue_editor_block_directory_assets' );
+	remove_action( 'enqueue_block_editor_assets', 'gutenberg_enqueue_block_editor_assets_block_directory' );
 endif;
 
 
@@ -170,8 +177,8 @@ if ( ! function_exists( 'themes_starter_content_nav' ) ) :
 	?>
 			<nav id="<?php echo esc_attr( $nav_id ); ?>" class="blog-navigation mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
 				<?php
-					next_posts_link( '<i class="material-icons mdc-button__icon" aria-hidden="true">arrow_back</i> ' . __( 'Older posts', 'my-theme' ) );
-					previous_posts_link( __( 'Newer posts', 'my-theme' ) . ' <i class="material-icons mdc-button__icon" aria-hidden="true">arrow_forward</i>' );
+					next_posts_link( '<i class="material-icons mdc-button__icon" aria-hidden="true">arrow_back</i> ' . esc_html__( 'Older posts', 'my-theme' ) );
+					previous_posts_link( esc_html__( 'Newer posts', 'my-theme' ) . ' <i class="material-icons mdc-button__icon" aria-hidden="true">arrow_forward</i>' );
 				?>
 			</nav><!-- /.blog-navigation -->
 	<?php
@@ -227,13 +234,14 @@ if ( ! function_exists( 'themes_starter_article_posted_on' ) ) :
 	 * @since v1.0
 	 */
 	function themes_starter_article_posted_on() {
-		printf( __( '<span class="sep">Posted on </span><a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a><span class="by-author"> <span class="sep"> by </span> <span class="author-meta vcard"><a class="url fn n" href="%5$s" title="%6$s" rel="author">%7$s</a></span></span>', 'my-theme' ),
+		printf(
+			__( '<span class="sep">Posted on </span><a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a><span class="by-author"> <span class="sep"> by </span> <span class="author-meta vcard"><a class="url fn n" href="%5$s" title="%6$s" rel="author">%7$s</a></span></span>', 'my-theme' ),
 			esc_url( get_the_permalink() ),
 			esc_attr( get_the_date() . ' - ' . get_the_time() ),
 			esc_attr( get_the_date( 'c' ) ),
 			esc_html( get_the_date() . ' - ' . get_the_time() ),
 			esc_url( get_author_posts_url( (int) get_the_author_meta( 'ID' ) ) ),
-			esc_attr( sprintf( __( 'View all posts by %s', 'my-theme' ), get_the_author() ) ),
+			sprintf( esc_attr__( 'View all posts by %s', 'my-theme' ), get_the_author() ),
 			get_the_author()
 		);
 	}
@@ -252,18 +260,18 @@ function themes_starter_password_form() {
 	$output = '<form action="' . esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" method="post">';
 		$output .= '<div class="mdc-layout-grid">';
 			$output .= '<div class="mdc-layout-grid__inner">';
-				$output .= '<h4 class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">' . __( 'This content is password protected. To view it please enter your password below.', 'my-theme' ) . '</h4>';
+				$output .= '<h4 class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">' . esc_html__( 'This content is password protected. To view it please enter your password below.', 'my-theme' ) . '</h4>';
 				$output .= '<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-12-phone">';
 					$output .= '<div class="mdc-text-field mdc-text-field--outlined" data-mdc-auto-init="MDCTextField">';
 						$output .= '<input type="password" id="post_password" name="post_password" id="' . esc_attr( $label ) . '" class="mdc-text-field__input" />';
 						$output .= '<div class="mdc-notched-outline">
 						<div class="mdc-notched-outline__leading"></div>
 						<div class="mdc-notched-outline__notch">
-							<label for="post_password" class="mdc-floating-label">' . __( 'Password', 'my-theme' ) . '</label>
+							<label for="post_password" class="mdc-floating-label">' . esc_html__( 'Password', 'my-theme' ) . '</label>
 						</div>
 						<div class="mdc-notched-outline__trailing"></div>
 						</div>';
-						$output .= '<input type="submit" name="submit" class="mdc-button mdc-button--raised" value="' . esc_attr( __( 'Submit', 'my-theme' ) ) . '" />';
+						$output .= '<input type="submit" name="submit" class="mdc-button mdc-button--raised" value="' . esc_attr__( 'Submit', 'my-theme' ) . '" />';
 					$output .= '</div><!-- /.mdc-text-field -->';
 				$output .= '</div><!-- /.mdc-cell -->';
 			$output .= '</div><!-- /.mdc-grid__inner -->';
@@ -300,7 +308,7 @@ if ( ! function_exists( 'themes_starter_comment' ) ) :
 			case 'trackback':
 	?>
 		<li class="post pingback">
-			<p><?php _e( 'Pingback:', 'my-theme' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __( 'Edit', 'my-theme' ), '<span class="edit-link">', '</span>' ); ?></p>
+			<p><?php esc_html_e( 'Pingback:', 'my-theme' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __( 'Edit', 'my-theme' ), '<span class="edit-link">', '</span>' ); ?></p>
 	<?php
 				break;
 			default:
@@ -314,13 +322,14 @@ if ( ! function_exists( 'themes_starter_comment' ) ) :
 							echo get_avatar( $comment, $avatar_size );
 
 							/* translators: 1: comment author, 2: date and time */
-							printf( __( '%1$s, %2$s', 'my-theme' ),
+							printf(
+								__( '%1$s, %2$s', 'my-theme' ),
 								sprintf( '<span class="fn">%s</span>', get_comment_author_link() ),
 								sprintf( '<a href="%1$s"><time datetime="%2$s">%3$s</time></a>',
 									esc_url( get_comment_link( $comment->comment_ID ) ),
 									get_comment_time( 'c' ),
 									/* translators: 1: date, 2: time */
-									sprintf( __( '%1$s ago', 'my-theme' ), human_time_diff( (int) get_comment_time( 'U' ), current_time( 'timestamp' ) ) )
+									sprintf( esc_html__( '%1$s ago', 'my-theme' ), human_time_diff( (int) get_comment_time( 'U' ), current_time( 'timestamp' ) ) )
 								)
 							);
 
@@ -329,7 +338,7 @@ if ( ! function_exists( 'themes_starter_comment' ) ) :
 					</div><!-- /.comment-author .vcard -->
 
 					<?php if ( '0' === $comment->comment_approved ) : ?>
-						<em class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'my-theme' ); ?></em>
+						<em class="comment-awaiting-moderation"><?php esc_html_e( 'Your comment is awaiting moderation.', 'my-theme' ); ?></em>
 						<br />
 					<?php endif; ?>
 				</footer>
@@ -338,7 +347,7 @@ if ( ! function_exists( 'themes_starter_comment' ) ) :
 
 				<div class="reply">
 					<?php
-						comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Reply', 'my-theme' ) . ' <i class="material-icons">reply</i>', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) );
+						comment_reply_link( array_merge( $args, array( 'reply_text' => esc_html__( 'Reply', 'my-theme' ) . ' <i class="material-icons">reply</i>', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) );
 					?>
 				</div><!-- /.reply -->
 			</article><!-- /#comment-## -->
@@ -374,7 +383,7 @@ if ( ! function_exists( 'themes_starter_comment' ) ) :
 							<div class="mdc-notched-outline">
 								<div class="mdc-notched-outline__leading"></div>
 								<div class="mdc-notched-outline__notch">
-									<label for="author" class="mdc-floating-label">' . __( 'Name', 'my-theme' ) . '</label>
+									<label for="author" class="mdc-floating-label">' . esc_html__( 'Name', 'my-theme' ) . '</label>
 								</div>
 								<div class="mdc-notched-outline__trailing"></div>
 							</div>
@@ -384,7 +393,7 @@ if ( ! function_exists( 'themes_starter_comment' ) ) :
 							<div class="mdc-notched-outline">
 								<div class="mdc-notched-outline__leading"></div>
 								<div class="mdc-notched-outline__notch">
-									<label for="email" class="mdc-floating-label">' . __( 'Email', 'my-theme' ) . '</label>
+									<label for="email" class="mdc-floating-label">' . esc_html__( 'Email', 'my-theme' ) . '</label>
 								</div>
 								<div class="mdc-notched-outline__trailing"></div>
 							</div>
@@ -400,7 +409,7 @@ if ( ! function_exists( 'themes_starter_comment' ) ) :
 									<div class="mdc-checkbox__mixedmark"></div>
 								</div>
 							</div>
-							<label for="wp-comment-cookies-consent">' . __( 'Save my name, email, and website in this browser for the next time I comment.', 'my-theme' ) . '</label>
+							<label for="wp-comment-cookies-consent">' . esc_html__( 'Save my name, email, and website in this browser for the next time I comment.', 'my-theme' ) . '</label>
 						</div>',
 		);
 
@@ -411,7 +420,7 @@ if ( ! function_exists( 'themes_starter_comment' ) ) :
 											<div class="mdc-notched-outline">
 												<div class="mdc-notched-outline__leading"></div>
 												<div class="mdc-notched-outline__notch">
-													<label class="mdc-floating-label" for="comment">' . __( 'Comment', 'my-theme' ) . '</label>
+													<label class="mdc-floating-label" for="comment">' . esc_html__( 'Comment', 'my-theme' ) . '</label>
 												</div>
 												<div class="mdc-notched-outline__trailing"></div>
 											</div>
@@ -421,15 +430,15 @@ if ( ! function_exists( 'themes_starter_comment' ) ) :
 			/** This filter is documented in wp-includes/link-template.php */
 			'logged_in_as'         => '<p class="logged-in-as">' . sprintf( __( 'Logged in as <a href="%1$s">%2$s</a>. <a href="%3$s" title="Log out of this account">Log out?</a>', 'my-theme' ), get_edit_user_link(), $user->display_name, wp_logout_url( apply_filters( 'the_permalink', get_the_permalink( get_the_ID() ) ) ) ) . '</p>',
 			'comment_notes_before' => '',
-			'comment_notes_after'  => '<p class="small comment-notes">' . __( 'Your Email address will not be published.', 'my-theme' ) . '</p>',
+			'comment_notes_after'  => '<p class="small comment-notes">' . esc_html__( 'Your Email address will not be published.', 'my-theme' ) . '</p>',
 			'id_form'              => 'commentform',
 			'id_submit'            => 'submit',
 			'class_submit'         => 'mdc-button mdc-button--raised',
 			'name_submit'          => 'submit',
 			'title_reply'          => '',
-			'title_reply_to'       => __( 'Leave a Reply to %s', 'my-theme' ),
-			'cancel_reply_link'    => __( 'Cancel reply', 'my-theme' ),
-			'label_submit'         => __( 'Post Comment', 'my-theme' ),
+			'title_reply_to'       => esc_html__( 'Leave a Reply to %s', 'my-theme' ),
+			'cancel_reply_link'    => esc_html__( 'Cancel reply', 'my-theme' ),
+			'label_submit'         => esc_html__( 'Post Comment', 'my-theme' ),
 			'submit_button'        => '<input name="%1$s" type="submit" id="%2$s" class="%3$s" value="%4$s" />',
 			'submit_field'         => '<div class="form-submit">%1$s %2$s</div>',
 			'format'               => 'html5',

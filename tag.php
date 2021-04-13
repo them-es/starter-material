@@ -9,7 +9,7 @@ if ( have_posts() ) :
 ?>
 	<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
 		<header class="page-header">
-			<h1 class="page-title"><?php printf( __( 'Tag: %s', 'my-theme' ), '<span>' . single_tag_title( '', false ) . '</span>' ); ?></h1>
+			<h1 class="page-title"><?php printf( esc_html__( 'Tag: %s', 'my-theme' ), single_tag_title( '', false ) ); ?></h1>
 			<?php
 				$tag_description = tag_description();
 				if ( ! empty( $tag_description ) ) :
