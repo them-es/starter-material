@@ -41,7 +41,7 @@
 			?>
 				<section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
 					<form class="mdc-form-field mdc-form-field--align-end search-form" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-						<label class="mdc-text-field mdc-text-field--outlined" data-mdc-auto-init="MDCTextField">
+						<label class="mdc-text-field mdc-text-field--outlined mdc-text-field--no-label" data-mdc-auto-init="MDCTextField">
 							<input type="text" name="s" class="mdc-text-field__input" title="<?php esc_attr_e( 'Search', 'my-theme' ); ?>" />
 							<button type="submit" class="mdc-icon-button material-icons">search</button>
 						</label>

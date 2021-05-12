@@ -47,10 +47,10 @@ module.exports = [ {
 					{
 						loader: 'sass-loader',
 						options: {
-							implementation: require( 'dart-sass' ), // Prefer Dart Sass
+							implementation: require( 'sass' ),
 							webpackImporter: false, // See https://github.com/webpack-contrib/sass-loader/issues/804
 							sassOptions: {
-								includePaths: [ './node_modules' ],
+								includePaths: [ 'node_modules', 'node_modules/@material/*' ],
 							},
 						},
 					}

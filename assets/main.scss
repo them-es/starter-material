@@ -10,24 +10,23 @@
  * https://sass-lang.com/blog/the-module-system-is-launched
  */
 
-@use "@material/theme/functions" as theme-functions; // https://github.com/material-components/material-components-web/blob/master/packages/mdc-theme/README.md
 
-$mdc-theme-primary: #6200EE;
-$mdc-theme-secondary: #03DAC6;
-$mdc-theme-primary--variant: #3700B3;
-$mdc-theme-secondary--variant: #018786;
-$mdc-theme-on-primary: if(theme-functions.contrast-tone($mdc-theme-primary) == "dark", #000, #FFF);
-$mdc-theme-on-secondary: if(theme-functions.contrast-tone($mdc-theme-secondary) == "dark", #000, #FFF);
+// Default variable overrides: https://github.com/material-components/material-components-web/blob/master/packages/mdc-theme/README.md
 
-// https://material.io/develop/web/theming/theming-guide#step-3-changing-the-theme-with-sass
+$primary: #6200EE;
+$secondary: #03DAC6;
+$background: #FFF;
+
 @use "@material/theme" with (
-	$primary: $mdc-theme-primary,
-	$secondary: $mdc-theme-secondary,
-	$on-primary: $mdc-theme-on-primary,
-	$on-secondary: $mdc-theme-on-secondary,
+	$primary: $primary,
+	$secondary: $secondary,
+	$background: $background,
 );
 
-// Uncomment all components that are not needed to reduce the filesize
+$on-primary: if(contrast-tone($primary) == "dark", #000, #FFF);
+$on-secondary: if(contrast-tone($secondary) == "dark", #000, #FFF);
+
+// Optional: Uncomment all components that are not needed to reduce the filesize
 @use "@material/button/mdc-button";
 @use "@material/button" as button;
 @use "@material/button/mixins" as button-mixins;
@@ -80,14 +79,14 @@ $text-color: $color-gray;
 
 $link-hover-color: $color-gray-dark;
 
-// 2. Overwrite mdc variables
+// 2. Overwrite MDC variables
 $preferred_font: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $preferred_font_serif: Georgia, "Times New Roman", Times, serif;
 $preferred_font_monospace: Menlo, Monaco, Consolas, "Courier New", monospace;
 
-$mdc-theme-background: #FFF;
-$mdc-theme-surface: #FFF;
-$mdc-theme-on-surface: if(theme-functions.contrast-tone($mdc-theme-surface) == "dark", #000, #FFF);
+$background: #FFF;
+$surface: #FFF;
+$on-surface: if(contrast-tone($surface) == "dark", #000, #FFF);
 
 // Media queries
 $screen-xs-min:	480px;
@@ -195,17 +194,17 @@ a {
 
 #header {
 	.mdc-tab {
-		color: $mdc-theme-on-primary;
+		color: $on-primary;
 	}
 	.mdc-tab-indicator {
 		> .mdc-tab-indicator__content--underline {
-			background-color: $mdc-theme-on-primary !important;
+			background-color: $on-primary !important;
 			height: 4px;
 		}
 	}
 	
 	.mdc-top-app-bar__title {
-		color: $mdc-theme-on-primary;
+		color: $on-primary;
 
 		img {
 			height: 40px;
@@ -214,9 +213,8 @@ a {
 
 	.mdc-text-field {
 		background-color: transparent;
-		height: 46px;
 		border-radius: 4px;
-		transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		transition: background-color .3s cubic-bezier(.4, 0, .2, 1);
 		will-change: background-color;
 
 		&:hover,
@@ -235,7 +233,8 @@ a {
 
 		.mdc-text-field__input {
 			width: 0;
-			transition: width .15s cubic-bezier(0.4, 0, 0.2, 1);
+			padding: 0 10px;
+			transition: width .15s cubic-bezier(.4, 0, .2, 1);
 			will-change: width;
 		}
 
@@ -245,6 +244,8 @@ a {
 		}
 
 		.mdc-icon-button {
+			height: 100%;
+
 			&::before,
 			&::after {
 				background-color: transparent;
@@ -277,6 +278,12 @@ a {
 		justify-content: space-between;
 		align-items: center;
 		padding: 8px 0;
+	}
+}
+
+.search-form {
+	.mdc-text-field {
+		padding-right: 0;
 	}
 }
 
@@ -327,7 +334,6 @@ body.admin-bar {
 	}
 	
 	.edit-link a {
-		
 		&::before {
 			content: "\270E";
 			display: inline-block;
@@ -536,13 +542,13 @@ figure {
 			@include button.outline-color(button-variables.$outline-color);
 			@include button.outline-width(button-variables.$outlined-border-width);
 			@include button.container-fill-color(transparent);
-			@include button.ink-color($mdc-theme-primary);
+			@include button.ink-color($primary);
 		}
 	}
 
 	.wp-block-button__link {
-		@include button.container-fill-color($mdc-theme-primary);
-		@include button.ink-color($mdc-theme-on-primary);
+		@include button.container-fill-color($primary);
+		@include button.ink-color($on-primary);
 		@include button.density(button-variables.$density-scale);
 		@include button.horizontal-padding(button-variables.$contained-horizontal-padding);
 		@include button.shape-radius(button-variables.$shape-radius);
