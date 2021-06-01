@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying the archive loop
+ * The template for displaying the archive loop.
  */
 
 themes_starter_content_nav( 'nav-above' );

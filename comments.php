@@ -81,7 +81,8 @@ if ( post_password_required() ) {
 		<?php
 			endif;
 
-		/* If there are no comments and comments are closed, let's leave a little note, shall we?
+		/**
+		 * If there are no comments and comments are closed, let's leave a little note, shall we?
 		 * But we don't want the note on pages or post types that do not support comments.
 		 */
 		elseif ( ! comments_open() && ! is_page() && post_type_supports( get_post_type(), 'comments' ) ) :

@@ -1,6 +1,7 @@
 <?php
 /**
- * The template for displaying content in the index.php template
+ * The template for displaying content in the index.php template.
+ *
  */
 
 	if ( is_home() ) {
@@ -24,7 +25,7 @@
 			<p class="entry-meta">
 				<?php
 					themes_starter_article_posted_on();
-					
+
 					$num_comments = get_comments_number();
 					if ( comments_open() && $num_comments >= 1 ) :
 						echo ' <a href="' . get_comments_link() . '" class="pull-right mdc-badge" title="' . esc_attr( sprintf( _n( '%s Comment', '%s Comments', $num_comments, 'my-theme' ), $num_comments ) ) . '" data-badge="' . $num_comments . '">' . $num_comments . ' <i class="material-icons">chat_bubble_outline</i></a>';

@@ -27,6 +27,7 @@ else :
 	</article><!-- /#post-0 -->
 <?php
 	endif;
+
 	wp_reset_postdata(); // End of the loop.
 
 get_footer();

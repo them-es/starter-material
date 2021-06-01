@@ -1,6 +1,7 @@
 <?php
 /**
- * The template for displaying "not found" content in the Blog Archives
+ * The template for displaying "not found" content in the Blog Archives.
+ *
  */
 
 $search_enabled = get_theme_mod( 'search_enabled', '1' ); // Get custom meta-value.

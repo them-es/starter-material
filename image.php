@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying image attachments
+ * The template for displaying image attachments.
  *
  */
 
@@ -76,6 +76,7 @@ get_header();
 			);
 			endwhile;
 		endif;
+
 		wp_reset_postdata(); // End of the loop.
 	?>
 </div><!-- /.mdc-cell -->

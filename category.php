@@ -19,9 +19,7 @@ if ( have_posts() ) :
 	</header>
 </div><!-- /.mdc-cell -->
 <?php
-
 	get_template_part( 'archive', 'loop' );
-
 else :
 	// 404.
 	get_template_part( 'content', 'none' );

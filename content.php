@@ -1,6 +1,6 @@
 <?php
 /**
- * The default template for displaying content
+ * The default template for displaying content.
  *
  */
 ?>
@@ -62,11 +62,13 @@
 				if ( $categories_list ) :
 			?>
 				<span class="cat-links">
-					<?php printf( __( '<span class="%1$s">Posted in</span> %2$s', 'my-theme' ), 'entry-utility-prep entry-utility-prep-cat-links', $categories_list );
-					$show_sep = true; ?>
+					<?php
+						printf( __( '<span class="%1$s">Posted in</span> %2$s', 'my-theme' ), 'entry-utility-prep entry-utility-prep-cat-links', $categories_list );
+						$show_sep = true;
+					?>
 				</span>
 			<?php
-				endif; // End if $categories_list.
+				endif;
 
 				/* translators: used between list items, there is a space after the comma */
 				$tags_list = get_the_tag_list( '', __( ', ', 'my-theme' ) );
@@ -75,7 +77,7 @@
 			?>
 					<span class="sep"> | </span>
 				<?php
-					endif; // End if $show_sep.
+					endif;
 				?>
 				<span class="tag-links">
 					<?php
@@ -84,7 +86,7 @@
 					?>
 				</span>
 			<?php
-				endif; // End if $tags_list.
+				endif;
 			endif;
 
 			if ( comments_open() ) :
@@ -92,7 +94,7 @@
 		?>
 				<span class="sep"> | </span>
 			<?php
-				endif; // End if $show_sep.
+				endif;
 			?>
 			<span class="comments-link">
 				<?php
@@ -103,7 +105,7 @@
 				?>
 			</span>
 		<?php
-			endif; // End if comments_open().
+			endif;
 		?>
 
 		<a href="<?php echo get_the_permalink(); ?>" class="mdc-button mdc-button--raised"><?php esc_html_e( 'more', 'my-theme' ); ?></a>
