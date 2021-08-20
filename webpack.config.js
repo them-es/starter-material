@@ -32,8 +32,15 @@ module.exports = [ {
 							name: 'main.css',
 						},
 					},
-					{ loader: 'extract-loader' },
-					{ loader: 'css-loader' },
+					{
+						loader: 'extract-loader',
+					},
+					{
+						loader: 'css-loader',
+						options: {
+							esModule: false,
+						}
+					},
 					{
 						loader: 'postcss-loader',
 						options: {

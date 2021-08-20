@@ -70,8 +70,8 @@ get_header();
 			// Parent post navigation.
 			the_post_navigation(
 				array(
-					'prev_text' => _x( 'Published in %title', 'Parent post link', 'my-theme' ),
-					'aria_label' => __( 'Parent post', 'my-theme' ),
+					'prev_text'  => esc_html_x( 'Published in %title', 'Parent post link', 'my-theme' ),
+					'aria_label' => esc_html__( 'Parent post', 'my-theme' ),
 				)
 			);
 			endwhile;

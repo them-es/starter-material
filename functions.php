@@ -235,7 +235,7 @@ if ( ! function_exists( 'themes_starter_article_posted_on' ) ) :
 	 */
 	function themes_starter_article_posted_on() {
 		printf(
-			__( '<span class="sep">Posted on </span><a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a><span class="by-author"> <span class="sep"> by </span> <span class="author-meta vcard"><a class="url fn n" href="%5$s" title="%6$s" rel="author">%7$s</a></span></span>', 'my-theme' ),
+			wp_kses_post( __( '<span class="sep">Posted on </span><a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a><span class="by-author"> <span class="sep"> by </span> <span class="author-meta vcard"><a class="url fn n" href="%5$s" title="%6$s" rel="author">%7$s</a></span></span>', 'my-theme' ) ),
 			esc_url( get_the_permalink() ),
 			esc_attr( get_the_date() . ' - ' . get_the_time() ),
 			esc_attr( get_the_date( 'c' ) ),
@@ -307,7 +307,7 @@ if ( ! function_exists( 'themes_starter_comment' ) ) :
 			case 'trackback':
 	?>
 		<li class="post pingback">
-			<p><?php esc_html_e( 'Pingback:', 'my-theme' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __( 'Edit', 'my-theme' ), '<span class="edit-link">', '</span>' ); ?></p>
+			<p><?php esc_html_e( 'Pingback:', 'my-theme' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( esc_html__( 'Edit', 'my-theme' ), '<span class="edit-link">', '</span>' ); ?></p>
 	<?php
 				break;
 			default:
@@ -332,7 +332,7 @@ if ( ! function_exists( 'themes_starter_comment' ) ) :
 								)
 							);
 
-							edit_comment_link( __( 'Edit', 'my-theme' ), '<span class="edit-link">', '</span>' );
+							edit_comment_link( esc_html__( 'Edit', 'my-theme' ), '<span class="edit-link">', '</span>' );
 						?>
 					</div><!-- /.comment-author .vcard -->
 
@@ -346,7 +346,16 @@ if ( ! function_exists( 'themes_starter_comment' ) ) :
 
 				<div class="reply">
 					<?php
-						comment_reply_link( array_merge( $args, array( 'reply_text' => esc_html__( 'Reply', 'my-theme' ) . ' <i class="material-icons">reply</i>', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) );
+						comment_reply_link(
+							array_merge(
+								$args,
+								array(
+									'reply_text' => esc_html__( 'Reply', 'my-theme' ) . ' <i class="material-icons">reply</i>',
+									'depth'      => $depth,
+									'max_depth'  => $args['max_depth'],
+								)
+							)
+						);
 					?>
 				</div><!-- /.reply -->
 			</article><!-- /#comment-## -->
@@ -425,9 +434,9 @@ if ( ! function_exists( 'themes_starter_comment' ) ) :
 											</div>
 										</div>',
 			/** This filter is documented in wp-includes/link-template.php */
-			'must_log_in'          => '<p class="must-log-in">' . sprintf( __( 'You must be <a href="%s">logged in</a> to post a comment.', 'my-theme' ), wp_login_url( apply_filters( 'the_permalink', get_the_permalink( get_the_ID() ) ) ) ) . '</p>',
+			'must_log_in'          => '<p class="must-log-in">' . sprintf( wp_kses_post( __( 'You must be <a href="%s">logged in</a> to post a comment.', 'my-theme' ) ), wp_login_url( apply_filters( 'the_permalink', get_the_permalink( get_the_ID() ) ) ) ) . '</p>',
 			/** This filter is documented in wp-includes/link-template.php */
-			'logged_in_as'         => '<p class="logged-in-as">' . sprintf( __( 'Logged in as <a href="%1$s">%2$s</a>. <a href="%3$s" title="Log out of this account">Log out?</a>', 'my-theme' ), get_edit_user_link(), $user->display_name, wp_logout_url( apply_filters( 'the_permalink', get_the_permalink( get_the_ID() ) ) ) ) . '</p>',
+			'logged_in_as'         => '<p class="logged-in-as">' . sprintf( wp_kses_post( __( 'Logged in as <a href="%1$s">%2$s</a>. <a href="%3$s" title="Log out of this account">Log out?</a>', 'my-theme' ) ), get_edit_user_link(), $user->display_name, wp_logout_url( apply_filters( 'the_permalink', get_the_permalink( get_the_ID() ) ) ) ) . '</p>',
 			'comment_notes_before' => '',
 			'comment_notes_after'  => '<p class="small comment-notes">' . esc_html__( 'Your Email address will not be published.', 'my-theme' ) . '</p>',
 			'id_form'              => 'commentform',

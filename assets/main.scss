@@ -478,7 +478,7 @@ body.admin-bar {
 }
 
 .comment-reply-title {
-	margin: $gutter 0 $gutter/2;
+	margin: $gutter 0 ($gutter * .5);
 }
 
 .commentlist {
