@@ -31,8 +31,9 @@ $on-secondary: if(contrast-tone($secondary) == "dark", #000, #FFF);
 @use "@material/button" as button;
 @use "@material/button/mixins" as button-mixins;
 @use "@material/button/variables" as button-variables;
-@use "@material/card/mdc-card";
-@use "@material/checkbox/mdc-checkbox";
+@use "@material/card";
+@use "@material/checkbox";
+@use "@material/form-field";
 //@use "@material/chips/mdc-chips";
 @use "@material/data-table/mdc-data-table";
 @use "@material/data-table" as data-table;
@@ -42,8 +43,7 @@ $on-secondary: if(contrast-tone($secondary) == "dark", #000, #FFF);
 //@use "@material/drawer/mdc-drawer";
 //@use "@material/elevation/mdc-elevation";
 //@use "@material/fab/mdc-fab";
-@use "@material/floating-label/mdc-floating-label";
-@use "@material/form-field/mdc-form-field";
+@use "@material/floating-label";
 @use "@material/icon-button/mdc-icon-button";
 //@use "@material/image-list/mdc-image-list";
 @use "@material/layout-grid/mdc-layout-grid";
@@ -58,7 +58,7 @@ $on-secondary: if(contrast-tone($secondary) == "dark", #000, #FFF);
 @use "@material/select/mdc-select";
 //@use "@material/slider/mdc-slider";
 //@use "@material/snackbar/mdc-snackbar";
-@use "@material/switch/mdc-switch";
+@use "@material/switch";
 @use "@material/tab/mdc-tab";
 @use "@material/tab-bar/mdc-tab-bar";
 @use "@material/tab-indicator/mdc-tab-indicator";
@@ -212,6 +212,8 @@ a {
 	}
 
 	.mdc-text-field {
+		display: flex;
+		align-items: center;
 		background-color: transparent;
 		border-radius: 4px;
 		transition: background-color .3s cubic-bezier(.4, 0, .2, 1);
@@ -233,7 +235,6 @@ a {
 
 		.mdc-text-field__input {
 			width: 0;
-			padding: 0 10px;
 			transition: width .15s cubic-bezier(.4, 0, .2, 1);
 			will-change: width;
 		}
@@ -583,7 +584,6 @@ figure {
 				@include data-table.header-row-text-color(data-table-variables.$header-row-text-color);
 
 				th {
-					@include data-table.header-cell-height(data-table-variables.$header-cell-height);
 					box-sizing: border-box;
 					border: none;
 				}
@@ -596,7 +596,6 @@ figure {
 				@include data-table.row-fill-color(data-table-variables.$row-fill-color);
 
 				td {
-					@include data-table.cell-height(data-table-variables.$cell-height);
 					@include data-table.cell-padding(
 						$leading-padding: data-table-variables.$cell-leading-padding,
 						$trailing-padding: data-table-variables.$cell-trailing-padding
