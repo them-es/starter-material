@@ -32,7 +32,7 @@ $on-secondary: if(contrast-tone($secondary) == "dark", #000, #FFF);
 @use "@material/button/mixins" as button-mixins;
 @use "@material/button/variables" as button-variables;
 @use "@material/card";
-@use "@material/checkbox";
+@use "@material/checkbox/mdc-checkbox";
 @use "@material/form-field";
 //@use "@material/chips/mdc-chips";
 @use "@material/data-table/mdc-data-table";

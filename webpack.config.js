@@ -6,7 +6,10 @@ const path = require( 'path' ),
 
 module.exports = [ {
 	context: path.resolve( __dirname, 'assets' ),
-	entry: [ './main.scss', './main.js' ],
+	entry: [
+		'./main.scss',
+		'./main.js',
+	],
 	output: {
 		path: path.resolve( __dirname, 'assets/dist' ),
 		filename: './main.bundle.js',
