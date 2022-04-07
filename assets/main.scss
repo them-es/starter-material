@@ -331,7 +331,7 @@ a {
 /* If WP-Adminbar is visible */
 body.admin-bar {
 	#header.mdc-toolbar--fixed {
-		top: 32px;
+		top: var(--wp-admin--admin-bar--height);
 	}
 	
 	.edit-link a {
