@@ -116,6 +116,27 @@ body {
 	line-height: 1.5;
 	margin: 0;
 	color: $text-color;
+
+	&.page-template-page-full {
+		#main {
+			max-width: 100%;
+		}
+	}
+
+	/* If WP-Adminbar is visible */
+	&.admin-bar {
+		#header.mdc-toolbar--fixed {
+			top: var(--wp-admin--admin-bar--height);
+		}
+		
+		.edit-link a {
+			&::before {
+				content: "\270E";
+				display: inline-block;
+				margin-right: 5px;
+			}
+		}
+	}
 }
 
 h1,
@@ -326,22 +347,6 @@ a {
 /**
  * WordPress customization
  */
-
-
-/* If WP-Adminbar is visible */
-body.admin-bar {
-	#header.mdc-toolbar--fixed {
-		top: var(--wp-admin--admin-bar--height);
-	}
-	
-	.edit-link a {
-		&::before {
-			content: "\270E";
-			display: inline-block;
-			margin-right: 5px;
-		}
-	}
-}
 
 
 /* WordPress Embeds */

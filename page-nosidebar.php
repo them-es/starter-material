@@ -1,7 +1,7 @@
 <?php
 /**
- * Template Name: Page (Full width)
- * Description: Page template full width.
+ * Template Name: Page (No Sidebar)
+ * Description: Page template with no sidebar.
  *
  */
 
@@ -9,7 +9,7 @@ get_header();
 
 the_post();
 ?>
-<div id="post-<?php the_ID(); ?>" <?php post_class( 'content' ); ?>>
+<div id="post-<?php the_ID(); ?>" <?php post_class( 'mdc-layout-grid__cell mdc-layout-grid__cell--span-12 content' ); ?>>
 	<h1 class="entry-title"><?php the_title(); ?></h1>
 	<?php
 		the_content();

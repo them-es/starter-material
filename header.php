@@ -76,4 +76,6 @@
 	</header><!-- /#header -->
 
 	<main id="main" class="mdc-layout-grid<?php if ( 'fixed' === $navbar_position ) : echo ' mdc-top-app-bar--prominent-fixed-adjust'; endif; ?>">
+	<?php if ( ! is_page_template( 'page-full.php' ) ) : ?>
 		<div class="mdc-layout-grid__inner">
+	<?php endif; ?>

@@ -1,5 +1,7 @@
 
-			</div><!-- /.mdc-grid__inner -->
+			<?php if ( ! is_page_template( 'page-full.php' ) ) : ?>
+				</div><!-- /.mdc-grid__inner -->
+			<?php endif; ?>
 		</main><!-- /#main -->
 		<footer id="footer" class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
 			<div class="mdc-layout-grid footer__content">
