@@ -1,10 +1,11 @@
 const path = require( 'path' ),
-	// Modify "dev_url" to actual localhost url
-	dev_url = 'http://localhost/starter-material';
+	// webpack = require( 'webpack' ), // Uncomment if jQuery support is needed
+	localHost = 'http://localhost/starter-material'; // Localhost URL (webpack-dev-server)
 
 // https://github.com/material-components/material-components-web/blob/master/docs/getting-started.md
 
 module.exports = [ {
+	mode: 'production',
 	context: path.resolve( __dirname, 'assets' ),
 	entry: [
 		'./main.scss',
@@ -12,18 +13,9 @@ module.exports = [ {
 	],
 	output: {
 		path: path.resolve( __dirname, 'assets/dist' ),
-		filename: './main.bundle.js',
+		filename: '[name].bundle.js',
 	},
-	//devtool: 'source-map',
 	watch: true,
-	devServer: {
-		proxy: {
-			'*': {
-				target: dev_url,
-				changeOrigin: true,
-			}
-		}
-	},
 	module: {
 		rules: [
 			{
@@ -32,7 +24,7 @@ module.exports = [ {
 					{
 						loader: 'file-loader',
 						options: {
-							name: 'main.css',
+							name: '[name].css',
 						},
 					},
 					{
@@ -41,8 +33,8 @@ module.exports = [ {
 					{
 						loader: 'css-loader',
 						options: {
-							esModule: false,
-						}
+							url: false,
+						},
 					},
 					{
 						loader: 'postcss-loader',
@@ -57,8 +49,6 @@ module.exports = [ {
 					{
 						loader: 'sass-loader',
 						options: {
-							implementation: require( 'sass' ),
-							webpackImporter: false, // See https://github.com/webpack-contrib/sass-loader/issues/804
 							sassOptions: {
 								includePaths: [ 'node_modules', 'node_modules/@material/*' ],
 							},
@@ -74,15 +64,24 @@ module.exports = [ {
 				},
 			},
 			{
-				test: /\.(jpe?g|png|gif|svg)$/i, 
-				loader: 'file-loader',
-				options: {
-					esModule: false,
-					outputPath: './assets/img',
-					publicPath: '../img',
-					name: '[name].[ext]',
-				},
+				test: /\.(png|svg|jpg|jpeg|gif)$/i,
+				type: 'asset/resource',
+			},
+			{
+				test: /\.(woff2?|eot|ttf|otf)$/i,
+				type: 'asset/resource',
 			},
 		]
 	},
+	// Uncomment if jQuery support is needed
+	/*externals: {
+		jquery: 'jQuery'
+	},
+	plugins: [
+		new webpack.ProvidePlugin( {
+			$: 'jquery',
+			jQuery: 'jquery',
+			'window.jQuery': 'jquery',
+		} ),
+	],*/
 } ];
