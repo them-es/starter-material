@@ -16,11 +16,11 @@ if ( is_readable( $theme_customizer ) ) {
  *
  * @since v1.0
  */
-if ( ! function_exists( 'themes_starter_setup_theme' ) ) :
+if ( ! function_exists( 'themes_starter_setup_theme' ) ) {
 	function themes_starter_setup_theme() {
 		// Make theme available for translation: Translations can be filed in the /languages/ directory.
 		load_theme_textdomain( 'my-theme', __DIR__ . '/languages' );
-		
+
 		/**
 		* Set the content width based on the theme's design and stylesheet.
 		*
@@ -71,7 +71,7 @@ if ( ! function_exists( 'themes_starter_setup_theme' ) ) :
 	// Disable Block Directory: https://github.com/WordPress/gutenberg/blob/trunk/docs/reference-guides/filters/editor-filters.md#block-directory
 	remove_action( 'enqueue_block_editor_assets', 'wp_enqueue_editor_block_directory_assets' );
 	remove_action( 'enqueue_block_editor_assets', 'gutenberg_enqueue_block_editor_assets_block_directory' );
-endif;
+}
 
 
 /**
@@ -81,7 +81,7 @@ endif;
  *
  * @since v2.1
  */
-if ( ! function_exists( 'wp_body_open' ) ) :
+if ( ! function_exists( 'wp_body_open' ) ) {
 	function wp_body_open() {
 		/**
 		 * Triggered after the opening <body> tag.
@@ -90,7 +90,7 @@ if ( ! function_exists( 'wp_body_open' ) ) :
 		 */
 		do_action( 'wp_body_open' );
 	}
-endif;
+}
 
 
 /**
@@ -98,7 +98,7 @@ endif;
  *
  * @since v1.0
  */
-if ( ! function_exists( 'themes_starter_add_user_fields' ) ) :
+if ( ! function_exists( 'themes_starter_add_user_fields' ) ) {
 	function themes_starter_add_user_fields( $fields ) {
 		// Add new fields.
 		$fields['facebook_profile'] = 'Facebook URL';
@@ -110,7 +110,7 @@ if ( ! function_exists( 'themes_starter_add_user_fields' ) ) :
 		return $fields;
 	}
 	add_filter( 'user_contactmethods', 'themes_starter_add_user_fields' );
-endif;
+}
 
 
 /**
@@ -153,7 +153,7 @@ function themes_starter_oembed_filter( $html ) {
 add_filter( 'embed_oembed_html', 'themes_starter_oembed_filter', 10, 4 );
 
 
-if ( ! function_exists( 'themes_starter_content_nav' ) ) :
+if ( ! function_exists( 'themes_starter_content_nav' ) ) {
 	/**
 	 * Display a navigation to next/previous pages when applicable.
 	 *
@@ -162,7 +162,7 @@ if ( ! function_exists( 'themes_starter_content_nav' ) ) :
 	function themes_starter_content_nav( $nav_id ) {
 		global $wp_query;
 
-		if ( $wp_query->max_num_pages > 1 ) :
+		if ( $wp_query->max_num_pages > 1 ) {
 	?>
 			<nav id="<?php echo esc_attr( $nav_id ); ?>" class="blog-navigation mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
 				<?php
@@ -171,7 +171,7 @@ if ( ! function_exists( 'themes_starter_content_nav' ) ) :
 				?>
 			</nav><!-- /.blog-navigation -->
 	<?php
-		endif;
+		}
 	}
 
 	// Add Class.
@@ -180,7 +180,7 @@ if ( ! function_exists( 'themes_starter_content_nav' ) ) :
 	}
 	add_filter( 'next_posts_link_attributes', 'posts_link_attributes' );
 	add_filter( 'previous_posts_link_attributes', 'posts_link_attributes' );
-endif;
+}
 
 
 /**
@@ -216,7 +216,7 @@ function themes_starter_widgets_init() {
 add_action( 'widgets_init', 'themes_starter_widgets_init' );
 
 
-if ( ! function_exists( 'themes_starter_article_posted_on' ) ) :
+if ( ! function_exists( 'themes_starter_article_posted_on' ) ) {
 	/**
 	 * "Theme posted on" pattern.
 	 *
@@ -234,7 +234,7 @@ if ( ! function_exists( 'themes_starter_article_posted_on' ) ) :
 			get_the_author()
 		);
 	}
-endif;
+}
 
 
 /**
@@ -272,7 +272,7 @@ function themes_starter_password_form() {
 add_filter( 'the_password_form', 'themes_starter_password_form' );
 
 
-if ( ! function_exists( 'themes_starter_comment' ) ) :
+if ( ! function_exists( 'themes_starter_comment' ) ) {
 	/**
 	 * Style Reply link.
 	 *
@@ -325,10 +325,10 @@ if ( ! function_exists( 'themes_starter_comment' ) ) :
 						?>
 					</div><!-- /.comment-author .vcard -->
 
-					<?php if ( '0' === $comment->comment_approved ) : ?>
+					<?php if ( '0' === $comment->comment_approved ) { ?>
 						<em class="comment-awaiting-moderation"><?php esc_html_e( 'Your comment is awaiting moderation.', 'my-theme' ); ?></em>
 						<br />
-					<?php endif; ?>
+					<?php } ?>
 				</footer>
 
 				<div class="comment-content"><?php comment_text(); ?></div>
@@ -444,8 +444,7 @@ if ( ! function_exists( 'themes_starter_comment' ) ) :
 		return $defaults;
 	}
 	add_filter( 'comment_form_defaults', 'themes_starter_custom_commentform' );
-
-endif;
+}
 
 
 /**
