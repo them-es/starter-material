@@ -486,7 +486,7 @@ function themes_starter_scripts_loader() {
 
 	// 1. Styles.
 	wp_enqueue_style( 'style', get_theme_file_uri( 'style.css' ), array(), $theme_version, 'all' );
-	wp_enqueue_style( 'robotofont', '//fonts.googleapis.com/css?family=Roboto:300,400,500,700', array(), $theme_version, 'all' );
+	// wp_enqueue_style( 'robotofont', '//fonts.googleapis.com/css?family=Roboto:300,400,500,700', array(), $theme_version, 'all' );
 	wp_enqueue_style( 'materialiconsfont', '//fonts.googleapis.com/icon?family=Material+Icons', array(), $theme_version, 'all' );
 	wp_enqueue_style( 'main', get_theme_file_uri( 'assets/dist/main.css' ), array(), $theme_version, 'all' ); // main.scss: Compiled Framework source + custom styles.
 
