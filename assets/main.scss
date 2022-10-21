@@ -539,9 +539,6 @@ figure {
 
 .wp-block-button {
 	@include button-mixins.core-styles;
-	display: inline-flex !important;
-	align-items: center;
-	justify-content: center;
 
 	&.is-style-outline {
 		.wp-block-button__link {
@@ -560,7 +557,7 @@ figure {
 		@include button.shape-radius(button-variables.$shape-radius);
 		@include button.disabled-container-fill-color(button-variables.$disabled-container-color);
 		@include button.disabled-ink-color(button-variables.$disabled-ink-color);
-		display: flex;
+		display: inline-flex;
 		align-items: center;
 		justify-content: center;
 		text-decoration: none;
