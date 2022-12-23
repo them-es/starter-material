@@ -60,12 +60,12 @@
 							// Loading WordPress Custom Menu (theme_location).
 							wp_nav_menu(
 								array(
-									'theme_location' => 'main-menu',
 									'container'      => '',
-									'items_wrap'     => '%3$s',
-									'depth'          => 1,
 									//'fallback_cb'    => 'WP_MDC_Navwalker::fallback',
+									'depth'          => 1,
 									'walker'         => new WP_MDC_Navwalker(),
+									'theme_location' => 'main-menu',
+									'items_wrap'     => '%3$s',
 								)
 							);
 						?>

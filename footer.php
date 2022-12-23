@@ -32,10 +32,10 @@
 				<?php
 					wp_nav_menu(
 						array(
-							'theme_location' => 'footer-menu',
 							'container'      => '',
-							'items_wrap'     => '<ul class="mdc-list">%3$s</ul>',
 							'depth'          => 1,
+							'theme_location' => 'footer-menu',
+							'items_wrap'     => '<ul class="mdc-list">%3$s</ul>',
 						)
 					);
 				?>
