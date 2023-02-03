@@ -500,7 +500,7 @@ if ( function_exists( 'register_nav_menus' ) ) {
 }
 
 // Custom Nav Walker: mdc_navwalker().
-$custom_walker = __DIR__ . '/inc/mdc_navwalker.php';
+$custom_walker = __DIR__ . '/inc/mdc-navwalker.php';
 if ( is_readable( $custom_walker ) ) {
 	require_once $custom_walker;
 }
