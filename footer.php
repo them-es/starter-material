@@ -26,7 +26,7 @@
 				?>
 
 				<p class="copyright">
-					<?php printf( esc_html__( '&copy; %1$s %2$s. All rights reserved.', 'my-theme' ), date_i18n( 'Y' ), get_bloginfo( 'name', 'display' ) ); ?>
+					<?php printf( esc_html__( '&copy; %1$s %2$s. All rights reserved.', 'my-theme' ), wp_date( 'Y' ), get_bloginfo( 'name', 'display' ) ); ?>
 				</p>
 
 				<?php

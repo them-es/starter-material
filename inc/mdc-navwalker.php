@@ -2,7 +2,7 @@
 
 /**
  * Class Name: WP_MDC_Navwalker
- * Description: A custom WordPress nav walker class to implement the Material Design navigation style in a custom theme using the WordPress built in menu manager.
+ * Description: A custom WordPress nav walker class to implement the Material Design navigation styles.
  */
 
 if ( ! class_exists( 'WP_MDC_Navwalker' ) ) {
@@ -20,6 +20,7 @@ if ( ! class_exists( 'WP_MDC_Navwalker' ) ) {
 		 * @param array $elements  An array of elements.
 		 * @param int   $max_depth The maximum hierarchical depth.
 		 * @param mixed ...$args   Optional additional arguments.
+		 *
 		 * @return string The hierarchical item output.
 		 */
 		public function walk( $elements, $max_depth = 1, ...$args ) {
@@ -54,7 +55,7 @@ if ( ! class_exists( 'WP_MDC_Navwalker' ) ) {
 					}
 				}
 
-				$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ) ) );
+				$class_names           = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args, $max_depth ) );
 				$indicator_class_names = join( ' ', $indicator_classes );
 
 				$list[] = '<a href="' . esc_url( $item->url ) . '" class="' . esc_attr( $class_names ) . '"' . $attributes . ' role="tab"><span class="mdc-tab__content">' . esc_html( $item->title ) . '</span><span class="' . esc_attr( $indicator_class_names ) . '"><span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span></span><span class="mdc-tab__ripple"></span></a>';
