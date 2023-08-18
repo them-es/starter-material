@@ -175,14 +175,14 @@ if ( ! function_exists( 'themes_starter_content_nav' ) ) {
 		global $wp_query;
 
 		if ( $wp_query->max_num_pages > 1 ) {
-	?>
+			?>
 			<nav id="<?php echo esc_attr( $nav_id ); ?>" class="blog-navigation mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
 				<?php
 					next_posts_link( '<i class="material-icons mdc-button__icon" aria-hidden="true">arrow_back</i> ' . esc_html__( 'Older posts', 'my-theme' ) );
 					previous_posts_link( esc_html__( 'Newer posts', 'my-theme' ) . ' <i class="material-icons mdc-button__icon" aria-hidden="true">arrow_forward</i>' );
 				?>
 			</nav><!-- /.blog-navigation -->
-	<?php
+			<?php
 		}
 	}
 
@@ -265,12 +265,12 @@ function themes_starter_password_form() {
 	global $post;
 	$label = 'pwbox-' . ( empty( $post->ID ) ? rand() : $post->ID );
 
-	$output = '<form action="' . esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" method="post">';
-		$output .= '<div class="mdc-layout-grid">';
-			$output .= '<div class="mdc-layout-grid__inner">';
-				$output .= '<h4 class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">' . esc_html__( 'This content is password protected. To view it please enter your password below.', 'my-theme' ) . '</h4>';
-				$output .= '<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-12-phone">';
-					$output .= '<div class="mdc-text-field mdc-text-field--outlined" data-mdc-auto-init="MDCTextField">';
+	$output                      = '<form action="' . esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" method="post">';
+		$output                 .= '<div class="mdc-layout-grid">';
+			$output             .= '<div class="mdc-layout-grid__inner">';
+				$output         .= '<h4 class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">' . esc_html__( 'This content is password protected. To view it please enter your password below.', 'my-theme' ) . '</h4>';
+				$output         .= '<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-12-phone">';
+					$output     .= '<div class="mdc-text-field mdc-text-field--outlined" data-mdc-auto-init="MDCTextField">';
 						$output .= '<input type="password" id="post_password" name="post_password" id="' . esc_attr( $label ) . '" class="mdc-text-field__input" />';
 						$output .= '<div class="mdc-notched-outline">
 						<div class="mdc-notched-outline__leading"></div>
@@ -280,11 +280,11 @@ function themes_starter_password_form() {
 						<div class="mdc-notched-outline__trailing"></div>
 						</div>';
 						$output .= '<input type="submit" name="submit" class="mdc-button mdc-button--raised" value="' . esc_attr__( 'Submit', 'my-theme' ) . '" />';
-					$output .= '</div><!-- /.mdc-text-field -->';
-				$output .= '</div><!-- /.mdc-cell -->';
-			$output .= '</div><!-- /.mdc-grid__inner -->';
-		$output .= '</div><!-- /.mdc-grid -->';
-	$output .= '</form>';
+					$output     .= '</div><!-- /.mdc-text-field -->';
+				$output         .= '</div><!-- /.mdc-cell -->';
+			$output             .= '</div><!-- /.mdc-grid__inner -->';
+		$output                 .= '</div><!-- /.mdc-grid -->';
+	$output                     .= '</form>';
 
 	return $output;
 }
@@ -318,7 +318,7 @@ if ( ! function_exists( 'themes_starter_comment' ) ) {
 		switch ( $comment->comment_type ) :
 			case 'pingback':
 			case 'trackback':
-	?>
+				?>
 		<li class="post pingback">
 			<p>
 				<?php
@@ -327,10 +327,10 @@ if ( ! function_exists( 'themes_starter_comment' ) ) {
 					edit_comment_link( esc_html__( 'Edit', 'my-theme' ), '<span class="edit-link">', '</span>' );
 				?>
 			</p>
-	<?php
+				<?php
 				break;
 			default:
-	?>
+				?>
 		<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
 			<article id="comment-<?php comment_ID(); ?>" class="comment">
 				<footer class="comment-meta">
@@ -343,7 +343,8 @@ if ( ! function_exists( 'themes_starter_comment' ) ) {
 							printf(
 								__( '%1$s, %2$s', 'my-theme' ),
 								sprintf( '<span class="fn">%s</span>', get_comment_author_link() ),
-								sprintf( '<a href="%1$s"><time datetime="%2$s">%3$s</time></a>',
+								sprintf(
+									'<a href="%1$s"><time datetime="%2$s">%3$s</time></a>',
 									esc_url( get_comment_link( $comment->comment_ID ) ),
 									get_comment_time( 'c' ),
 									/* Translators: 1: Date, 2: Time */
@@ -380,7 +381,7 @@ if ( ! function_exists( 'themes_starter_comment' ) ) {
 					?>
 				</div><!-- /.reply -->
 			</article><!-- /#comment-## -->
-		<?php
+				<?php
 				break;
 		endswitch;
 	}
@@ -412,7 +413,7 @@ if ( ! function_exists( 'themes_starter_comment' ) ) {
 		$aria_req = ( $req ? " aria-required='true' required" : '' );
 		$consent  = ( empty( $commenter['comment_author_email'] ) ? '' : ' checked="checked"' );
 		$fields   = array(
-			'author'   => '<div class="mdc-text-field mdc-text-field--outlined" data-mdc-auto-init="MDCTextField">
+			'author'  => '<div class="mdc-text-field mdc-text-field--outlined" data-mdc-auto-init="MDCTextField">
 							<input type="text" id="author" name="author" class="mdc-text-field__input" value="' . esc_attr( $commenter['comment_author'] ) . '"' . $aria_req . ' />
 							<div class="mdc-notched-outline">
 								<div class="mdc-notched-outline__leading"></div>
@@ -519,14 +520,14 @@ function themes_starter_scripts_loader() {
 	wp_enqueue_style( 'style', get_theme_file_uri( 'style.css' ), array(), $theme_version, 'all' );
 	// wp_enqueue_style( 'robotofont', '//fonts.googleapis.com/css?family=Roboto:300,400,500,700', array(), $theme_version, 'all' );
 	wp_enqueue_style( 'materialiconsfont', '//fonts.googleapis.com/icon?family=Material+Icons', array(), $theme_version, 'all' );
-	wp_enqueue_style( 'main', get_theme_file_uri( 'assets/dist/main.css' ), array(), $theme_version, 'all' ); // main.scss: Compiled Framework source + custom styles.
+	wp_enqueue_style( 'main', get_theme_file_uri( 'build/main.css' ), array(), $theme_version, 'all' ); // main.scss: Compiled Framework source + custom styles.
 
 	if ( is_rtl() ) {
-		wp_enqueue_style( 'rtl', get_theme_file_uri( 'assets/dist/rtl.css' ), array(), $theme_version, 'all' );
+		wp_enqueue_style( 'rtl', get_theme_file_uri( 'build/rtl.css' ), array(), $theme_version, 'all' );
 	}
 
 	// 2. Scripts.
-	wp_enqueue_script( 'mainjs', get_theme_file_uri( 'assets/dist/main.bundle.js' ), array(), $theme_version, true );
+	wp_enqueue_script( 'mainjs', get_theme_file_uri( 'build/main.js' ), array(), $theme_version, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );

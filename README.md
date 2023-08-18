@@ -4,43 +4,45 @@
 
 If you want to see it in action or want to download a customized Theme for free, check out [https://them.es/starter-material](https://them.es/starter-material)
 
-
 ## What's included?
-* WordPress Theme
-* Material Design UI components
-* Sass Source files
-* webpack configuration
-* NPM configuration to keep the required build libraries updated and to add new libraries
-* Customization API
-* 2 Menus
-* Demo Content
 
+- WordPress Theme
+- Material Design UI components
+- Sass Source files
+- webpack configuration
+- NPM configuration to keep the required build libraries updated and to add new libraries
+- Customization API
+- 2 Menus
+- Demo Content
 
 ## What's not included?
-* jQuery is not needed for Material Components Web and will not be used on the frontend anymore
 
+- jQuery is not needed for Material Components Web and will not be used on the frontend anymore
 
 ## Task Automation
+
 This Theme comes with a built in webpack task automation. Sass source files will be compiled if changed, vendor prefixes will be added automatically and the CSS will be minified. JS source files will be bundled and minified.
 
-* Prerequisites: [Node.js](https://nodejs.org) (NPM) needs to be installed on your system
-* Open the **Project directory** `/` in Terminal and install the required Node.js dependencies: webpack, Sass-Compiler, Autoprefixer, etc.
-* `$ npm install`
-* Run the **`watch`** script
-* `$ npm run watch`
-* Modify `/assets/main.scss` and `/assets/main.js`
-
+- Prerequisites: [Node.js](https://nodejs.org) (NPM) needs to be installed on your system
+- Open the **Project directory** `/` in Terminal and install the required Node.js dependencies: webpack, Sass-Compiler, Autoprefixer, etc.
+- `$ npm install`
+- Run the **`watch`** script
+- `$ npm run watch`
+- Modify `/assets/main.scss` and `/assets/main.js`
+- Test the Theme
+- Run the **`build`** script
+- `$ npm run build`
 
 ## More information on the Sass Module System
-* [Sass Module System](https://sass-lang.com/blog/the-module-system-is-launched)
 
+- [Sass Module System](https://sass-lang.com/blog/the-module-system-is-launched)
 
 ## Technology
 
-* [Material Components](https://material.io/components), [MIT license](https://github.com/material-components/material-components-web/blob/master/LICENSE)
-* [Sass](https://github.com/sass/sass), [MIT license](https://github.com/sass/sass/blob/stable/MIT-LICENSE)
-* [webpack](https://github.com/webpack/webpack), [MIT license](https://github.com/webpack/webpack/blob/master/LICENSE)
-
+- [Material Components](https://material.io/components), [MIT license](https://github.com/material-components/material-components-web/blob/master/LICENSE)
+- [Sass](https://github.com/sass/sass), [MIT license](https://github.com/sass/sass/blob/stable/MIT-LICENSE)
+- [webpack](https://github.com/webpack/webpack), [MIT license](https://github.com/webpack/webpack/blob/master/LICENSE)
+- [@wordpress/scripts](https://github.com/WordPress/gutenberg/tree/trunk/packages/scripts), [GPLv2+ and Mozilla Public License v2.0](https://github.com/WordPress/gutenberg/blob/trunk/LICENSE.md)
 
 ## Copyright & License
 
