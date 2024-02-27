@@ -47,8 +47,6 @@ function themes_starter_customize( $wp_customize ) {
 				'label'       => __( 'Upload Header Logo', 'my-theme' ),
 				'description' => __( 'Height: &gt;80px', 'my-theme' ),
 				'section'     => 'theme_header_section',
-				'settings'    => 'header_logo',
-				'priority'    => 1,
 			)
 		)
 	);
@@ -67,8 +65,6 @@ function themes_starter_customize( $wp_customize ) {
 						'default' => __( 'Default', 'my-theme' ),
 						'inverse' => __( 'Inverse', 'my-theme' ),
 					),
-		'settings' => 'navbar_scheme',
-		'priority' => 1,
 	) );
 	*/
 	// Fixed Header?
@@ -82,16 +78,14 @@ function themes_starter_customize( $wp_customize ) {
 	$wp_customize->add_control(
 		'navbar_position',
 		array(
-			'type'     => 'radio',
-			'label'    => __( 'Navbar', 'my-theme' ),
-			'section'  => 'theme_header_section',
-			'choices'  => array(
+			'type'    => 'radio',
+			'label'   => __( 'Navbar', 'my-theme' ),
+			'section' => 'theme_header_section',
+			'choices' => array(
 				'fixed'     => __( 'Fixed', 'my-theme' ),
 				'prominent' => __( 'Prominent', 'my-theme' ),
 				'dense'     => __( 'Dense', 'my-theme' ),
 			),
-			'settings' => 'navbar_position',
-			'priority' => 2,
 		)
 	);
 
@@ -106,11 +100,9 @@ function themes_starter_customize( $wp_customize ) {
 	$wp_customize->add_control(
 		'search_enabled',
 		array(
-			'type'     => 'checkbox',
-			'label'    => __( 'Show Searchfield?', 'my-theme' ),
-			'section'  => 'theme_header_section',
-			'settings' => 'search_enabled',
-			'priority' => 3,
+			'type'    => 'checkbox',
+			'label'   => __( 'Show Searchfield?', 'my-theme' ),
+			'section' => 'theme_header_section',
 		)
 	);
 }
