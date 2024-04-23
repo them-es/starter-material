@@ -4,7 +4,7 @@ Theme URI: https://them.es/starter-material
 Author: them.es
 Author URI: https://them.es
 Description: I'm an Open-source Starter Theme developed and maintained by them.es
-Version: 2.8.2
+Version: 2.8.3
 Requires at least: 5.0
 Tested up to: 6.5
 Requires PHP: 7.2
@@ -109,9 +109,7 @@ a img.aligncenter {
 	-webkit-transition: -webkit-filter 0.2s ease-in;
 	transition: -webkit-filter 0.2s ease-in;
 	transition: filter 0.2s ease-in;
-	transition:
-		filter 0.2s ease-in,
-		-webkit-filter 0.2s ease-in;
+	transition: filter 0.2s ease-in, -webkit-filter 0.2s ease-in;
 	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden;
 }
