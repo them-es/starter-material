@@ -15,56 +15,60 @@ $primary: #6200ee;
 $secondary: #03dac6;
 $background: #fff;
 
-@use '@material/theme' with (
+@use "material-components-web/node_modules/@material/theme" with (
 	$primary: $primary,
 	$secondary: $secondary,
 	$background: $background
 );
 
-$on-primary: if(contrast-tone($primary) == 'dark', #000, #fff);
-$on-secondary: if(contrast-tone($secondary) == 'dark', #000, #fff);
+$on-primary: if(contrast-tone($primary) == "dark", #000, #fff);
+$on-secondary: if(contrast-tone($secondary) == "dark", #000, #fff);
 
 // Optional: Uncomment all components that are not needed to reduce the filesize
-@use '@material/button/mdc-button';
-@use '@material/button' as button;
-@use '@material/button/mixins' as button-mixins;
-@use '@material/button/variables' as button-variables;
-@use '@material/card';
-@use '@material/checkbox/mdc-checkbox';
-@use '@material/form-field';
+@use "material-components-web/node_modules/@material/button/mdc-button";
+@use "material-components-web/node_modules/@material/button" as button;
+@use "material-components-web/node_modules/@material/button/mixins" as
+	button-mixins;
+@use "material-components-web/node_modules/@material/button/variables" as
+	button-variables;
+@use "material-components-web/node_modules/@material/card";
+@use "material-components-web/node_modules/@material/checkbox/mdc-checkbox";
+@use "material-components-web/node_modules/@material/form-field";
 //@use "@material/chips/mdc-chips";
-@use '@material/data-table/mdc-data-table';
-@use '@material/data-table' as data-table;
-@use '@material/data-table/mixins' as data-table-mixins;
-@use '@material/data-table/variables' as data-table-variables;
+@use "material-components-web/node_modules/@material/data-table/mdc-data-table";
+@use "material-components-web/node_modules/@material/data-table" as data-table;
+@use "material-components-web/node_modules/@material/data-table/mixins" as
+	data-table-mixins;
+@use "material-components-web/node_modules/@material/data-table/variables" as
+	data-table-variables;
 //@use "@material/dialog/mdc-dialog";
 //@use "@material/drawer/mdc-drawer";
 //@use "@material/elevation/mdc-elevation";
 //@use "@material/fab/mdc-fab";
-@use '@material/floating-label';
-@use '@material/icon-button/mdc-icon-button';
+@use "material-components-web/node_modules/@material/floating-label";
+@use "material-components-web/node_modules/@material/icon-button/mdc-icon-button";
 //@use "@material/image-list/mdc-image-list";
-@use '@material/layout-grid/mdc-layout-grid';
-@use '@material/line-ripple/mdc-line-ripple';
-@use '@material/linear-progress/mdc-linear-progress';
-@use '@material/list/mdc-list';
+@use "material-components-web/node_modules/@material/layout-grid/mdc-layout-grid";
+@use "material-components-web/node_modules/@material/line-ripple/mdc-line-ripple";
+@use "material-components-web/node_modules/@material/linear-progress/mdc-linear-progress";
+@use "material-components-web/node_modules/@material/list/mdc-list";
 //@use "@material/menu/mdc-menu";
 //@use "@material/menu-surface/mdc-menu-surface";
-@use '@material/notched-outline/mdc-notched-outline';
-@use '@material/radio/mdc-radio';
-@use '@material/ripple/mdc-ripple';
-@use '@material/select/mdc-select';
+@use "material-components-web/node_modules/@material/notched-outline/mdc-notched-outline";
+@use "material-components-web/node_modules/@material/radio/mdc-radio";
+@use "material-components-web/node_modules/@material/ripple/mdc-ripple";
+@use "material-components-web/node_modules/@material/select/mdc-select";
 //@use "@material/slider/mdc-slider";
 //@use "@material/snackbar/mdc-snackbar";
-@use '@material/switch';
-@use '@material/tab/mdc-tab';
-@use '@material/tab-bar/mdc-tab-bar';
-@use '@material/tab-indicator/mdc-tab-indicator';
-@use '@material/tab-scroller/mdc-tab-scroller';
-@use '@material/textfield/mdc-text-field';
-@use '@material/theme/mdc-theme';
-@use '@material/top-app-bar/mdc-top-app-bar';
-@use '@material/typography/mdc-typography';
+@use "material-components-web/node_modules/@material/switch";
+@use "material-components-web/node_modules/@material/tab/mdc-tab";
+@use "material-components-web/node_modules/@material/tab-bar/mdc-tab-bar";
+@use "material-components-web/node_modules/@material/tab-indicator/mdc-tab-indicator";
+@use "material-components-web/node_modules/@material/tab-scroller/mdc-tab-scroller";
+@use "material-components-web/node_modules/@material/textfield/mdc-text-field";
+@use "material-components-web/node_modules/@material/theme/mdc-theme";
+@use "material-components-web/node_modules/@material/top-app-bar/mdc-top-app-bar";
+@use "material-components-web/node_modules/@material/typography/mdc-typography";
 
 // 1. Include custom variables
 $color-gray-dark: #212121;
@@ -77,13 +81,13 @@ $text-color: $color-gray;
 $link-hover-color: $color-gray-dark;
 
 // 2. Overwrite MDC variables
-$preferred_font: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-$preferred_font_serif: Georgia, 'Times New Roman', Times, serif;
-$preferred_font_monospace: Menlo, Monaco, Consolas, 'Courier New', monospace;
+$preferred_font: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$preferred_font_serif: Georgia, "Times New Roman", Times, serif;
+$preferred_font_monospace: Menlo, Monaco, Consolas, "Courier New", monospace;
 
 $background: #fff;
 $surface: #fff;
-$on-surface: if(contrast-tone($surface) == 'dark', #000, #fff);
+$on-surface: if(contrast-tone($surface) == "dark", #000, #fff);
 
 // Media queries
 $screen-xs-min: 480px;
@@ -127,7 +131,7 @@ body {
 
 		.edit-link a {
 			&::before {
-				content: '\270E';
+				content: "\270E";
 				display: inline-block;
 				margin-right: 5px;
 			}
@@ -187,7 +191,7 @@ a {
 	color: $text-color;
 
 	&:hover,
-	&[aria-current='page'] {
+	&[aria-current="page"] {
 		color: $color-gray-dark;
 	}
 }
@@ -530,7 +534,9 @@ figure {
 	&.is-style-outline {
 		.wp-block-button__link {
 			@include button.outline-color(button-variables.$outline-color);
-			@include button.outline-width(button-variables.$outlined-border-width);
+			@include button.outline-width(
+				button-variables.$outlined-border-width
+			);
 			@include button.container-fill-color(transparent);
 			@include button.ink-color($primary);
 		}
@@ -540,10 +546,16 @@ figure {
 		@include button.container-fill-color($primary);
 		@include button.ink-color($on-primary);
 		@include button.density(button-variables.$density-scale);
-		@include button.horizontal-padding(button-variables.$contained-horizontal-padding);
+		@include button.horizontal-padding(
+			button-variables.$contained-horizontal-padding
+		);
 		@include button.shape-radius(button-variables.$shape-radius);
-		@include button.disabled-container-fill-color(button-variables.$disabled-container-color);
-		@include button.disabled-ink-color(button-variables.$disabled-ink-color);
+		@include button.disabled-container-fill-color(
+			button-variables.$disabled-container-color
+		);
+		@include button.disabled-ink-color(
+			button-variables.$disabled-ink-color
+		);
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
@@ -563,14 +575,20 @@ figure {
 	@include data-table.divider-size(data-table-variables.$divider-size);
 
 	table {
-		@include data-table.density(data-table-variables.$default-density-scale);
+		@include data-table.density(
+			data-table-variables.$default-density-scale
+		);
 		border: 0;
 		table-layout: fixed;
 
 		thead {
 			tr {
-				@include data-table.header-row-fill-color(data-table-variables.$header-row-fill-color);
-				@include data-table.header-row-text-color(data-table-variables.$header-row-text-color);
+				@include data-table.header-row-fill-color(
+					data-table-variables.$header-row-fill-color
+				);
+				@include data-table.header-row-text-color(
+					data-table-variables.$header-row-text-color
+				);
 
 				th {
 					box-sizing: border-box;
@@ -581,13 +599,19 @@ figure {
 
 		tbody {
 			tr {
-				@include data-table.row-text-color(data-table-variables.$row-text-color);
-				@include data-table.row-fill-color(data-table-variables.$row-fill-color);
+				@include data-table.row-text-color(
+					data-table-variables.$row-text-color
+				);
+				@include data-table.row-fill-color(
+					data-table-variables.$row-fill-color
+				);
 
 				td {
 					@include data-table.cell-padding(
-						$leading-padding: data-table-variables.$cell-leading-padding,
-						$trailing-padding: data-table-variables.$cell-trailing-padding
+						$leading-padding:
+							data-table-variables.$cell-leading-padding,
+						$trailing-padding:
+							data-table-variables.$cell-trailing-padding
 					);
 					box-sizing: border-box;
 					border: none;

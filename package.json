@@ -1,37 +1,27 @@
 {
-  "name": "themes-starter-material",
-  "version": "2.4.0",
-  "license": "GPL-2.0",
-  "description": "A WordPress Starter Theme built with Material Components.",
-  "homepage": "http://them.es",
-  "author": "them.es",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/them-es/themes-starter-material.git"
-  },
-  "scripts": {
-    "watch": "webpack -p"
-  },
-  "browserslist": [
-    "last 2 versions"
-  ],
-  "dependencies": {
-    "material-components-web": "^12.0.0"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.14.8",
-    "@babel/preset-env": "^7.14.8",
-    "autoprefixer": "^10.3.1",
-    "babel-loader": "^8.2.2",
-    "css-loader": "^6.2.0",
-    "sass": "^1.37.0",
-    "sass-loader": "^12.1.0",
-    "postcss-loader": "^6.1.1",
-    "extract-loader": "^5.1.0",
-    "file-loader": "^6.2.0",
-    "path": "^0.12.7",
-    "webpack": "^5.47.1",
-    "webpack-cli": "^4.7.2",
-    "webpack-dev-server": "^3.11.2"
-  }
+	"name": "themes-starter-material",
+	"version": "2.0.0",
+	"license": "GPL-2.0",
+	"description": "A WordPress Starter Theme built with Material Components.",
+	"homepage": "http://them.es",
+	"author": "them.es",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/them-es/themes-starter-material.git"
+	},
+	"scripts": {
+		"watch": "webpack serve && wp-scripts start",
+		"build": "wp-scripts build"
+	},
+	"browserslist": [
+		"last 2 versions"
+	],
+	"dependencies": {
+		"material-components-web": "^14.0.0"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^27.7.0",
+		"path": "^0.12.7",
+		"webpack-remove-empty-scripts": "^1.0.4"
+	}
 }
