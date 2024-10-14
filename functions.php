@@ -315,10 +315,12 @@ if ( ! function_exists( 'themes_starter_comment' ) ) {
 	 *
 	 * @since v1.0
 	 *
+	 * @param string $link Link output.
+	 *
 	 * @return string
 	 */
-	function themes_starter_replace_reply_link_class( $class ) {
-		return str_replace( "class='comment-reply-link", "class='comment-reply-link mdc-button mdc-button--stroked", $class );
+	function themes_starter_replace_reply_link_class( $link ) {
+		return str_replace( "class='comment-reply-link", "class='comment-reply-link mdc-button mdc-button--stroked", $link );
 	}
 	add_filter( 'comment_reply_link', 'themes_starter_replace_reply_link_class' );
 
