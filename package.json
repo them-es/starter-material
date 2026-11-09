@@ -1,8 +1,8 @@
 {
 	"name": "themes-starter-material",
-	"version": "2.0.0",
+	"version": "3.0.0",
 	"license": "GPL-2.0",
-	"description": "A WordPress Starter Theme built with Material Components.",
+	"description": "A WordPress Starter Theme built with Material Design.",
 	"homepage": "http://them.es",
 	"author": "them.es",
 	"repository": {
@@ -14,11 +14,11 @@
 		"build": "wp-scripts build"
 	},
 	"dependencies": {
-		"material-components-web": "^14.0.0"
+		"beercss": "^5.0.3"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^27.7.0",
+		"@wordpress/scripts": "^37.1.0",
 		"path": "^0.12.7",
-		"webpack-remove-empty-scripts": "^1.0.4"
+		"webpack-remove-empty-scripts": "^1.1.1"
 	}
 }
