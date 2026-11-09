@@ -14,8 +14,8 @@ if ( have_posts() ) :
 	 * properly with a call to rewind_posts().
 	 */
 	the_post();
-?>
-	<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+	?>
+	<div class="s12">
 		<header class="page-header">
 			<h1 class="page-title author">
 				<?php
@@ -23,13 +23,13 @@ if ( have_posts() ) :
 				?>
 			</h1>
 		</header>
-	</div><!-- /.mdc-cell -->
-	<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+	</div><!-- /.s# -->
+	<div class="s12">
 		<?php
 			get_template_part( 'author', 'bio' );
 		?>
-	</div><!-- /.mdc-cell -->
-<?php
+	</div><!-- /.s# -->
+	<?php
 	/**
 	 * Since we called the_post() above, we need to
 	 * rewind the loop back to the beginning that way

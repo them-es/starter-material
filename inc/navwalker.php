@@ -1,17 +1,16 @@
 <?php
-
 /**
- * Class Name: WP_MDC_Navwalker
+ * Class Name: Material_Navwalker
  * Description: A custom WordPress nav walker class to implement the Material Design navigation styles.
  */
 
-if ( ! class_exists( 'WP_MDC_Navwalker' ) ) {
+if ( ! class_exists( 'Material_Navwalker' ) ) {
 	/**
-	 * WP_MDC_Navwalker class.
+	 * Material_Navwalker_Navwalker class.
 	 *
 	 * @extends Walker_Nav_Menu
 	 */
-	class WP_MDC_Navwalker extends Walker_Nav_Menu {
+	class Material_Navwalker extends Walker_Nav_Menu {
 		/**
 		 * Display array of elements hierarchically.
 		 *
@@ -35,30 +34,26 @@ if ( ! class_exists( 'WP_MDC_Navwalker' ) ) {
 				$atts['target'] = empty( $item->target ) ? array() : (array) $item->target;
 				$atts['rel']    = empty( $item->xfn ) ? array() : (array) $item->xfn;
 
-				$classes   = empty( $item->classes ) ? array() : (array) $item->classes;
-				$classes[] = 'mdc-tab';
+				$classes = empty( $item->classes ) ? array() : (array) $item->classes;
 
-				$indicator_classes   = array();
-				$indicator_classes[] = 'mdc-tab-indicator';
+				$classes[] = '';
 
 				if ( preg_grep( '/^current/', $classes ) ) {
-					$classes[]            = 'mdc-tab--active';
-					$indicator_classes[]  = 'mdc-tab-indicator--active';
+					$classes[]            = 'active';
 					$atts['aria-current'] = 'page';
 				}
 
 				$attributes = '';
 				foreach ( $atts as $attr => $value ) {
 					if ( ! empty( $value ) ) {
-						$value       = ( 'href' === $attr ) ? esc_url( $value ) : esc_attr( $value );
+						$value       = 'href' === $attr ? esc_url( $value ) : esc_attr( $value );
 						$attributes .= ' ' . esc_attr( $attr ) . '="' . esc_attr( $value ) . '"';
 					}
 				}
 
-				$class_names           = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args, $max_depth ) );
-				$indicator_class_names = join( ' ', $indicator_classes );
+				$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args, $max_depth ) );
 
-				$list[] = '<a href="' . esc_url( $item->url ) . '" class="' . esc_attr( $class_names ) . '"' . $attributes . ' role="tab"><span class="mdc-tab__content">' . esc_html( $item->title ) . '</span><span class="' . esc_attr( $indicator_class_names ) . '"><span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span></span><span class="mdc-tab__ripple"></span></a>';
+				$list[] = '<a href="' . esc_url( $item->url ) . '" class="' . esc_attr( $class_names ) . '"' . $attributes . '>' . esc_html( $item->title ) . '</a>';
 			}
 
 			return join( "\n", $list );

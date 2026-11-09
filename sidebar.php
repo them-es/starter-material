@@ -5,7 +5,8 @@
 
 if ( is_active_sidebar( 'primary_widget_area' ) || is_archive() || is_single() ) :
 	?>
-<div id="sidebar" class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4 mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-12-phone">
+<div class="s12 l1"></div>
+<div id="sidebar" class="s12 l3">
 	<?php
 	if ( is_active_sidebar( 'primary_widget_area' ) ) :
 		?>
@@ -15,7 +16,7 @@ if ( is_active_sidebar( 'primary_widget_area' ) || is_archive() || is_single() )
 
 		if ( current_user_can( 'manage_options' ) ) :
 			?>
-				<span class="edit-link"><a href="<?php echo esc_url( admin_url( 'widgets.php' ) ); ?>" class="badge badge-info"><?php esc_html_e( 'Edit', 'my-theme' ); ?></a></span><!-- Show Edit Widget link -->
+				<span class="edit-link"><a href="<?php echo esc_url( admin_url( 'widgets.php' ) ); ?>" class="chip"><?php esc_html_e( 'Edit', 'my-theme' ); ?></a></span><!-- Show Edit Widget link -->
 			<?php
 			endif;
 		?>
@@ -28,7 +29,7 @@ if ( is_active_sidebar( 'primary_widget_area' ) || is_archive() || is_single() )
 		<div class="sidebar-nav">
 			<div id="primary-two" class="widget-area">
 			<?php
-				$output                = '<ul class="mdc-list recentposts">';
+				$output                = '<ul class="recentposts">';
 					$recentposts_query = new WP_Query( array( 'posts_per_page' => 5 ) ); // Max. 5 posts in Sidebar!
 					$month_check       = null;
 			if ( $recentposts_query->have_posts() ) :
@@ -43,7 +44,7 @@ if ( is_active_sidebar( 'primary_widget_area' ) || is_archive() || is_single() )
 							endif;
 							$month_check = $month;
 
-							$output     .= '<li class="mdc-list-item">';
+							$output     .= '<li>';
 								$output .= '<h4><a href="' . esc_url( get_permalink() ) . '" title="' . sprintf( esc_attr__( 'Permalink to %s', 'my-theme' ), the_title_attribute( array( 'echo' => false ) ) ) . '" rel="bookmark">' . esc_html( get_the_title() ) . '</a></h4>';
 							$output     .= '</li>';
 					endwhile;
@@ -54,15 +55,15 @@ if ( is_active_sidebar( 'primary_widget_area' ) || is_archive() || is_single() )
 				echo $output;
 			?>
 				<br />
-				<ul class="categories mdc-list">
+				<ul class="categories">
 					<li><h3 class="border-bottom"><?php esc_html_e( 'Categories', 'my-theme' ); ?></h3></li>
 				<?php
 					wp_list_categories( array( 'title_li' => '' ) );
 
 				if ( ! is_author() ) :
 					?>
-							<li>&nbsp;</li>
-							<li><a href="<?php echo esc_url( get_permalink( get_option( 'page_for_posts' ) ) ); ?>" class="mdc-button mdc-button--stroked"><?php esc_html_e( 'more', 'my-theme' ); ?></a></li>
+						<li>&nbsp;</li>
+						<li><a href="<?php echo esc_url( get_permalink( get_option( 'page_for_posts' ) ) ); ?>" class="button"><?php esc_html_e( 'more', 'my-theme' ); ?></a></li>
 					<?php
 					endif;
 				?>

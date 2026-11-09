@@ -6,19 +6,19 @@
 get_header();
 
 if ( have_posts() ) :
-?>
-	<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+	?>
+	<div class="s12">
 		<header class="page-header">
 			<h1 class="page-title"><?php printf( esc_html__( 'Tag: %s', 'my-theme' ), single_tag_title( '', false ) ); ?></h1>
 			<?php
 				$tag_description = tag_description();
-				if ( ! empty( $tag_description ) ) :
-					echo apply_filters( 'tag_archive_meta', '<div class="tag-archive-meta">' . $tag_description . '</div>' );
+			if ( ! empty( $tag_description ) ) :
+				echo apply_filters( 'tag_archive_meta', '<div class="tag-archive-meta">' . $tag_description . '</div>' );
 				endif;
 			?>
 		</header>
-	</div><!-- /.mdc-cell -->
-<?php
+	</div><!-- /.s# -->
+	<?php
 	get_template_part( 'archive', 'loop' );
 else :
 	// 404.

@@ -1,104 +1,22 @@
 // Compile "main.scss" as "dist/main.css"
 
-/**
- * Add custom styles
- * https://material.io/design/color
- *
- * https://material.io/develop/web/docs/getting-started
- * https://material.io/develop/web/theming/theming-guide
- * https://sass-lang.com/blog/the-module-system-is-launched
- */
+$primary: var(--primary);
+$primnary-container: var(--primary-container);
+$secondary: var(--secondary);
+$secondary-container: var(--secondary-container);
 
-// Default variable overrides: https://github.com/material-components/material-components-web/blob/master/packages/mdc-theme/README.md
-
-$primary: #6200ee;
-$secondary: #03dac6;
-$background: #fff;
-
-@use "material-components-web/node_modules/@material/theme" with (
-	$primary: $primary,
-	$secondary: $secondary,
-	$background: $background
-);
-
-$on-primary: if(contrast-tone($primary) == "dark", #000, #fff);
-$on-secondary: if(contrast-tone($secondary) == "dark", #000, #fff);
-
-// Optional: Uncomment all components that are not needed to reduce the filesize
-@use "material-components-web/node_modules/@material/button/mdc-button";
-@use "material-components-web/node_modules/@material/button" as button;
-@use "material-components-web/node_modules/@material/button/mixins" as
-	button-mixins;
-@use "material-components-web/node_modules/@material/button/variables" as
-	button-variables;
-@use "material-components-web/node_modules/@material/card";
-@use "material-components-web/node_modules/@material/checkbox/mdc-checkbox";
-@use "material-components-web/node_modules/@material/form-field";
-//@use "@material/chips/mdc-chips";
-@use "material-components-web/node_modules/@material/data-table/mdc-data-table";
-@use "material-components-web/node_modules/@material/data-table" as data-table;
-@use "material-components-web/node_modules/@material/data-table/mixins" as
-	data-table-mixins;
-@use "material-components-web/node_modules/@material/data-table/variables" as
-	data-table-variables;
-//@use "@material/dialog/mdc-dialog";
-//@use "@material/drawer/mdc-drawer";
-//@use "@material/elevation/mdc-elevation";
-//@use "@material/fab/mdc-fab";
-@use "material-components-web/node_modules/@material/floating-label";
-@use "material-components-web/node_modules/@material/icon-button/mdc-icon-button";
-//@use "@material/image-list/mdc-image-list";
-@use "material-components-web/node_modules/@material/layout-grid/mdc-layout-grid";
-@use "material-components-web/node_modules/@material/line-ripple/mdc-line-ripple";
-@use "material-components-web/node_modules/@material/linear-progress/mdc-linear-progress";
-@use "material-components-web/node_modules/@material/list/mdc-list";
-//@use "@material/menu/mdc-menu";
-//@use "@material/menu-surface/mdc-menu-surface";
-@use "material-components-web/node_modules/@material/notched-outline/mdc-notched-outline";
-@use "material-components-web/node_modules/@material/radio/mdc-radio";
-@use "material-components-web/node_modules/@material/ripple/mdc-ripple";
-@use "material-components-web/node_modules/@material/select/mdc-select";
-//@use "@material/slider/mdc-slider";
-//@use "@material/snackbar/mdc-snackbar";
-@use "material-components-web/node_modules/@material/switch";
-@use "material-components-web/node_modules/@material/tab/mdc-tab";
-@use "material-components-web/node_modules/@material/tab-bar/mdc-tab-bar";
-@use "material-components-web/node_modules/@material/tab-indicator/mdc-tab-indicator";
-@use "material-components-web/node_modules/@material/tab-scroller/mdc-tab-scroller";
-@use "material-components-web/node_modules/@material/textfield/mdc-text-field";
-@use "material-components-web/node_modules/@material/theme/mdc-theme";
-@use "material-components-web/node_modules/@material/top-app-bar/mdc-top-app-bar";
-@use "material-components-web/node_modules/@material/typography/mdc-typography";
-
-// 1. Include custom variables
-$color-gray-dark: #212121;
-$color-gray: #616161;
-$color-gray-light: #9e9e9e;
-$color-gray-lighter: #f1f3f4;
-
-$text-color: $color-gray;
-
-$link-hover-color: $color-gray-dark;
-
-// 2. Overwrite MDC variables
-$preferred_font: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+// Custom variables
+$preferred_font: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
 $preferred_font_serif: Georgia, "Times New Roman", Times, serif;
 $preferred_font_monospace: Menlo, Monaco, Consolas, "Courier New", monospace;
 
-$background: #fff;
-$surface: #fff;
-$on-surface: if(contrast-tone($surface) == "dark", #000, #fff);
-
 // Media queries
-$screen-xs-min: 480px;
-$screen-sm-min: 768px;
-$screen-md-min: 992px;
-$screen-lg-min: 1200px;
+$screen-s-min: 601px;
+$screen-m-min: 993px;
 
 // Provide a maximum, so media queries don't overlap when required
-$screen-xs-max: ($screen-sm-min - 1);
-$screen-sm-max: ($screen-md-min - 1);
-$screen-md-max: ($screen-lg-min - 1);
+$screen-s-max: ($screen-s-min - 1);
+$screen-m-max: ($screen-m-min - 1);
 
 $gutter: 30px;
 
@@ -115,17 +33,16 @@ body {
 	font-size: 1rem;
 	line-height: 1.5;
 	margin: 0;
-	color: $text-color;
 
-	&.page-template-page-full {
-		#main {
-			max-width: 100%;
-		}
+	&.page {
+		display: block;
+		opacity: 1;
+		position: static;
 	}
 
 	/* If WP-Adminbar is visible */
 	&.admin-bar {
-		#header.mdc-toolbar--fixed {
+		#header.toolbar {
 			top: var(--wp-admin--admin-bar--height);
 		}
 
@@ -143,7 +60,6 @@ h1,
 h2,
 h3 {
 	font-weight: normal;
-	color: $color-gray-dark;
 }
 
 .small {
@@ -182,112 +98,65 @@ img {
 	vertical-align: middle;
 }
 
-hr {
-	border: none;
-	border-top: 1px solid $color-gray-lighter;
-}
-
-a {
-	color: $text-color;
-
-	&:hover,
-	&[aria-current="page"] {
-		color: $color-gray-dark;
-	}
-}
-
 /* Layout */
-
-.mdc-card {
-	.mdc-card__primary {
-		padding: 1rem;
-	}
-
-	.mdc-card__title-text {
-		hyphens: auto;
-		word-wrap: break-word;
-	}
-}
 
 /* Header */
 
-#header {
-	.mdc-tab {
-		color: $on-primary;
-	}
-	.mdc-tab-indicator {
-		> .mdc-tab-indicator__content--underline {
-			background-color: $on-primary !important;
-			height: 4px;
-		}
-	}
+header {
+	padding: 0;
 
-	.mdc-top-app-bar__title {
-		color: $on-primary;
-
-		img {
-			height: 40px;
-		}
-	}
-
-	.mdc-text-field {
+	> .top-bar {
 		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
 		align-items: center;
-		background-color: transparent;
-		border-radius: 4px;
-		transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-		will-change: background-color;
+	}
 
-		&:hover,
-		&.mdc-text-field--focused {
-			background-color: #fff;
-
-			.mdc-text-field__input {
-				width: 290px;
-			}
-
-			.mdc-icon-button,
-			.mdc-text-field__input {
-				color: $text-color;
-			}
+	> .toolbar {
+		&.max {
+			width: 100%;
 		}
 
-		.mdc-text-field__input {
-			width: 0;
-			transition: width 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-			will-change: width;
+		&.fixed {
+			z-index: 1200;
 		}
 
-		.mdc-icon-button,
-		.mdc-text-field__input {
-			color: #fff;
+		a {
+			padding: 0 1rem;
 		}
+	}
+}
 
-		.mdc-icon-button {
-			height: 100%;
+.site-title {
+	display: flex;
+	justify-self: center;
+	block-size: auto !important;
 
-			&::before,
-			&::after {
-				background-color: transparent;
-				border-radius: 4px;
-			}
-		}
-
-		&.mdc-text-field--with-trailing-icon {
-			.mdc-text-field__icon {
-				bottom: 12px;
-			}
+	&:has(img) {
+		&::after {
+			display: none;
 		}
 	}
 }
 
 /* Main */
 
-#main {
-	max-width: 1140px;
+[id*="post-"]:not(article) {
+	margin-top: 60px;
+}
 
-	.mdc-layout-grid__cell {
-		padding: 0 1rem;
+.post {
+	> footer {
+		display: block;
+		margin-top: 1rem;
+	}
+}
+
+#main {
+	.page {
+		display: block;
+		opacity: 1;
+		position: static;
 	}
 
 	.blog-navigation,
@@ -296,45 +165,40 @@ a {
 		flex-direction: row;
 		justify-content: space-between;
 		align-items: center;
-		padding: 8px 0;
+		gap: 1rem;
+		margin: 1rem 0;
 	}
 }
 
-.search-form {
-	.mdc-text-field {
-		padding-right: 0;
+/* Sidebar */
+
+#sidebar {
+	.recentposts {
+		h4 {
+			font-size: initial;
+			font-weight: bold;
+		}
+	}
+
+	.categories {
+		a {
+			font-weight: bold;
+		}
 	}
 }
 
 /* Footer */
 
 #footer {
-	background-color: $color-gray-lighter;
-
-	.copyright {
-		display: inline-block;
-		margin-right: 16px;
-	}
-
 	p {
-		margin-top: 10px;
+		margin-top: 1rem;
 	}
 
-	.widget-area,
-	.mdc-list {
+	.widget-area {
 		padding: 0;
 
 		li {
-			margin: 10px 0;
-		}
-	}
-	.mdc-list {
-		display: inline-block;
-		margin-top: 16px;
-
-		li {
-			display: inline-block;
-			margin-right: 16px;
+			margin: 1rem 0;
 		}
 	}
 }
@@ -348,7 +212,7 @@ a {
 .post-thumbnail,
 .wp-video,
 .embed-responsive {
-	margin: 5px 0;
+	margin: 0.5rem 0;
 	width: 100% !important;
 }
 
@@ -394,6 +258,19 @@ a {
 }
 
 .widget-area {
+	> nav {
+		> :is(ol, ul) {
+			position: relative;
+			display: block;
+			max-width: 100%;
+
+			> li {
+				display: block;
+				width: 100%;
+			}
+		}
+	}
+
 	ul {
 		list-style: none;
 		padding: 0;
@@ -402,46 +279,32 @@ a {
 
 /* Author */
 
-.author-avatar {
-	.avatar {
-		width: 64px;
-		height: auto;
-	}
-}
-
 .author-info {
-	margin: 40px 0;
-
-	h2,
-	h3 {
-		margin-top: 0;
+	.avatar {
+		margin-inline-end: 0.5rem;
 	}
 }
 
 /* Posts */
 
+.post {
+	> :is(ol, ul) {
+		padding-left: 1rem;
+	}
+}
+
 .sticky {
-	background-color: $color-gray-lighter;
+	background-color: $secondary-container;
 }
 
 .entry-title {
 	font-size: 3.5rem;
-	color: $color-gray-dark;
 }
 
-.entry-meta,
-.comment-meta {
-	a.mdc-badge {
-		color: $color-gray-light;
-
-		&::after {
-			right: -14px;
-		}
-	}
-}
-
+article > footer,
 .entry-meta {
 	font-size: small;
+	display: block;
 }
 
 .single {
@@ -461,13 +324,14 @@ a {
 }
 
 .comment-form {
-	.mdc-text-field {
-		width: 100%;
-		margin: 10px 0;
+	.form-submit {
+		margin-top: 1rem;
 	}
 
-	.form-submit {
-		margin-top: 20px;
+	label {
+		> span {
+			white-space: initial;
+		}
 	}
 }
 
@@ -485,8 +349,7 @@ a {
 	width: 68.9%;
 
 	> li.comment {
-		margin: 0 0 1.625em;
-		padding: 1.625em;
+		margin-bottom: $gutter;
 		position: relative;
 	}
 
@@ -504,10 +367,9 @@ a {
 		width: 64px;
 		height: 64px;
 		border-radius: 50%;
-		box-shadow: 0 1px 2px $color-gray-light;
 		padding: 0;
 		position: absolute;
-		top: 0;
+		top: -16px;
 		left: -102px;
 	}
 }
@@ -526,70 +388,15 @@ figure {
 	margin: 0;
 }
 
-// Buttons
-
-.wp-block-button {
-	@include button-mixins.core-styles;
-
-	&.is-style-outline {
-		.wp-block-button__link {
-			@include button.outline-color(button-variables.$outline-color);
-			@include button.outline-width(
-				button-variables.$outlined-border-width
-			);
-			@include button.container-fill-color(transparent);
-			@include button.ink-color($primary);
-		}
-	}
-
-	.wp-block-button__link {
-		@include button.container-fill-color($primary);
-		@include button.ink-color($on-primary);
-		@include button.density(button-variables.$density-scale);
-		@include button.horizontal-padding(
-			button-variables.$contained-horizontal-padding
-		);
-		@include button.shape-radius(button-variables.$shape-radius);
-		@include button.disabled-container-fill-color(
-			button-variables.$disabled-container-color
-		);
-		@include button.disabled-ink-color(
-			button-variables.$disabled-ink-color
-		);
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		text-decoration: none;
-	}
-}
-
 // Table
 
 .wp-block-table {
-	@include data-table-mixins.core-styles;
-	@include data-table.fill-color(data-table-variables.$fill-color);
-	@include data-table.shape-radius(data-table-variables.$shape-radius);
-	@include data-table.stroke-size(data-table-variables.$stroke-size);
-	@include data-table.stroke-color(data-table-variables.$stroke-color);
-	@include data-table.divider-color(data-table-variables.$divider-color);
-	@include data-table.divider-size(data-table-variables.$divider-size);
-
 	table {
-		@include data-table.density(
-			data-table-variables.$default-density-scale
-		);
 		border: 0;
 		table-layout: fixed;
 
 		thead {
 			tr {
-				@include data-table.header-row-fill-color(
-					data-table-variables.$header-row-fill-color
-				);
-				@include data-table.header-row-text-color(
-					data-table-variables.$header-row-text-color
-				);
-
 				th {
 					box-sizing: border-box;
 					border: none;
@@ -599,26 +406,19 @@ figure {
 
 		tbody {
 			tr {
-				@include data-table.row-text-color(
-					data-table-variables.$row-text-color
-				);
-				@include data-table.row-fill-color(
-					data-table-variables.$row-fill-color
-				);
-
 				td {
-					@include data-table.cell-padding(
-						$leading-padding:
-							data-table-variables.$cell-leading-padding,
-						$trailing-padding:
-							data-table-variables.$cell-trailing-padding
-					);
 					box-sizing: border-box;
 					border: none;
 				}
 			}
 		}
 	}
+}
+
+// List
+
+.wp-block-list {
+	padding: 0 1.5rem;
 }
 
 // Image, Media and Text
@@ -631,27 +431,24 @@ figure {
 	}
 }
 
+// Separator
+
+.wp-block-separator {
+	margin: 2rem 0;
+}
+
 /**
  * Responsive Design
  */
 
-@media (max-width: $screen-sm-max) {
-	#main {
-		.mdc-layout-grid__cell {
-			padding: 0;
-		}
+@media (max-width: $screen-s-max) {
+	#toggle-sidebar-s {
+		position: fixed;
+		left: 1rem;
+		top: 1rem;
+		z-index: 99;
 	}
 }
 
-@media (max-width: $screen-xs-max) {
-	#header {
-		.mdc-text-field {
-			&:hover,
-			&.mdc-text-field--focused {
-				.mdc-text-field__input {
-					width: calc(100vw - 90px);
-				}
-			}
-		}
-	}
+@media (max-width: $screen-m-max) {
 }

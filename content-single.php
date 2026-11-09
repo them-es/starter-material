@@ -4,27 +4,28 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<h1 class="entry-title"><?php the_title(); ?></h1>
+<div id="post-<?php the_ID(); ?>" <?php post_class( 'round' ); ?>>
+	<header>
+		<?php
+		if ( has_post_thumbnail() ) {
+			echo '<p class="post-thumbnail">' . get_the_post_thumbnail( get_the_ID(), 'large responsive round' ) . '</p>';
+		}
+		?>
+
+		<h1><?php the_title(); ?></h1>
 
 		<?php
 		if ( 'post' === get_post_type() ) {
 			?>
-			<div class="entry-meta">
-			<?php themes_starter_article_posted_on(); ?>
-			</div><!-- /.entry-meta -->
+			<p class="entry-meta">
+				<?php themes_starter_article_posted_on(); ?>
+			</p><!-- /.entry-meta -->
 			<?php
 		}
 		?>
-	</header><!-- /.entry-header -->
+	</header>
 
-	<div class="entry-content">
-		<?php
-		if ( has_post_thumbnail() ) {
-			echo '<p class="post-thumbnail">' . get_the_post_thumbnail( get_the_ID(), 'large' ) . '</p>';
-		}
-
+	<?php
 		the_content();
 
 		wp_link_pages(
@@ -33,13 +34,11 @@
 				'after'  => '</div>',
 			)
 		);
+
+		edit_post_link( __( 'Edit', 'my-theme' ), '<span class="edit-link">', '</span>' );
 		?>
-	</div><!-- /.entry-content -->
 
-	<?php edit_post_link( __( 'Edit', 'my-theme' ), '<span class="edit-link">', '</span>' ); ?>
-
-	<footer class="entry-meta">
-		<hr>
+	<footer class="surface-container-low elevate large-padding round">
 		<?php
 			/* translators: used between list items, there is a space after the comma */
 			$category_list = get_the_category_list( __( ', ', 'my-theme' ) );
@@ -54,7 +53,7 @@
 			$utility_text = __( 'This entry was posted by <a href="%6$s">%5$s</a>. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'my-theme' );
 		}
 
-			printf(
+			echo '<p><small>' . sprintf(
 				$utility_text,
 				$category_list,
 				$tag_list,
@@ -62,11 +61,9 @@
 				the_title_attribute( array( 'echo' => false ) ),
 				get_the_author(),
 				esc_url( get_author_posts_url( (int) get_the_author_meta( 'ID' ) ) )
-			);
+			) . '</small></p><br>';
+
+			get_template_part( 'author', 'bio' );
 			?>
-
-		<hr>
-
-		<?php get_template_part( 'author', 'bio' ); ?>
-	</footer><!-- /.entry-meta -->
-</article><!-- /#post-<?php the_ID(); ?> -->
+	</footer>
+</div><!-- /#post-<?php the_ID(); ?> -->

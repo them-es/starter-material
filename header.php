@@ -4,78 +4,124 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<?php wp_head(); ?>
+	<?php
+	wp_head();
+	?>
 </head>
 
 <?php
-	$navbar_position = get_theme_mod( 'navbar_position', 'fixed' ); // Get custom meta-value.
-
+	$color_scheme    = get_theme_mod( 'color_scheme', 'light' ); // Color scheme.
+	$navbar_position = get_theme_mod( 'navbar_position', 'left' ); // Get custom meta-value.
 	$search_enabled  = get_theme_mod( 'search_enabled', '1' ); // Get custom meta-value.
+	$header_logo     = get_theme_mod( 'header_logo' ); // Get custom meta-value.
+
+	$output_header_logo = get_bloginfo( 'name', 'display' );
+
+if ( ! empty( $header_logo ) ) :
+	$output_header_logo = '<a href="' . esc_url( home_url() ) . '" class="site-title" title="' . esc_attr( $output_header_logo ) . '" rel="home"><img src="' . esc_url( $header_logo ) . '" alt="' . esc_attr( $output_header_logo ) . '" /></a>';
+endif;
 ?>
 
-<body <?php body_class( 'mdc-typography' ); ?>>
+<body <?php body_class( esc_attr( $color_scheme ) ); ?>>
 
 <?php wp_body_open(); ?>
 
-<div id="wrapper">
-	<header id="header" class="mdc-top-app-bar mdc-top-app-bar--<?php echo esc_attr( $navbar_position ); ?><?php if ( is_home() || is_front_page() ) : echo ' home'; endif; ?>">
-		<div class="mdc-top-app-bar__row">
-			<section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-				<a href="<?php echo esc_url( home_url() ); ?>" class="mdc-top-app-bar__title" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-				<?php
-					$header_logo = get_theme_mod( 'header_logo' ); // Get custom meta-value.
+<div>
+	<!-- Sidebar "Mobile" -->
+	<button id="toggle-sidebar-s" class="s extra circle" data-ui="#sidebar-s">
+		<i>menu</i>
+	</button>
+	<dialog class="primary-container left scroll s" id="sidebar-s">
+		<header>
+			<div class="top-bar">
+				<button class="extra circle transparent" data-ui="#sidebar-s">
+					<i>close</i>
+				</button>
 
-					if ( ! empty( $header_logo ) ) :
-				?>
-					<img src="<?php echo esc_url( $header_logo ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" />
 				<?php
-					else :
-						echo esc_attr( get_bloginfo( 'name', 'display' ) );
-					endif;
-				?>
-				</a>
-			</section>
-
-			<?php
 				if ( '1' === $search_enabled ) :
-			?>
-				<section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
-					<form class="mdc-form-field mdc-form-field--align-end search-form" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-						<label class="mdc-text-field mdc-text-field--no-label" data-mdc-auto-init="MDCTextField">
-							<input type="text" name="s" class="mdc-text-field__input" title="<?php esc_attr_e( 'Search', 'my-theme' ); ?>" />
-							<button type="submit" class="mdc-icon-button material-icons">search</button>
-						</label>
-					</form>
-				</section>
-			<?php
+					?>
+					<button data-ui="#search-modal" class="extra circle transparent">
+						<i>search</i>
+					</button>
+					<?php
 				endif;
+				?>
+			</div>
+		</header>
+
+		<?php
+			echo $output_header_logo;
+		?>
+
+		<nav>
+			<?php
+			// Loading WordPress Custom Menu (theme_location).
+			wp_nav_menu(
+				array(
+					'container'      => '',
+					'walker'         => new Material_Navwalker(),
+					'theme_location' => 'main-menu',
+					'items_wrap'     => '<ul class="list">%3$s</ul>',
+				)
+			);
 			?>
-		</div><!-- /.mdc-top-app-bar__row -->
+		</nav>
+	</dialog>
 
-		<div id="tab-bar-menu" class="mdc-tab-bar" role="tablist">
-			<div class="mdc-tab-scroller">
-				<div class="mdc-tab-scroller__scroll-area">
-					<nav id="scrollable-tab-bar-menu" class="mdc-tab-scroller__scroll-content">
-						<?php
-							// Loading WordPress Custom Menu (theme_location).
-							wp_nav_menu(
-								array(
-									'container'      => '',
-									//'fallback_cb'    => 'WP_MDC_Navwalker::fallback',
-									'depth'          => 1,
-									'walker'         => new WP_MDC_Navwalker(),
-									'theme_location' => 'main-menu',
-									'items_wrap'     => '%3$s',
-								)
-							);
-						?>
-					</nav>
-				</div>
-			</div><!-- /.mdc-tab-scroller -->
-		</div><!-- /.mdc-tab-bar -->
-	</header><!-- /#header -->
+	<!-- Sidebar "Desktop" -->
+	<nav id="sidebar" class="primary-container m l scroll max <?php echo esc_attr( $navbar_position ); ?>">
+		<header>
+			<div class="top-bar">
+				<button id="toggle-sidebar" class="m l extra circle transparent">
+					<i>menu_open</i>
+				</button>
 
-	<main id="main" class="mdc-layout-grid<?php if ( 'fixed' === $navbar_position ) : echo ' mdc-top-app-bar--prominent-fixed-adjust'; endif; ?>">
-	<?php if ( ! is_page_template( 'page-full.php' ) ) : ?>
-		<div class="mdc-layout-grid__inner">
-	<?php endif; ?>
+				<?php
+				if ( '1' === $search_enabled ) :
+					?>
+					<button data-ui="#search-modal" class="extra circle transparent">
+						<i>search</i>
+					</button>
+					<?php
+				endif;
+				?>
+			</div>
+
+			<?php
+				echo $output_header_logo;
+			?>
+		</header>
+	<?php
+		// Loading WordPress Custom Menu (theme_location).
+		wp_nav_menu(
+			array(
+				'container'      => '',
+				'walker'         => new Material_Navwalker(),
+				'theme_location' => 'main-menu',
+				'items_wrap'     => '%3$s',
+			)
+		);
+		?>
+	</nav>
+
+	<main id="main" class="responsive large-padding">
+	<?php
+	if ( ! is_page_template( 'page-full.php' ) ) :
+		echo '<div class="grid">';
+	endif;
+
+	if ( '1' === $search_enabled ) :
+		?>
+			<dialog id="search-modal">
+				<form role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+					<div class="active">
+						<div class="field label border">
+							<input type="text" name="s" title="<?php esc_attr_e( 'Search', 'my-theme' ); ?>" />
+							<label><?php esc_html_e( 'Search', 'my-theme' ); ?></label>
+						</div>
+					</div>
+				</form>
+			</dialog>
+		<?php
+		endif;

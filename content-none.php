@@ -1,20 +1,19 @@
 <?php
 /**
  * The template for displaying "not found" content in the Blog Archives.
- *
  */
 
 $search_enabled = get_theme_mod( 'search_enabled', '1' ); // Get custom meta-value.
 ?>
-<article id="post-0" class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 post no-results not-found">
+<article id="post-0" class="s12 post no-results not-found">
 	<header class="entry-header">
 		<h1 class="entry-title"><?php esc_html_e( 'Nothing Found', 'my-theme' ); ?></h1>
 	</header><!-- /.entry-header -->
 	<div class="entry-content">
 		<p><?php esc_html_e( 'Apologies, but no results were found for the requested archive.', 'my-theme' ); ?></p>
 		<?php
-			if ( '1' === $search_enabled ) :
-				get_search_form();
+		if ( '1' === $search_enabled ) :
+			get_search_form();
 			endif;
 		?>
 	</div><!-- /.entry-content -->

@@ -2,14 +2,13 @@
 /**
  * Template Name: Page (Default)
  * Description: Page template with Sidebar on the left side.
- *
  */
 
 get_header();
 
 the_post();
 ?>
-<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8 mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-12-phone">
+<div class="s12 l8">
 	<div id="post-<?php the_ID(); ?>" <?php post_class( 'content' ); ?>>
 		<h1 class="entry-title"><?php the_title(); ?></h1>
 		<?php
@@ -27,15 +26,15 @@ the_post();
 				'<span class="edit-link">',
 				'</span>'
 			);
-		?>
+			?>
 	</div><!-- /#post-<?php the_ID(); ?> -->
 	<?php
 		// If comments are open or we have at least one comment, load up the comment template.
-		if ( comments_open() || get_comments_number() ) {
-			comments_template();
-		}
+	if ( comments_open() || get_comments_number() ) {
+		comments_template();
+	}
 	?>
-</div><!-- /.mdc-cell -->
+</div><!-- /.s# -->
 <?php
 get_sidebar();
 

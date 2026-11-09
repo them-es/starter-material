@@ -2,6 +2,6 @@
  * them.es Theme Editor Styles
  */
 
-html :where(.editor-styles-wrapper) {
-	font-family: inherit;
+.round {
+	border-radius: 2rem;
 }

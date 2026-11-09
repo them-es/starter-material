@@ -42,10 +42,22 @@ add_action( 'init', 'themes_starter_init' );
  * @since v1.0.0
  */
 
-$custom_walker = __DIR__ . '/inc/mdc-navwalker.php';
+$navwalker = __DIR__ . '/inc/navwalker.php';
 
-if ( is_readable( $custom_walker ) ) {
-	require_once $custom_walker;
+if ( is_readable( $navwalker ) ) {
+	require_once $navwalker;
+}
+
+/**
+ * Block customization.
+ *
+ * @since v3.0.0
+ */
+
+$blocks = __DIR__ . '/blocks/index.php';
+
+if ( is_readable( $blocks ) ) {
+	require_once $blocks;
 }
 
 /**
@@ -233,10 +245,10 @@ if ( ! function_exists( 'themes_starter_content_nav' ) ) {
 
 		if ( $wp_query->max_num_pages > 1 ) {
 			?>
-			<nav id="<?php echo esc_attr( $nav_id ); ?>" class="blog-navigation mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+			<nav id="<?php echo esc_attr( $nav_id ); ?>" class="blog-navigation s12">
 				<?php
-					next_posts_link( '<i class="material-icons mdc-button__icon" aria-hidden="true">arrow_back</i> ' . esc_html__( 'Older posts', 'my-theme' ) );
-					previous_posts_link( esc_html__( 'Newer posts', 'my-theme' ) . ' <i class="material-icons mdc-button__icon" aria-hidden="true">arrow_forward</i>' );
+					next_posts_link( '<i class="material-icons" aria-hidden="true">arrow_back</i> ' . esc_html__( 'Older posts', 'my-theme' ) );
+					previous_posts_link( esc_html__( 'Newer posts', 'my-theme' ) . ' <i class="material-icons" aria-hidden="true">arrow_forward</i>' );
 				?>
 			</nav><!-- /.blog-navigation -->
 			<?php
@@ -251,7 +263,7 @@ if ( ! function_exists( 'themes_starter_content_nav' ) ) {
 	 * @return string
 	 */
 	function posts_link_attributes() {
-		return 'class="mdc-button"';
+		return 'class="button border"';
 	}
 	add_filter( 'next_posts_link_attributes', 'posts_link_attributes' );
 	add_filter( 'previous_posts_link_attributes', 'posts_link_attributes' );
@@ -282,8 +294,8 @@ function themes_starter_widgets_init() {
 		array(
 			'name'          => 'Secondary Widget Area (Sidebar)',
 			'id'            => 'secondary_widget_area',
-			'before_widget' => '<div class="mdc-layout-grid__cell">',
-			'after_widget'  => '</div>',
+			'before_widget' => '',
+			'after_widget'  => '',
 			'before_title'  => '<h3 class="widget-title">',
 			'after_title'   => '</h3>',
 		)
@@ -325,24 +337,16 @@ function themes_starter_password_form() {
 	$label = 'pwbox-' . ( empty( $post->ID ) ? wp_rand() : $post->ID );
 
 	$output                      = '<form action="' . esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" method="post">';
-		$output                 .= '<div class="mdc-layout-grid">';
-			$output             .= '<div class="mdc-layout-grid__inner">';
-				$output         .= '<h4 class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">' . esc_html__( 'This content is password protected. To view it please enter your password below.', 'my-theme' ) . '</h4>';
-				$output         .= '<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-12-phone">';
-					$output     .= '<div class="mdc-text-field mdc-text-field--outlined" data-mdc-auto-init="MDCTextField">';
-						$output .= '<input type="password" id="post_password" name="post_password" id="' . esc_attr( $label ) . '" class="mdc-text-field__input" />';
-						$output .= '<div class="mdc-notched-outline">
-						<div class="mdc-notched-outline__leading"></div>
-						<div class="mdc-notched-outline__notch">
-							<label for="post_password" class="mdc-floating-label">' . esc_html__( 'Password', 'my-theme' ) . '</label>
-						</div>
-						<div class="mdc-notched-outline__trailing"></div>
-						</div>';
-						$output .= '<input type="submit" name="submit" class="mdc-button mdc-button--raised" value="' . esc_attr__( 'Submit', 'my-theme' ) . '" />';
-					$output     .= '</div><!-- /.mdc-text-field -->';
-				$output         .= '</div><!-- /.mdc-cell -->';
-			$output             .= '</div><!-- /.mdc-grid__inner -->';
-		$output                 .= '</div><!-- /.mdc-grid -->';
+		$output                 .= '<div class="grid">';
+				$output         .= '<h4 class="s12">' . esc_html__( 'This content is password protected. To view it please enter your password below.', 'my-theme' ) . '</h4>';
+				$output         .= '<div class="s12 m6">';
+					$output     .= '<div class="field label border">';
+						$output .= '<input type="password" name="post_password" id="' . esc_attr( $label ) . '" />';
+						$output .= '<label>' . esc_html__( 'Password', 'my-theme' ) . '</label>';
+					$output     .= '</div><!-- /.field -->';
+						$output .= '<input type="submit" name="submit" class="button" value="' . esc_attr__( 'Submit', 'my-theme' ) . '" />';
+				$output         .= '</div><!-- /.s# -->';
+		$output                 .= '</div><!-- /.grid -->';
 	$output                     .= '</form>';
 
 	return $output;
@@ -359,7 +363,7 @@ add_filter( 'the_password_form', 'themes_starter_password_form' );
  * @return string
  */
 function themes_starter_replace_reply_link_class( $link ) {
-	return str_replace( "class='comment-reply-link", "class='comment-reply-link mdc-button mdc-button--stroked", $link );
+	return str_replace( 'class="comment-reply-link', 'class="comment-reply-link button border small', $link );
 }
 add_filter( 'comment_reply_link', 'themes_starter_replace_reply_link_class' );
 
@@ -393,10 +397,10 @@ function themes_starter_comment( $comment, $args, $depth ) {
 			?>
 	<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
 		<article id="comment-<?php comment_ID(); ?>" class="comment">
-			<footer class="comment-meta">
+			<header class="comment-meta">
 				<div class="comment-author vcard">
 					<?php
-						$avatar_size = ( '0' !== $comment->comment_parent ? 68 : 136 );
+						$avatar_size = '0' !== $comment->comment_parent ? 68 : 136;
 						echo get_avatar( $comment, $avatar_size );
 
 						/* Translators: 1: Comment author, 2: Date and time */
@@ -422,7 +426,7 @@ function themes_starter_comment( $comment, $args, $depth ) {
 					</em>
 					<br />
 				<?php } ?>
-			</footer>
+			</header>
 
 			<div class="comment-content"><?php comment_text(); ?></div>
 
@@ -463,9 +467,8 @@ function themes_starter_custom_commentform( $args = array(), $post_id = null ) {
 		$post_id = get_the_ID();
 	}
 
-	$commenter     = wp_get_current_commenter();
-	$user          = wp_get_current_user();
-	$user_identity = $user->exists() ? $user->display_name : '';
+	$commenter = wp_get_current_commenter();
+	$user      = wp_get_current_user();
 
 	$args = wp_parse_args( $args );
 
@@ -473,62 +476,36 @@ function themes_starter_custom_commentform( $args = array(), $post_id = null ) {
 	$aria_req = $req ? " aria-required='true' required" : '';
 	$consent  = empty( $commenter['comment_author_email'] ) ? '' : ' checked="checked"';
 	$fields   = array(
-		'author'  => '<div class="mdc-text-field mdc-text-field--outlined" data-mdc-auto-init="MDCTextField">
-						<input type="text" id="author" name="author" class="mdc-text-field__input" value="' . esc_attr( $commenter['comment_author'] ) . '"' . $aria_req . ' />
-						<div class="mdc-notched-outline">
-							<div class="mdc-notched-outline__leading"></div>
-							<div class="mdc-notched-outline__notch">
-								<label for="author" class="mdc-floating-label">' . esc_html__( 'Name', 'my-theme' ) . '</label>
-							</div>
-							<div class="mdc-notched-outline__trailing"></div>
-						</div>
+		'author'  => '<div class="field label border">
+						<input type="text" id="author" name="author" value="' . esc_attr( $commenter['comment_author'] ) . '"' . $aria_req . ' />
+						<label for="author">' . esc_html__( 'Name', 'my-theme' ) . '</label>
 					</div>',
-		'email'   => '<div class="mdc-text-field mdc-text-field--outlined" data-mdc-auto-init="MDCTextField">
-						<input type="email" id="email" name="email" class="mdc-text-field__input" value="' . esc_attr( $commenter['comment_author_email'] ) . '"' . $aria_req . ' />
-						<div class="mdc-notched-outline">
-							<div class="mdc-notched-outline__leading"></div>
-							<div class="mdc-notched-outline__notch">
-								<label for="email" class="mdc-floating-label">' . esc_html__( 'Email', 'my-theme' ) . '</label>
-							</div>
-							<div class="mdc-notched-outline__trailing"></div>
-						</div>
+		'email'   => '<div class="field label border">
+						<input type="email" id="email" name="email" value="' . esc_attr( $commenter['comment_author_email'] ) . '"' . $aria_req . ' />
+						<label for="email">' . esc_html__( 'Email', 'my-theme' ) . '</label>
 					</div>',
 		'url'     => '',
-		'cookies' => '<div class="mdc-form-field">
-						<div class="mdc-checkbox">
-							<input type="checkbox" class="mdc-checkbox__native-control" id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" value="yes"' . $consent . ' />
-							<div class="mdc-checkbox__background">
-								<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-									<path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
-								</svg>
-								<div class="mdc-checkbox__mixedmark"></div>
-							</div>
-						</div>
-						<label for="wp-comment-cookies-consent">' . esc_html__( 'Save my name, email, and website in this browser for the next time I comment.', 'my-theme' ) . '</label>
-					</div>',
+		'cookies' => '<br><label class="checkbox">
+					<input type="checkbox" id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" value="yes"' . $consent . ' />
+					<span>' . esc_html__( 'Save my name, email, and website in this browser for the next time I comment.', 'my-theme' ) . '</span>
+				</label>',
 	);
 
 	$defaults = array(
 		'fields'               => apply_filters( 'comment_form_default_fields', $fields ),
-		'comment_field'        => '<div class="mdc-text-field mdc-text-field--textarea" data-mdc-auto-init="MDCTextField">
-									<textarea id="comment" name="comment" class="mdc-text-field__input" rows="3" aria-required="true" required></textarea>
-										<div class="mdc-notched-outline">
-											<div class="mdc-notched-outline__leading"></div>
-											<div class="mdc-notched-outline__notch">
-												<label class="mdc-floating-label" for="comment">' . esc_html__( 'Comment', 'my-theme' ) . '</label>
-											</div>
-											<div class="mdc-notched-outline__trailing"></div>
-										</div>
-									</div>',
+		'comment_field'        => '<div class="field label border">
+									<textarea id="comment" name="comment" aria-required="true" required></textarea>
+									<label for="comment">' . esc_html__( 'Comment', 'my-theme' ) . '</label>
+								</div>',
 		/** This filter is documented in wp-includes/link-template.php */
 		'must_log_in'          => '<p class="must-log-in">' . sprintf( wp_kses_post( __( 'You must be <a href="%s">logged in</a> to post a comment.', 'my-theme' ) ), wp_login_url( esc_url( get_permalink( get_the_ID() ) ) ) ) . '</p>',
 		/** This filter is documented in wp-includes/link-template.php */
 		'logged_in_as'         => '<p class="logged-in-as">' . sprintf( wp_kses_post( __( 'Logged in as <a href="%1$s">%2$s</a>. <a href="%3$s" title="Log out of this account">Log out?</a>', 'my-theme' ) ), get_edit_user_link(), $user->display_name, wp_logout_url( esc_url( get_permalink( get_the_ID() ) ) ) ) . '</p>',
-		'comment_notes_before' => '',
-		'comment_notes_after'  => '<p class="small comment-notes">' . esc_html__( 'Your Email address will not be published.', 'my-theme' ) . '</p>',
+		'comment_notes_before' => '<p class="small comment-notes">' . esc_html__( 'Your Email address will not be published.', 'my-theme' ) . '</p>',
+		'comment_notes_after'  => '',
 		'id_form'              => 'commentform',
 		'id_submit'            => 'submit',
-		'class_submit'         => 'mdc-button mdc-button--raised',
+		'class_submit'         => 'button',
 		'name_submit'          => 'submit',
 		'title_reply'          => '',
 		'title_reply_to'       => esc_html__( 'Leave a Reply to %s', 'my-theme' ),
@@ -555,12 +532,10 @@ function themes_starter_scripts_loader() {
 
 	// 1. Styles.
 	wp_enqueue_style( 'style', get_theme_file_uri( 'style.css' ), array(), $theme_version, 'all' );
-	// wp_enqueue_style( 'robotofont', '//fonts.googleapis.com/css?family=Roboto:300,400,500,700', array(), $theme_version, 'all' );
-	wp_enqueue_style( 'materialiconsfont', '//fonts.googleapis.com/icon?family=Material+Icons', array(), $theme_version, 'all' );
 	wp_enqueue_style( 'main', get_theme_file_uri( 'build/main.css' ), array(), $theme_version, 'all' ); // main.scss: Compiled Framework source + custom styles.
 
 	if ( is_rtl() ) {
-		wp_enqueue_style( 'rtl', get_theme_file_uri( 'build/rtl.css' ), array(), $theme_version, 'all' );
+		wp_enqueue_style( 'rtl', get_theme_file_uri( 'build/main-rtl.css' ), array(), $theme_version, 'all' );
 	}
 
 	// 2. Scripts.

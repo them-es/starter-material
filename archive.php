@@ -6,13 +6,13 @@
 get_header();
 
 if ( have_posts() ) :
-?>
-<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+	?>
+<div class="s12">
 	<header class="page-header">
 		<h1 class="page-title">
 			<?php
-				if ( is_day() ) :
-					printf( esc_html__( 'Daily Archives: %s', 'my-theme' ), get_the_date() );
+			if ( is_day() ) :
+				printf( esc_html__( 'Daily Archives: %s', 'my-theme' ), get_the_date() );
 				elseif ( is_month() ) :
 					printf( esc_html__( 'Monthly Archives: %s', 'my-theme' ), get_the_date( _x( 'F Y', 'monthly archives date format', 'my-theme' ) ) );
 				elseif ( is_year() ) :
@@ -20,11 +20,11 @@ if ( have_posts() ) :
 				else :
 					esc_html_e( 'Blog Archives', 'my-theme' );
 				endif;
-			?>
+				?>
 		</h1>
 	</header>
-</div><!-- /.mdc-cell -->
-<?php
+</div><!-- /.s# -->
+	<?php
 	get_template_part( 'archive', 'loop' );
 else :
 	// 404.

@@ -5,17 +5,17 @@
 
 get_header();
 ?>
-<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8 mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-12-phone">
+<div class="s12 l8">
 	<?php
-		if ( have_posts() ) :
-			while ( have_posts() ) :
-				the_post();
+	if ( have_posts() ) :
+		while ( have_posts() ) :
+			the_post();
 
-				get_template_part( 'content', 'single' );
+			get_template_part( 'content', 'single' );
 
-				// If comments are open or we have at least one comment, load up the comment template.
-				if ( comments_open() || get_comments_number() ) :
-					comments_template();
+			// If comments are open or we have at least one comment, load up the comment template.
+			if ( comments_open() || get_comments_number() ) :
+				comments_template();
 				endif;
 			endwhile;
 		endif;
@@ -24,41 +24,40 @@ get_header();
 
 		$count_posts = wp_count_posts();
 
-		if ( $count_posts->publish > '1' ) :
-			$next_post = get_next_post();
-			$prev_post = get_previous_post();
-	?>
+	if ( (int) $count_posts->publish > 1 ) :
+		$next_post = get_next_post();
+		$prev_post = get_previous_post();
+		?>
 		<br>
-		<hr>
-		<div class="post-navigation mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-			<?php
-				if ( $prev_post ) {
-					$prev_title = get_the_title( $prev_post->ID );
+		<div class="post-navigation s12">
+		<?php
+		if ( $prev_post ) {
+			$prev_title = get_the_title( $prev_post->ID );
 			?>
-				<a class="previous-post mdc-button" href="<?php echo esc_url( get_permalink( $prev_post->ID ) ); ?>" title="<?php echo esc_attr( $prev_title ); ?>">
-					<i class="material-icons mdc-button__icon">arrow_back</i>
+				<a class="previous-post button border" href="<?php echo esc_url( get_permalink( $prev_post->ID ) ); ?>" title="<?php echo esc_attr( $prev_title ); ?>">
+					<i class="material-icons">arrow_back</i>
 					<span class="title"><?php echo wp_kses_post( $prev_title ); ?></span>
 				</a>
 			<?php
-				}
-			?>
-				<div class="mdc-layout-spacer"></div>
+		}
+		?>
+				<div class="s12"></div>
 			<?php
-				if ( $next_post ) {
-					$next_title = get_the_title( $next_post->ID );
-			?>
-				<a class="next-post mdc-button" href="<?php echo esc_url( get_permalink( $next_post->ID ) ); ?>" title="<?php echo esc_attr( $next_title ); ?>">
+			if ( $next_post ) {
+				$next_title = get_the_title( $next_post->ID );
+				?>
+				<a class="next-post button border" href="<?php echo esc_url( get_permalink( $next_post->ID ) ); ?>" title="<?php echo esc_attr( $next_title ); ?>">
 					<span class="title"><?php echo wp_kses_post( $next_title ); ?></span>
-					<i class="material-icons mdc-button__icon">arrow_forward</i>
+					<i class="material-icons">arrow_forward</i>
 				</a>
-			<?php
-				}
+				<?php
+			}
 			?>
 		</div><!-- /.post-navigation -->
-	<?php
+		<?php
 		endif;
 	?>
-</div><!-- /.mdc-cell -->
+</div><!-- /.s8 -->
 <?php
 get_sidebar();
 

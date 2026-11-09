@@ -6,19 +6,19 @@
 get_header();
 
 if ( have_posts() ) :
-?>
-<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+	?>
+<div class="s12">
 	<header class="page-header">
 		<h1 class="page-title"><?php printf( esc_html__( 'Category Archives: %s', 'my-theme' ), single_cat_title( '', false ) ); ?></h1>
 		<?php
 			$category_description = category_description();
-			if ( ! empty( $category_description ) ) :
-				echo apply_filters( 'category_archive_meta', '<div class="category-archive-meta">' . $category_description . '</div>' );
+		if ( ! empty( $category_description ) ) :
+			echo apply_filters( 'category_archive_meta', '<div class="category-archive-meta">' . $category_description . '</div>' );
 			endif;
 		?>
 	</header>
-</div><!-- /.mdc-cell -->
-<?php
+</div><!-- /.s# -->
+	<?php
 	get_template_part( 'archive', 'loop' );
 else :
 	// 404.

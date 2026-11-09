@@ -18,7 +18,7 @@ defined( 'ABSPATH' ) || exit;
  */
 function themes_starter_customize( $wp_customize ) {
 	/**
-	 * Initialize sections
+	 * Initialize sections.
 	 */
 	$wp_customize->add_section(
 		'theme_header_section',
@@ -29,9 +29,9 @@ function themes_starter_customize( $wp_customize ) {
 	);
 
 	/**
-	 * Section: Page Layout
+	 * Section: Page Layout.
 	 */
-	// Header Logo.
+	// Logo.
 	$wp_customize->add_setting(
 		'header_logo',
 		array(
@@ -51,27 +51,32 @@ function themes_starter_customize( $wp_customize ) {
 		)
 	);
 
-	// Predefined Navbar scheme.
-	/*
-	$wp_customize->add_setting( 'navbar_scheme', array(
-		'default'           => 'default',
-		'sanitize_callback' => 'sanitize_text_field',
-	) );
-	$wp_customize->add_control( 'navbar_scheme', array(
-		'type'     => 'radio',
-		'label'    => __( 'Navbar Scheme', 'my-theme' ),
-		'section'  => 'theme_header_section',
-		'choices'  => array(
-						'default' => __( 'Default', 'my-theme' ),
-						'inverse' => __( 'Inverse', 'my-theme' ),
-					),
-	) );
-	*/
-	// Fixed Header?
+	// Color scheme.
+	$wp_customize->add_setting(
+		'color_scheme',
+		array(
+			'default'           => 'static',
+			'sanitize_callback' => 'sanitize_text_field',
+		)
+	);
+	$wp_customize->add_control(
+		'color_scheme',
+		array(
+			'type'    => 'radio',
+			'label'   => __( 'Color Scheme', 'my-theme' ),
+			'section' => 'theme_header_section',
+			'choices' => array(
+				'light' => __( 'Light', 'my-theme' ),
+				'dark'  => __( 'Dark', 'my-theme' ),
+			),
+		)
+	);
+
+	// Header position.
 	$wp_customize->add_setting(
 		'navbar_position',
 		array(
-			'default'           => 'static',
+			'default'           => 'left',
 			'sanitize_callback' => 'sanitize_text_field',
 		)
 	);
@@ -82,14 +87,13 @@ function themes_starter_customize( $wp_customize ) {
 			'label'   => __( 'Navbar', 'my-theme' ),
 			'section' => 'theme_header_section',
 			'choices' => array(
-				'fixed'     => __( 'Fixed', 'my-theme' ),
-				'prominent' => __( 'Prominent', 'my-theme' ),
-				'dense'     => __( 'Dense', 'my-theme' ),
+				'left'  => __( 'Left', 'my-theme' ),
+				'right' => __( 'Right', 'my-theme' ),
 			),
 		)
 	);
 
-	// Search?
+	// Search field.
 	$wp_customize->add_setting(
 		'search_enabled',
 		array(
